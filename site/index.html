@@ -27,7 +27,7 @@
     section { margin:34px 0; scroll-margin-top:16px; }
     .section-head { padding-bottom:10px; border-bottom:2px solid var(--moss); }
     .flights,nav,.day-grid { display:grid; gap:10px; }
-    .flights { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:14px; }
+    .flights { grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); margin-top:14px; }
     .ticket { background:#fffcf5; border:1px solid var(--line); padding:12px; }
     .ticket small { color:var(--clay); } p { margin:8px 0; }
     nav { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:12px; }
@@ -52,7 +52,21 @@
     <svg aria-hidden="true" viewBox="0 0 240 150" preserveAspectRatio="xMaxYMax meet"><circle cx="184" cy="48" r="17" fill="#c8876e"/><path d="M20 150 Q85 70 125 115 T240 89 V150" fill="#cbbf9f"/><path d="M65 150 Q125 97 156 124 T240 108 V150" fill="#a6af98"/></svg>
   </div>
   <section aria-labelledby="flight"><div class="section-head"><h2 id="flight">班機資訊</h2><span class="folio">FLIGHTS</span></div>
-    <div class="flights"><article class="ticket"><small>OUTBOUND</small><h3>去程</h3><p>班機與起降時間待補</p></article><article class="ticket"><small>INBOUND</small><h3>回程</h3><p>班機與起降時間待補</p></article></div>
+    <div class="flights">
+      <article class="ticket">
+        <small>2026/12/05 · 去程</small>
+        <h3>虎航 IT210</h3>
+        <p>07:00 出發<br>TPE 桃園機場 · 第一航廈</p>
+        <p>10:25 抵達<br>KIX 大阪關西國際機場 · 第一航廈</p>
+      </article>
+      <article class="ticket">
+        <small>2026/12/12 · 回程</small>
+        <h3>虎航 IT213</h3>
+        <p>19:55 出發<br>KIX 大阪關西國際機場 · 第一航廈</p>
+        <p>22:30 抵達<br>TPE 桃園機場 · 第一航廈</p>
+      </article>
+    </div>
+    <p class="hint">起降時間皆為各機場當地時間。</p>
   </section>
   <section><div class="section-head"><h2>手冊索引</h2><span class="folio">INDEX</span></div><nav aria-label="手冊索引"><a href="#prepare">行前準備</a><a href="#stay">住宿資訊</a><a href="#trips">行程總覽</a></nav></section>
   <section id="prepare"><div class="section-head"><h2>行前準備</h2><span class="folio">01 / PREPARE</span></div>
