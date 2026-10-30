@@ -89,6 +89,7 @@
     .menu nav { position:absolute; top:100%; right:0; width:min(250px,100%); max-height:calc(100vh - 74px); overflow:auto; grid-template-columns:1fr; margin:0; padding:10px; background:var(--paper); border:2px solid; box-shadow:3px 3px var(--ink); }
     .menu nav a { min-height:44px; display:flex; align-items:center; gap:10px; padding:5px 12px; }
     .menu nav a::before { content:'→'; } .menu nav a:first-child { background:white; }
+    .menu nav a[href="?page=trips"] { background:#bfe5bd; }
   </style>
   <script>
     const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
