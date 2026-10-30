@@ -27,9 +27,20 @@
     section { margin:34px 0; scroll-margin-top:16px; }
     .section-head { padding-bottom:10px; border-bottom:2px solid var(--moss); }
     .flights,nav,.day-grid { display:grid; gap:10px; }
-    .flights { grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); margin-top:14px; }
-    .ticket { background:#fffcf5; border:1px solid var(--line); padding:12px; }
-    .ticket small { color:var(--clay); } p { margin:8px 0; }
+    .flights { margin-top:14px; gap:16px; }
+    .ticket { --accent:var(--clay); overflow:hidden; border:1px solid var(--line); border-bottom:4px solid var(--accent); border-radius:12px; background:#fffcf5; line-height:1.4; }
+    .ticket.return { --accent:var(--moss); }
+    .pass-band,.pass-body { display:grid; grid-template-columns:minmax(0,1fr) clamp(74px,22%,145px); }
+    .pass-band { background:var(--accent); color:white; align-items:center; }
+    .pass-band h3 { padding:6px 10px; font-size:17px; } .pass-band time { font-size:13px; margin-left:4px; font-weight:400; }
+    .pass-band span { text-align:center; font-size:10px; letter-spacing:.1em; }
+    .route { display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:4px; padding:12px clamp(8px,2vw,18px); }
+    .stop { display:grid; gap:2px; } .stop small,.stub small { font-size:12px; color:var(--accent); }
+    .stop .code { font-size:clamp(22px,5vw,32px); line-height:1.1; } .airport,.terminal { font-size:13px; }
+    .stop time { margin-top:5px; font-size:clamp(22px,5vw,30px); color:var(--moss); } .route-arrow { margin-top:19px; color:var(--accent); }
+    .stub { display:flex; flex-direction:column; justify-content:center; gap:4px; padding:8px; border-left:2px dashed var(--line); background:#f4eee3; font-size:13px; }
+    .stub .number { font-size:clamp(18px,4vw,27px); color:var(--accent); } .stub::after { content:''; width:min(100%,85px); height:13px; margin-top:8px; opacity:.5; background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px); }
+    p { margin:8px 0; }
     nav { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:12px; }
     nav a,.day-grid button { background:#ede3d3; border:1px solid var(--line); padding:10px 4px; text-align:center; font:inherit; color:var(--ink); border-radius:3px; }
      .day-grid button { font-weight:600; }
@@ -54,16 +65,26 @@
   <section aria-labelledby="flight"><div class="section-head"><h2 id="flight">班機資訊</h2><span class="folio">FLIGHTS</span></div>
     <div class="flights">
       <article class="ticket">
-        <small>2026/12/05 · 去程</small>
-        <h3>虎航 IT210</h3>
-        <p>07:00 出發<br>TPE 桃園機場 · 第一航廈</p>
-        <p>10:25 抵達<br>KIX 大阪關西國際機場 · 第一航廈</p>
+        <div class="pass-band"><h3>去程 <time datetime="2026-12-05">2026/12/05（六）</time></h3><span lang="en">FLIGHT</span></div>
+        <div class="pass-body">
+          <div class="route">
+            <div class="stop"><small>出發</small><span class="code">TPE</span><span class="airport">桃園機場</span><span class="terminal">第一航廈</span><time>07:00</time></div>
+            <span class="route-arrow" aria-hidden="true">→</span>
+            <div class="stop"><small>抵達</small><span class="code">KIX</span><span class="airport">大阪關西國際機場</span><span class="terminal">第一航廈</span><time>10:25</time></div>
+          </div>
+          <div class="stub"><small>航班</small><span>台灣虎航</span><span class="number">IT210</span></div>
+        </div>
       </article>
-      <article class="ticket">
-        <small>2026/12/12 · 回程</small>
-        <h3>虎航 IT213</h3>
-        <p>19:55 出發<br>KIX 大阪關西國際機場 · 第一航廈</p>
-        <p>22:30 抵達<br>TPE 桃園機場 · 第一航廈</p>
+      <article class="ticket return">
+        <div class="pass-band"><h3>回程 <time datetime="2026-12-12">2026/12/12（六）</time></h3><span lang="en">FLIGHT</span></div>
+        <div class="pass-body">
+          <div class="route">
+            <div class="stop"><small>出發</small><span class="code">KIX</span><span class="airport">大阪關西國際機場</span><span class="terminal">第一航廈</span><time>19:55</time></div>
+            <span class="route-arrow" aria-hidden="true">→</span>
+            <div class="stop"><small>抵達</small><span class="code">TPE</span><span class="airport">桃園機場</span><span class="terminal">第一航廈</span><time>22:30</time></div>
+          </div>
+          <div class="stub"><small>航班</small><span>台灣虎航</span><span class="number">IT213</span></div>
+        </div>
       </article>
     </div>
     <p class="hint">起降時間皆為各機場當地時間。</p>
