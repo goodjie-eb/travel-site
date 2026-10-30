@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="theme-color" content="#f6f2e9">
+  <meta name="theme-color" content="#f7f9f7">
   <title>十二月旅行手冊｜一起出發</title>
   <script src="./trips.js?v=december-guide-1" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&amp;family=Noto+Sans+TC:wght@400;600&amp;display=swap">
   <style>
-    :root { --paper:#f6f2e9; --wood:#e2cfb1; --ink:#353932; --moss:#495e4e; --clay:#93513e; --line:#cbbfae; }
+    :root { --paper:#f7f9f7; --wood:#ac9973; --ink:#263d42; --moss:#375c54; --clay:#466979; --line:#c8d4d2; }
     * { box-sizing:border-box; }
-    body { margin:0; background:var(--paper); color:var(--ink); font:400 16px/1.75 'Huninn',ui-rounded,system-ui,sans-serif; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:400 16px/1.75 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; }
     main,header,footer { width:min(calc(100% - 36px),760px); margin:auto; }
     header,footer,.section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     header,footer { padding:17px 0; border-bottom:1px solid var(--line); font-size:14px; }
     footer { border-top:1px solid var(--line); margin-top:42px; }
-    .en,.folio { font:400 12px/1.5 'Huninn',ui-rounded,system-ui,sans-serif; letter-spacing:.12em; color:var(--moss); }
+    .en,.folio { font:400 12px/1.5 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; letter-spacing:.12em; color:var(--moss); }
     .cover { position:relative; isolation:isolate; overflow:hidden; margin:22px 0; padding:24px; background:#eae0ce; border-left:6px solid var(--wood); }
     .cover svg { position:absolute; right:0; bottom:0; width:46%; height:100%; z-index:-1; }
     h1,h2,h3 { font-family:inherit; font-weight:600; }
@@ -28,7 +28,7 @@
     .section-head { padding-bottom:10px; border-bottom:2px solid var(--moss); }
     .flights,nav,.day-grid { display:grid; gap:10px; }
     .flights { margin-top:14px; gap:16px; }
-    .ticket { --accent:var(--clay); overflow:hidden; border:1px solid var(--line); border-bottom:4px solid var(--accent); border-radius:12px; background:#fffcf5; line-height:1.4; }
+    .ticket { --accent:var(--clay); overflow:hidden; border:1px solid var(--line); border-bottom:4px solid var(--accent); border-radius:12px; background:#fdfefd; line-height:1.4; }
     .ticket.return { --accent:var(--moss); }
     .pass-band,.pass-body { display:grid; grid-template-columns:minmax(0,1fr) clamp(74px,22%,145px); }
     .pass-band { background:var(--accent); color:white; align-items:center; }
@@ -38,20 +38,35 @@
     .stop { display:grid; gap:2px; } .stop small,.stub small { font-size:12px; color:var(--accent); }
     .stop .code { font-size:clamp(22px,5vw,32px); line-height:1.1; } .airport,.terminal { font-size:13px; }
     .stop time { margin-top:5px; font-size:clamp(22px,5vw,30px); color:var(--moss); } .route-arrow { margin-top:19px; color:var(--accent); }
-    .stub { display:flex; flex-direction:column; justify-content:center; gap:4px; padding:8px; border-left:2px dashed var(--line); background:#f4eee3; font-size:13px; }
+    .stub { display:flex; flex-direction:column; justify-content:center; gap:4px; padding:8px; border-left:2px dashed var(--line); background:#edf3f2; font-size:13px; }
     .stub .number { font-size:clamp(18px,4vw,27px); color:var(--accent); } .stub::after { content:''; width:min(100%,85px); height:13px; margin-top:8px; opacity:.5; background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px); }
     p { margin:8px 0; }
     nav { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:12px; }
-    nav a,.day-grid button { background:#ede3d3; border:1px solid var(--line); padding:10px 4px; text-align:center; font:inherit; color:var(--ink); border-radius:3px; }
+    nav a,.day-grid button { background:#edf3f1; border:1px solid var(--line); padding:10px 4px; text-align:center; font:inherit; color:var(--ink); border-radius:3px; }
      .day-grid button { font-weight:600; }
     a { color:var(--moss); text-underline-offset:4px; } nav a { text-decoration:none; } :focus-visible { outline:3px solid var(--clay); outline-offset:2px; }
     .checks label,summary { display:flex; align-items:center; gap:10px; min-height:48px; padding:8px 0; cursor:pointer; border-bottom:1px solid var(--line); }
     input { width:19px;height:19px;accent-color:var(--moss); } input:checked + span { text-decoration:line-through; color:#676d63; }
     details { margin-top:8px; } summary { display:list-item; color:var(--moss); }
-    .hint { font-size:14px;color:#62685d; } .day-grid { grid-template-columns:repeat(4,minmax(0,1fr)); margin:15px 0; }
+    .hint { font-size:14px;color:#536865; } .day-grid { grid-template-columns:repeat(4,minmax(0,1fr)); margin:15px 0; }
     .day-grid button { cursor:pointer; min-height:48px; } .day-grid button[aria-pressed="true"] { background:var(--moss); color:white; }
-    .sheet { padding:18px; border-left:4px solid var(--wood); background:#fffaf1; }
+    .sheet { padding:18px; border-left:4px solid var(--wood); background:#fff; }
     footer a { padding:10px 0; } @media(max-width:420px){ nav a {font-size:15px;} .cover { padding:18px; } }
+    h1,h2 { font-family:'LXGW WenKai TC','Kaiti TC','DFKai-SB',serif; font-weight:400; letter-spacing:.08em; }
+    h2 { font-size:clamp(26px,5vw,34px); }
+    .cover { padding:clamp(24px,5vw,46px) 18px 78px; background:linear-gradient(140deg,#f0f4f1,#e3edee); border:1px solid var(--line); }
+    .cover svg { width:min(80%,420px); }
+    .cover h1 { margin:12px 0; }
+    .dates { font-size:14px; letter-spacing:.12em; }
+    header { letter-spacing:.16em; } .folio,.en { font-size:11px; letter-spacing:.18em; }
+    .section-head { border-bottom:1px solid var(--line); }
+    .ticket { border-radius:6px; border-bottom-width:2px; }
+    .stop time,.number { font-variant-numeric:tabular-nums; }
+    nav { counter-reset:chapter; } nav a { background:white; text-align:left; padding:12px 8px; border-top:2px solid var(--moss); }
+    nav a::before { counter-increment:chapter; content:'0' counter(chapter); display:block; color:var(--clay); font:14px/1.6 Georgia,serif; }
+    nav a:hover,.day-grid button:hover:not([aria-pressed=true]) { background:#e2ece9; }
+    html[data-page] .section-head { padding:24px 12px; background:linear-gradient(100deg,#e4eeeb,transparent); }
+    .sheet { margin-top:15px; border-left-width:2px; }
     main > section, footer { display:none; }
     html[data-page] #front-page { display:none; }
     html[data-page] footer { display:flex; }
@@ -73,9 +88,15 @@
 <main>
 <div id="front-page">
   <div class="cover">
-    <span class="en">DECEMBER / 旅の記録</span>
+    <span class="en">KANSAI　／　冬の旅</span>
     <h1>十二月旅行手冊</h1><div class="dates">12.05 — 12.12　／　八日</div>
-    <svg aria-hidden="true" viewBox="0 0 240 150" preserveAspectRatio="xMaxYMax meet"><circle cx="184" cy="48" r="17" fill="#c8876e"/><path d="M20 150 Q85 70 125 115 T240 89 V150" fill="#cbbf9f"/><path d="M65 150 Q125 97 156 124 T240 108 V150" fill="#a6af98"/></svg>
+    <svg aria-hidden="true" viewBox="0 0 360 160" preserveAspectRatio="xMaxYMax meet">
+      <circle cx="278" cy="40" r="20" fill="#dacbaa"/>
+      <path d="M0 146 Q45 117 80 125 Q110 134 152 92 Q183 61 202 81 Q238 107 266 83 Q297 56 360 70 V160 H0Z" fill="#c8d8d9"/>
+      <path d="M45 160 Q96 133 137 140 Q172 147 218 118 Q245 100 277 110 Q315 120 360 90 V160Z" fill="#91afb0"/>
+      <path d="M95 160 Q143 145 184 150 Q220 156 264 131 Q304 110 360 121 V160Z" fill="#547a74"/>
+      <g fill="#345b54"><path d="m305 137 6-13h-3l5-12 5 12h-3l6 13z"/><path d="m324 131 8-17h-4l6-15 6 15h-4l8 17z"/></g>
+    </svg>
   </div>
   <section aria-labelledby="flight"><div class="section-head"><h2 id="flight">班機資訊</h2><span class="folio">FLIGHTS</span></div>
     <div class="flights">
