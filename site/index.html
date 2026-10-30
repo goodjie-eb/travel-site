@@ -4,27 +4,65 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="googlebot" content="noindex, nofollow, noarchive">
-  <meta name="theme-color" content="#234f46">
-  <title>一起出發｜旅行手冊</title>
-  <style>
-    :root{color-scheme:light;--ink:#243d37;--muted:#65756c;--paper:#f7f6ef;--green:#234f46;--line:#dce3d9}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;line-height:1.75;font-size:17px}a{color:inherit}a:focus-visible{outline:3px solid #be6e34;outline-offset:5px}
-    .wrap{max-width:760px;margin:auto;padding:0 24px}header{padding:24px 0;border-bottom:1px solid var(--line)}.brand{font-weight:750;letter-spacing:.08em;font-size:17px}.tag{font-size:12px;letter-spacing:.16em;color:var(--muted);margin-top:4px}main{padding:52px 0 40px}.eyebrow{font-size:13px;color:var(--muted);letter-spacing:.15em;font-weight:600}h1{font-size:clamp(34px,8vw,52px);line-height:1.3;letter-spacing:-.03em;margin:16px 0 20px}h1 span{color:#67856b}p{margin:12px 0}.intro{max-width:34em;color:var(--muted)}.badge{display:inline-flex;align-items:center;gap:9px;background:#e7eee2;color:#325b38;padding:7px 13px;border-radius:30px;font-size:13px;font-weight:650;margin-top:24px}.dot{width:7px;height:7px;background:#59814d;border-radius:50%}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;margin-top:32px;box-shadow:0 8px 32px #243d3705}.card h2{font-size:22px;margin:0 0 10px}.card p{color:var(--muted)}.line{height:1px;background:var(--line);margin:22px 0}.steps{display:grid;gap:16px}.step{display:flex;gap:14px;align-items:flex-start}.num{flex:0 0 30px;height:30px;display:grid;place-items:center;background:var(--paper);border-radius:50%;font-size:13px}.step strong{display:block;font-size:16px}.step small{display:block;color:var(--muted);font-size:14px}.link{display:inline-block;background:var(--green);color:#fff;text-decoration:none;border-radius:12px;padding:13px 20px;margin-top:18px;min-height:48px;font-weight:600;font-size:15px}.trip{border-top:1px solid var(--line);padding:16px 0}.trip h3{margin:0;font-size:19px}footer{padding:22px 0 32px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.note{margin-top:24px;font-size:13px;color:var(--muted)}@media(min-width:600px){main{padding-top:64px}.card{padding:32px}.steps{grid-template-columns:1fr 1fr}}
-  </style>
+  <meta name="theme-color" content="#f6f2e9">
+  <title>十二月旅行手冊｜一起出發</title>
   <script src="./trips.js" defer></script>
+  <style>
+    :root { --paper:#f6f2e9; --wood:#e2cfb1; --ink:#353932; --moss:#495e4e; --clay:#93513e; --line:#cbbfae; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.75 system-ui,sans-serif; }
+    main,header,footer { width:min(calc(100% - 36px),760px); margin:auto; }
+    header,footer,.section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    header,footer { padding:17px 0; border-bottom:1px solid var(--line); font-size:14px; }
+    footer { border-top:1px solid var(--line); margin-top:42px; }
+    .en,.folio { font:12px/1.5 ui-monospace,monospace; letter-spacing:.12em; color:var(--moss); }
+    .cover { position:relative; isolation:isolate; overflow:hidden; margin:22px 0; padding:24px; background:#eae0ce; border-left:6px solid var(--wood); }
+    .cover svg { position:absolute; right:0; bottom:0; width:46%; height:100%; z-index:-1; }
+    h1,h2,h3 { font-family:Georgia,'Noto Serif TC','PMingLiU',serif; }
+    h1 { font-size:clamp(32px,6vw,50px); line-height:1.3; letter-spacing:.07em; margin:20px 0 12px; }
+    h2 { font-size:25px; margin:0; } h3 { font-size:19px; margin:0; }
+    .dates { color:var(--clay); font-weight:650; letter-spacing:.05em; }
+    section { margin:34px 0; scroll-margin-top:16px; }
+    .section-head { padding-bottom:10px; border-bottom:2px solid var(--moss); }
+    .flights,nav,.day-grid { display:grid; gap:10px; }
+    .flights { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:14px; }
+    .ticket { background:#fffcf5; border:1px solid var(--line); padding:12px; }
+    .ticket small { color:var(--clay); } p { margin:8px 0; }
+    nav { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:12px; }
+    nav a,.day-grid button { background:#ede3d3; border:1px solid var(--line); padding:10px 4px; text-align:center; font:inherit; color:var(--ink); border-radius:3px; }
+    a { color:var(--moss); text-underline-offset:4px; } nav a { text-decoration:none; } :focus-visible { outline:3px solid var(--clay); outline-offset:2px; }
+    .checks label,summary { display:flex; align-items:center; gap:10px; min-height:48px; padding:8px 0; cursor:pointer; border-bottom:1px solid var(--line); }
+    input { width:19px;height:19px;accent-color:var(--moss); } input:checked + span { text-decoration:line-through; color:#676d63; }
+    details { margin-top:8px; } summary { display:list-item; color:var(--moss); font-weight:650; }
+    .hint { font-size:14px;color:#62685d; } .day-grid { grid-template-columns:repeat(4,minmax(0,1fr)); margin:15px 0; }
+    .day-grid button { cursor:pointer; min-height:48px; } .day-grid button[aria-pressed="true"] { background:var(--moss); color:white; }
+    .sheet { padding:18px; border-left:4px solid var(--wood); background:#fffaf1; }
+    footer a { padding:10px 0; } @media(max-width:420px){ nav a {font-size:15px;} .cover { padding:18px; } }
+  </style>
 </head>
-<body>
-<header><div class="wrap"><div class="brand">一起出發</div><div class="tag">OUR LITTLE TRAVEL BOOK</div></div></header>
-<main class="wrap">
-  <div class="eyebrow">好好規劃，慢慢旅行</div>
-  <h1>下一站，<br><span>一起留下回憶。</span></h1>
-  <p class="intro">把每一天的行程、交通和想去的地方放在這裡。出發前先看看，旅途中隨手查，親友一起輕鬆走。</p>
-  <div class="badge"><span class="dot" aria-hidden="true"></span>測試網頁已上線</div>
-  <section class="card" aria-labelledby="ready"><h2 id="ready">我們的旅行手冊，準備好了。</h2><p>如果你在手機上看到這個畫面，表示網站已經可以開啟。這裡目前是測試頁，還沒有正式的旅行行程。</p><div class="line"></div><div class="steps"><div class="step"><span class="num">01</span><div><strong>規劃下一趟旅行</strong><small>之後再加入日期、地點與每日安排。</small></div></div><div class="step"><span class="num">02</span><div><strong>把連結分享給親友</strong><small>用手機開啟，就能查看最新內容。</small></div></div></div><a class="link" href="#trips">看看行程區 ↓</a></section>
-  <section class="card" id="trips" aria-labelledby="trip-heading"><h2 id="trip-heading">旅行行程</h2><div id="trip-list"><p>第一趟旅行，等你來安排。</p></div></section>
-  <p class="note">這是公開分享頁面，請勿放入訂房代號、證件、電話或其他私人資料。</p>
-</main>
-<footer><div class="wrap">一起出發 · 把時間留給風景與彼此</div></footer>
-</body>
-</html>
+<body id="home">
+<header><strong>一起出發</strong><span class="en">TRAVEL NOTES</span></header>
+<main>
+  <div class="cover">
+    <span class="en">DECEMBER / 旅の記録</span>
+    <h1>十二月旅行手冊</h1><div class="dates">12.05 — 12.12　／　八日</div>
+    <svg aria-hidden="true" viewBox="0 0 240 150" preserveAspectRatio="xMaxYMax meet"><circle cx="184" cy="48" r="17" fill="#c8876e"/><path d="M20 150 Q85 70 125 115 T240 89 V150" fill="#cbbf9f"/><path d="M65 150 Q125 97 156 124 T240 108 V150" fill="#a6af98"/></svg>
+  </div>
+  <section aria-labelledby="flight"><div class="section-head"><h2 id="flight">班機資訊</h2><span class="folio">FLIGHTS</span></div>
+    <div class="flights"><article class="ticket"><small>OUTBOUND</small><h3>去程</h3><p>班機與起降時間待補</p></article><article class="ticket"><small>INBOUND</small><h3>回程</h3><p>班機與起降時間待補</p></article></div>
+  </section>
+  <section><div class="section-head"><h2>手冊索引</h2><span class="folio">INDEX</span></div><nav aria-label="手冊索引"><a href="#prepare">行前準備</a><a href="#stay">住宿資訊</a><a href="#trips">行程總覽</a></nav></section>
+  <section id="prepare"><div class="section-head"><h2>行前準備</h2><span class="folio">01 / PREPARE</span></div>
+    <h3>出發清單</h3><p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p><div class="checks">
+    <label><input type="checkbox" value="documents"><span>確認護照效期與所需證件</span></label>
+    <label><input type="checkbox" value="tickets"><span>備好機票與住宿資料</span></label>
+    <label><input type="checkbox" value="network"><span>安排旅途中的上網方式</span></label>
+    <label><input type="checkbox" value="packing"><span>整理行李、充電線與轉接頭</span></label>
+    </div>
+    <details><summary>入境須知</summary><p>目的地與旅行年份確認後，這裡會列出入境文件、申報流程及官方連結。</p></details>
+    <details><summary>退稅方式</summary><p>目的地與旅行年份確認後，這裡會列出適用條件、單據與辦理地點。</p></details>
+  </section>
+  <section id="stay"><div class="section-head"><h2>住宿資訊</h2><span class="folio">02 / STAY</span></div><div class="sheet"><h3>旅宿待補</h3><p>住宿日期、入住與退房時間、前往方式將整理在這裡。</p></div></section>
+  <section id="trips"><div class="section-head"><h2>行程總覽</h2><span class="folio">03 / DAYS</span></div><div id="trip-list"><p>12/5 至 12/12，共八天。每日安排待補。</p></div></section>
+</main><footer><span>一起出發 · 十二月手冊</span><a href="#home">回首頁 ↑</a></footer>
+</body></html>
