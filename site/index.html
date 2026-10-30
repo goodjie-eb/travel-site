@@ -12,18 +12,18 @@
   <style>
     :root { --paper:#f6f2e9; --wood:#e2cfb1; --ink:#353932; --moss:#495e4e; --clay:#93513e; --line:#cbbfae; }
     * { box-sizing:border-box; }
-    body { margin:0; background:var(--paper); color:var(--ink); font:600 16px/1.75 'Huninn',ui-rounded,system-ui,sans-serif; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:400 16px/1.75 'Huninn',ui-rounded,system-ui,sans-serif; }
     main,header,footer { width:min(calc(100% - 36px),760px); margin:auto; }
     header,footer,.section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     header,footer { padding:17px 0; border-bottom:1px solid var(--line); font-size:14px; }
     footer { border-top:1px solid var(--line); margin-top:42px; }
-    .en,.folio { font:600 12px/1.5 'Huninn',ui-rounded,system-ui,sans-serif; letter-spacing:.12em; color:var(--moss); }
+    .en,.folio { font:400 12px/1.5 'Huninn',ui-rounded,system-ui,sans-serif; letter-spacing:.12em; color:var(--moss); }
     .cover { position:relative; isolation:isolate; overflow:hidden; margin:22px 0; padding:24px; background:#eae0ce; border-left:6px solid var(--wood); }
     .cover svg { position:absolute; right:0; bottom:0; width:46%; height:100%; z-index:-1; }
-    h1,h2,h3 { font-family:inherit; font-weight:700; }
+    h1,h2,h3 { font-family:inherit; font-weight:600; }
     h1 { font-size:clamp(32px,6vw,50px); line-height:1.3; letter-spacing:.07em; margin:20px 0 12px; }
     h2 { font-size:25px; margin:0; } h3 { font-size:19px; margin:0; }
-    .dates { color:var(--clay); font-weight:650; letter-spacing:.05em; }
+    .dates { color:var(--clay); letter-spacing:.05em; }
     section { margin:34px 0; scroll-margin-top:16px; }
     .section-head { padding-bottom:10px; border-bottom:2px solid var(--moss); }
     .flights,nav,.day-grid { display:grid; gap:10px; }
@@ -32,11 +32,11 @@
     .ticket small { color:var(--clay); } p { margin:8px 0; }
     nav { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:12px; }
     nav a,.day-grid button { background:#ede3d3; border:1px solid var(--line); padding:10px 4px; text-align:center; font:inherit; color:var(--ink); border-radius:3px; }
-    nav a,.day-grid button { font-weight:700; }
+     .day-grid button { font-weight:600; }
     a { color:var(--moss); text-underline-offset:4px; } nav a { text-decoration:none; } :focus-visible { outline:3px solid var(--clay); outline-offset:2px; }
     .checks label,summary { display:flex; align-items:center; gap:10px; min-height:48px; padding:8px 0; cursor:pointer; border-bottom:1px solid var(--line); }
     input { width:19px;height:19px;accent-color:var(--moss); } input:checked + span { text-decoration:line-through; color:#676d63; }
-    details { margin-top:8px; } summary { display:list-item; color:var(--moss); font-weight:650; }
+    details { margin-top:8px; } summary { display:list-item; color:var(--moss); }
     .hint { font-size:14px;color:#62685d; } .day-grid { grid-template-columns:repeat(4,minmax(0,1fr)); margin:15px 0; }
     .day-grid button { cursor:pointer; min-height:48px; } .day-grid button[aria-pressed="true"] { background:var(--moss); color:white; }
     .sheet { padding:18px; border-left:4px solid var(--wood); background:#fffaf1; }
@@ -44,7 +44,7 @@
   </style>
 </head>
 <body id="home">
-<header><strong>一起出發</strong><span class="en">TRAVEL NOTES</span></header>
+<header><span>一起出發</span><span class="en">TRAVEL NOTES</span></header>
 <main>
   <div class="cover">
     <span class="en">DECEMBER / 旅の記録</span>
