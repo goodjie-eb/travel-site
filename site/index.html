@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="theme-color" content="#f7f9f7">
+  <meta name="theme-color" content="#f3efe7">
   <title>十二月旅行手冊｜一起出發</title>
   <script src="./trips.js?v=december-guide-1" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&amp;family=Noto+Sans+TC:wght@400;600&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
-    :root { --paper:#f7f9f7; --wood:#ac9973; --ink:#263d42; --moss:#375c54; --clay:#466979; --line:#c8d4d2; }
+    :root { --paper:#f3efe7; --wood:#ac9973; --ink:#141311; --moss:#12744d; --clay:#155880; --line:#aaa599; }
     * { box-sizing:border-box; }
     body { margin:0; background:var(--paper); color:var(--ink); font:400 16px/1.75 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; }
     main,header,footer { width:min(calc(100% - 36px),760px); margin:auto; }
@@ -52,21 +52,26 @@
     .day-grid button { cursor:pointer; min-height:48px; } .day-grid button[aria-pressed="true"] { background:var(--moss); color:white; }
     .sheet { padding:18px; border-left:4px solid var(--wood); background:#fff; }
     footer a { padding:10px 0; } @media(max-width:420px){ nav a {font-size:15px;} .cover { padding:18px; } }
-    h1,h2 { font-family:'LXGW WenKai TC','Kaiti TC','DFKai-SB',serif; font-weight:400; letter-spacing:.08em; }
-    h2 { font-size:clamp(26px,5vw,34px); }
-    .cover { padding:clamp(24px,5vw,46px) 18px 78px; background:linear-gradient(140deg,#f0f4f1,#e3edee); border:1px solid var(--line); }
-    .cover svg { width:min(80%,420px); }
-    .cover h1 { margin:12px 0; }
-    .dates { font-size:14px; letter-spacing:.12em; }
-    header { letter-spacing:.16em; } .folio,.en { font-size:11px; letter-spacing:.18em; }
-    .section-head { border-bottom:1px solid var(--line); }
-    .ticket { border-radius:6px; border-bottom-width:2px; }
-    .stop time,.number { font-variant-numeric:tabular-nums; }
-    nav { counter-reset:chapter; } nav a { background:white; text-align:left; padding:12px 8px; border-top:2px solid var(--moss); }
-    nav a::before { counter-increment:chapter; content:'0' counter(chapter); display:block; color:var(--clay); font:14px/1.6 Georgia,serif; }
-    nav a:hover,.day-grid button:hover:not([aria-pressed=true]) { background:#e2ece9; }
-    html[data-page] .section-head { padding:24px 12px; background:linear-gradient(100deg,#e4eeeb,transparent); }
-    .sheet { margin-top:15px; border-left-width:2px; }
+    body::before,body::after { content:''; display:block; height:10px; background:linear-gradient(55deg,#ef498c 50%,#137d53 50%); }
+    body::after { background:linear-gradient(55deg,#ffc324 50%,#12618f 50%); }
+    header,.en,.folio { font-weight:900; color:var(--ink); }
+    h1,h2,h3 { font-family:inherit; font-weight:900; letter-spacing:-.045em; }
+    .cover { text-align:center; background:var(--paper); border:2px solid; padding:18px 0 12px; box-shadow:4px 4px var(--ink); }
+    .kicker,.folio { display:inline-block; background:#ffc324; color:#141311; border:2px solid; border-radius:30px; padding:3px 12px; font-size:12px; font-weight:900; }
+    .dates { font:900 clamp(35px,9vw,66px)/1.35 Arial,sans-serif; color:var(--ink); letter-spacing:-.06em; } .dates small { font-size:.32em; vertical-align:middle; }
+    .poster-strip { display:grid; grid-template-columns:1fr 1.2fr 1fr; border-block:2px solid; overflow:hidden; }
+    .poster-strip span { padding:10px 0; font-weight:900; font-size:clamp(25px,6vw,44px); line-height:1; color:white; background:#147d55; }
+    .poster-strip i { display:block; font:900 italic 12px/1.2 Arial,sans-serif; letter-spacing:.12em; }
+    .poster-strip span:nth-child(2) { background:repeating-linear-gradient(-45deg,#ffccd9 0 8px,#ffa8c4 8px 11px); color:var(--ink); font-size:40px; border-inline:2px solid; }
+    .poster-strip span:last-child { background:#12618f; color:#ffdf53; transform:skew(-3deg) scale(1.05); }
+    .cover h1 { position:relative; display:table; margin:-7px auto 0; background:#fff; padding:4px 14px; border:3px solid; border-radius:30px; box-shadow:2px 3px var(--ink); transform:rotate(-2deg); font-size:clamp(29px,7vw,52px); }
+    .issue { font-weight:900; letter-spacing:.06em; } .issue b { display:inline-block; vertical-align:middle; font:900 44px/1.2 Arial,sans-serif; color:#ff6547; -webkit-text-stroke:1.5px #141311; }
+    .section-head,html[data-page] .section-head { border-bottom:3px solid; background:transparent; padding:5px 0 9px; } h2 { font-size:clamp(26px,5vw,36px); }
+    .ticket,.sheet,nav a,.day-grid button { border:2px solid var(--ink); background:white; border-radius:4px; }
+    .ticket { border-radius:10px; } .pass-band { border-bottom:2px solid var(--ink); } .stop .code,.stop time,.stub .number { font-weight:900; } .stub { background:#fff3ca; }
+    nav { counter-reset:chapter; } nav a { text-align:left; padding:8px; font-weight:900; box-shadow:2px 3px var(--ink); } nav a::before { display:block; counter-increment:chapter; content:'0' counter(chapter); font:italic 900 20px Arial,sans-serif; }
+    nav a:nth-child(1) { background:#ffc324; } nav a:nth-child(2) { background:#ffacc8; } nav a:nth-child(3) { background:#b4dbe8; }
+    .sheet { margin-top:16px; border-top:6px solid var(--moss); } summary { font-weight:600; } .day-grid button[aria-pressed=true] { background:#111; color:#ffd02b; }
     main > section, footer { display:none; }
     html[data-page] #front-page { display:none; }
     html[data-page] footer { display:flex; }
@@ -88,15 +93,10 @@
 <main>
 <div id="front-page">
   <div class="cover">
-    <span class="en">KANSAI　／　冬の旅</span>
-    <h1>十二月旅行手冊</h1><div class="dates">12.05 — 12.12　／　八日</div>
-    <svg aria-hidden="true" viewBox="0 0 360 160" preserveAspectRatio="xMaxYMax meet">
-      <circle cx="278" cy="40" r="20" fill="#dacbaa"/>
-      <path d="M0 146 Q45 117 80 125 Q110 134 152 92 Q183 61 202 81 Q238 107 266 83 Q297 56 360 70 V160 H0Z" fill="#c8d8d9"/>
-      <path d="M45 160 Q96 133 137 140 Q172 147 218 118 Q245 100 277 110 Q315 120 360 90 V160Z" fill="#91afb0"/>
-      <path d="M95 160 Q143 145 184 150 Q220 156 264 131 Q304 110 360 121 V160Z" fill="#547a74"/>
-      <g fill="#345b54"><path d="m305 137 6-13h-3l5-12 5 12h-3l6 13z"/><path d="m324 131 8-17h-4l6-15 6 15h-4l8 17z"/></g>
-    </svg>
+    <span class="kicker">KANSAI PRESS　｜　關西旅行特刊</span>
+    <div class="dates">12.05 <small>▶▶</small> 12.12</div>
+    <div class="poster-strip" aria-hidden="true"><span>大阪<br><i>OSAKA</i></span><span>✈<i>TPE → KIX</i></span><span>旅の<br>記録</span></div>
+    <h1>十二月旅行手冊</h1><div class="issue"><b>8</b> DAYS　／　2026 冬季號</div>
   </div>
   <section aria-labelledby="flight"><div class="section-head"><h2 id="flight">班機資訊</h2><span class="folio">FLIGHTS</span></div>
     <div class="flights">
