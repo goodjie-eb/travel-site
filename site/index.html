@@ -78,6 +78,17 @@
     html[data-page="prepare"] #prepare,
     html[data-page="stay"] #stay,
     html[data-page="trips"] #trips { display:block; }
+    html { scroll-padding-top:70px; }
+    .mast { position:sticky; top:0; z-index:20; width:100%; padding:0; background:var(--paper); }
+    .mast-row { position:relative; width:min(calc(100% - 36px),760px); margin:auto; min-height:56px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; gap:10px; align-items:center; text-decoration:none; color:var(--ink); font:900 13px/1.3 Arial,sans-serif; letter-spacing:.1em; }
+    .brand b { display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--ink); color:white; }
+    .brand small { display:block; margin-top:3px; font:400 11px/1.3 sans-serif; }
+    .menu { margin:0; } .menu summary { list-style:none; display:grid; place-items:center; width:44px; height:44px; min-height:44px; padding:0; border:0; color:var(--ink); font:22px/1 sans-serif; }
+    .menu summary::-webkit-details-marker { display:none; }
+    .menu nav { position:absolute; top:100%; right:0; width:min(250px,100%); max-height:calc(100vh - 74px); overflow:auto; grid-template-columns:1fr; margin:0; padding:10px; background:var(--paper); border:2px solid; box-shadow:3px 3px var(--ink); }
+    .menu nav a { min-height:44px; display:flex; align-items:center; gap:10px; padding:5px 12px; }
+    .menu nav a::before { content:'→'; } .menu nav a:first-child { background:white; }
   </style>
   <script>
     const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
@@ -89,7 +100,12 @@
   </script>
 </head>
 <body id="home">
-<header><span>一起出發</span><span class="en">TRAVEL NOTES</span></header>
+<header class="mast"><div class="mast-row">
+  <a class="brand" href="./"><b aria-hidden="true">旅</b><span>KANSAI PRESS<small>關西旅行特刊</small></span></a>
+  <details class="menu"><summary aria-label="功能選單"><span aria-hidden="true">☰</span></summary>
+    <nav aria-label="功能選單"><a href="./">首頁</a><a href="?page=prepare">行前準備</a><a href="?page=stay">住宿資訊</a><a href="?page=trips">行程總覽</a></nav>
+  </details>
+</div></header>
 <main>
 <div id="front-page">
   <div class="cover">
@@ -125,7 +141,7 @@
     </div>
     <p class="hint">起降時間皆為各機場當地時間。</p>
   </section>
-  <section><div class="section-head"><h2>手冊索引</h2><span class="folio">INDEX</span></div><nav aria-label="手冊索引"><a href="?page=prepare">行前準備</a><a href="?page=stay">住宿資訊</a><a href="?page=trips">行程總覽</a></nav></section>
+
 </div>
   <section id="prepare"><div class="section-head"><h2>行前準備</h2><span class="folio">01 / PREPARE</span></div>
     <h3>出發清單</h3><p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p><div class="checks">
@@ -140,4 +156,11 @@
   <section id="stay"><div class="section-head"><h2>住宿資訊</h2><span class="folio">02 / STAY</span></div><div class="sheet"><h3>旅宿待補</h3><p>住宿日期、入住與退房時間、前往方式將整理在這裡。</p></div></section>
   <section id="trips"><div class="section-head"><h2>行程總覽</h2><span class="folio">03 / DAYS</span></div><div id="trip-list"><p>12/5 至 12/12，共八天。每日安排待補。</p></div></section>
 </main><footer><span>一起出發 · 十二月手冊</span><a href="./">← 回首頁</a></footer>
+<script>
+  const menu = document.querySelector('.menu');
+  document.addEventListener('click', event => { if (!menu.contains(event.target)) menu.open = false; });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
+  });
+</script>
 </body></html>
