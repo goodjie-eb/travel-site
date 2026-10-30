@@ -52,11 +52,26 @@
     .day-grid button { cursor:pointer; min-height:48px; } .day-grid button[aria-pressed="true"] { background:var(--moss); color:white; }
     .sheet { padding:18px; border-left:4px solid var(--wood); background:#fffaf1; }
     footer a { padding:10px 0; } @media(max-width:420px){ nav a {font-size:15px;} .cover { padding:18px; } }
+    main > section, footer { display:none; }
+    html[data-page] #front-page { display:none; }
+    html[data-page] footer { display:flex; }
+    html[data-page="prepare"] #prepare,
+    html[data-page="stay"] #stay,
+    html[data-page="trips"] #trips { display:block; }
   </style>
+  <script>
+    const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
+    const page = new URLSearchParams(location.search).get('page') || location.hash.slice(1);
+    if (Object.hasOwn(pageTitles, page)) {
+      document.documentElement.dataset.page = page;
+      document.title = pageTitles[page] + '｜十二月旅行手冊';
+    }
+  </script>
 </head>
 <body id="home">
 <header><span>一起出發</span><span class="en">TRAVEL NOTES</span></header>
 <main>
+<div id="front-page">
   <div class="cover">
     <span class="en">DECEMBER / 旅の記録</span>
     <h1>十二月旅行手冊</h1><div class="dates">12.05 — 12.12　／　八日</div>
@@ -89,7 +104,8 @@
     </div>
     <p class="hint">起降時間皆為各機場當地時間。</p>
   </section>
-  <section><div class="section-head"><h2>手冊索引</h2><span class="folio">INDEX</span></div><nav aria-label="手冊索引"><a href="#prepare">行前準備</a><a href="#stay">住宿資訊</a><a href="#trips">行程總覽</a></nav></section>
+  <section><div class="section-head"><h2>手冊索引</h2><span class="folio">INDEX</span></div><nav aria-label="手冊索引"><a href="?page=prepare">行前準備</a><a href="?page=stay">住宿資訊</a><a href="?page=trips">行程總覽</a></nav></section>
+</div>
   <section id="prepare"><div class="section-head"><h2>行前準備</h2><span class="folio">01 / PREPARE</span></div>
     <h3>出發清單</h3><p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p><div class="checks">
     <label><input type="checkbox" value="documents"><span>確認護照效期與所需證件</span></label>
@@ -102,5 +118,5 @@
   </section>
   <section id="stay"><div class="section-head"><h2>住宿資訊</h2><span class="folio">02 / STAY</span></div><div class="sheet"><h3>旅宿待補</h3><p>住宿日期、入住與退房時間、前往方式將整理在這裡。</p></div></section>
   <section id="trips"><div class="section-head"><h2>行程總覽</h2><span class="folio">03 / DAYS</span></div><div id="trip-list"><p>12/5 至 12/12，共八天。每日安排待補。</p></div></section>
-</main><footer><span>一起出發 · 十二月手冊</span><a href="#home">回首頁 ↑</a></footer>
+</main><footer><span>一起出發 · 十二月手冊</span><a href="./">← 回首頁</a></footer>
 </body></html>
