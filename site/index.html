@@ -88,6 +88,9 @@
     .menu nav a { min-height:44px; display:flex; align-items:center; gap:10px; padding:5px 12px; }
     .menu nav a::before { content:'→'; } .menu nav a:first-child { background:white; }
     .menu nav a[href="?page=trips"] { background:#bfe5bd; }
+    .travel-notes { list-style:none; padding:0; margin:14px 0 0; }
+    .travel-notes li { display:flex; align-items:flex-start; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+    .note-dot { flex:0 0 14px; height:14px; margin-top:7px; border:2px solid var(--ink); border-radius:50%; }
   </style>
   <script>
     const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
@@ -143,6 +146,15 @@
       </article>
     </div>
     <p class="hint">起降時間皆為各機場當地時間。</p>
+  </section>
+  <section aria-labelledby="travel-notes">
+    <div class="section-head"><h2 id="travel-notes">注意事項</h2><span class="folio">NOTES</span></div>
+    <ul class="travel-notes" role="list">
+      <li><span class="note-dot" style="background:#ffc324" aria-hidden="true"></span><span>預計抵達機場時間：(時間待補)</span></li>
+      <li><span class="note-dot" style="background:#ef498c" aria-hidden="true"></span><span>暈機藥 上飛機前一小時吃</span></li>
+      <li><span class="note-dot" style="background:#137d53" aria-hidden="true"></span><span>手提行李含隨身包：10公斤，托運行李：20公斤</span></li>
+      <li><span class="note-dot" style="background:#12618f" aria-hidden="true"></span><span>行動電源、相機、個人藥物 請放隨身行李</span></li>
+    </ul>
   </section>
 
 </div>
