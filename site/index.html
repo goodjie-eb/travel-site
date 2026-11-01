@@ -100,9 +100,23 @@
     .item-list p:nth-of-type(4n)::before { background:#12618f; }
     .item-list p a { color:var(--ink); }
     #stay .item-list p a:hover { font-weight:600; }
-    .hotel-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:18px; }
+    .hotel-gallery { display:grid; grid-auto-flow:column; grid-auto-columns:calc((100% - 20px)/3); gap:10px; margin-top:18px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain; }
+    .hotel-gallery::-webkit-scrollbar { display:none; }
+    .hotel-photo { display:block; min-width:0; padding:0; border:0; background:transparent; cursor:zoom-in; scroll-snap-align:start; border-radius:4px; }
+    .hotel-photo:focus-visible { outline-offset:-4px; }
     .hotel-gallery img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; border:2px solid var(--ink); border-radius:4px; }
-    @media(max-width:600px) { .hotel-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    .gallery-controls { display:flex; justify-content:center; align-items:center; gap:14px; margin-top:10px; }
+    .gallery-controls button,.photo-close { min-width:44px; min-height:44px; border:2px solid var(--ink); border-radius:4px; background:#ffc324; color:var(--ink); font:600 20px/1 sans-serif; cursor:pointer; }
+    .gallery-controls button:disabled { opacity:.35; cursor:default; }
+    .gallery-count { font-size:13px; }
+    .photo-dialog { position:fixed; inset:0; width:100%; height:100%; max-width:none; max-height:none; margin:0; border:0; padding:0; background:transparent; overflow:hidden; }
+    .photo-dialog::backdrop { background:rgba(20,19,17,.52); }
+    .photo-dialog[open] { display:grid; place-items:center; }
+    .photo-preview { position:relative; padding:8px; background:var(--paper); border:2px solid var(--ink); border-radius:6px; max-width:90vw; }
+    .photo-preview img { display:block; width:auto; height:auto; max-width:min(780px,82vw); max-height:70vh; max-height:70dvh; object-fit:contain; }
+    .photo-close { position:absolute; right:-12px; top:-20px; border-radius:50%; }
+    body:has(.photo-dialog[open]) { overflow:hidden; }
+    @media(max-width:600px) { .hotel-gallery { grid-auto-columns:100%; } .photo-preview img { max-width:82vw; max-height:68dvh; } }
   </style>
   <script>
     const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
@@ -184,13 +198,14 @@
       <span class="hotel-link">YUMERA Hotel</span>
       <p>地址：<a href="https://maps.app.goo.gl/tB2sC42ZKna5oGjk9" target="_blank" rel="noopener noreferrer">〒543-0053 大阪府大阪市天王寺区北河堀町1-25 <span aria-hidden="true">↗</span></a></p>
       <p><strong style="font-weight:600">入住 16:00</strong>、<strong style="font-weight:600">退房 11:00</strong></p>
-      <div class="hotel-gallery" aria-label="大阪住宿照片">
-        <img src="./codex-clipboard-859f8ddb-bf12-43e1-a5b9-a5cb826e82b9.png" alt="YUMERA Hotel 飯店外觀" loading="lazy" width="600" height="600">
-        <img src="./codex-clipboard-f0f12810-1009-46bf-9220-b2ac7ddceb19.png" alt="YUMERA Hotel 客廳" loading="lazy" width="600" height="600">
-        <img src="./codex-clipboard-fab72545-6eee-406d-b048-2fff2cdc91ff.png" alt="YUMERA Hotel 雙床房" loading="lazy" width="600" height="600">
-        <img src="./codex-clipboard-e8af9a0e-314c-496b-a6a3-a54550f90c32.png" alt="YUMERA Hotel 廁所" loading="lazy" width="600" height="600">
-        <img src="./codex-clipboard-2107a59e-adde-4710-a3ec-6248c5c7e33f.png" alt="YUMERA Hotel 淋浴與洗手台" loading="lazy" width="600" height="600">
+      <div id="osaka-gallery" class="hotel-gallery" aria-label="大阪住宿照片">
+        <button type="button" class="hotel-photo" aria-label="放大YUMERA Hotel 飯店外觀"><img src="./codex-clipboard-859f8ddb-bf12-43e1-a5b9-a5cb826e82b9.png" alt="YUMERA Hotel 飯店外觀" loading="lazy" width="600" height="600"></button>
+        <button type="button" class="hotel-photo" aria-label="放大YUMERA Hotel 客廳"><img src="./codex-clipboard-f0f12810-1009-46bf-9220-b2ac7ddceb19.png" alt="YUMERA Hotel 客廳" loading="lazy" width="600" height="600"></button>
+        <button type="button" class="hotel-photo" aria-label="放大YUMERA Hotel 雙床房"><img src="./codex-clipboard-fab72545-6eee-406d-b048-2fff2cdc91ff.png" alt="YUMERA Hotel 雙床房" loading="lazy" width="600" height="600"></button>
+        <button type="button" class="hotel-photo" aria-label="放大YUMERA Hotel 廁所"><img src="./codex-clipboard-e8af9a0e-314c-496b-a6a3-a54550f90c32.png" alt="YUMERA Hotel 廁所" loading="lazy" width="600" height="600"></button>
+        <button type="button" class="hotel-photo" aria-label="放大YUMERA Hotel 淋浴與洗手台"><img src="./codex-clipboard-2107a59e-adde-4710-a3ec-6248c5c7e33f.png" alt="YUMERA Hotel 淋浴與洗手台" loading="lazy" width="600" height="600"></button>
       </div>
+      <div class="gallery-controls"><button type="button" data-gallery-step="-1" aria-controls="osaka-gallery" aria-label="上一張照片">←</button><span class="gallery-count" aria-live="polite"></span><button type="button" data-gallery-step="1" aria-controls="osaka-gallery" aria-label="下一張照片">→</button></div>
     </article>
     <article class="sheet item-list"><h3>京都住宿　<span style="display:inline-block;font-size:16px;font-weight:600;letter-spacing:0">12/8(二)～12/12(六)</span></h3>
       <span class="hotel-link">KIORI Collection Shinmachi</span>
@@ -207,5 +222,35 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
   });
+</script>
+<dialog class="photo-dialog" aria-label="照片放大預覽"><div class="photo-preview"><img alt=""><button type="button" class="photo-close" aria-label="關閉照片預覽">×</button></div></dialog>
+<script>
+  const gallery = document.querySelector('.hotel-gallery');
+  const photoDialog = document.querySelector('.photo-dialog');
+  const previewImage = photoDialog.querySelector('img');
+  const galleryButtons = document.querySelectorAll('[data-gallery-step]');
+  const galleryCount = document.querySelector('.gallery-count');
+  const galleryStep = () => gallery.querySelector('.hotel-photo').getBoundingClientRect().width + 10;
+  function updateGallery() {
+    const start = Math.round(gallery.scrollLeft / galleryStep());
+    const visible = matchMedia('(max-width:600px)').matches ? 1 : 3;
+    galleryCount.textContent = (start + 1) + (visible > 1 ? '–' + Math.min(start + visible, gallery.children.length) : '') + ' / ' + gallery.children.length;
+    galleryButtons[0].disabled = gallery.scrollLeft < 2;
+    galleryButtons[1].disabled = gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 2;
+  }
+  galleryButtons.forEach(button => button.addEventListener('click', () => {
+    gallery.scrollBy({ left:Number(button.dataset.galleryStep) * galleryStep(), behavior:matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
+  }));
+  gallery.addEventListener('scroll', updateGallery, { passive:true });
+  window.addEventListener('resize', updateGallery);
+  gallery.querySelectorAll('.hotel-photo').forEach(button => button.addEventListener('click', () => {
+    const photo = button.querySelector('img');
+    previewImage.src = photo.src;
+    previewImage.alt = photo.alt;
+    photoDialog.showModal();
+  }));
+  photoDialog.querySelector('.photo-close').addEventListener('click', () => photoDialog.close());
+  photoDialog.addEventListener('click', event => { if (event.target === photoDialog) photoDialog.close(); });
+  if (document.documentElement.dataset.page === 'stay') updateGallery();
 </script>
 </body></html>
