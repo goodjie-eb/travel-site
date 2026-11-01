@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
-    :root { --paper:#f3efe7; --wood:#ac9973; --ink:#141311; --moss:#12744d; --clay:#155880; --line:#aaa599; }
+    :root { --item-dot-size:14px; --paper:#f3efe7; --wood:#ac9973; --ink:#141311; --moss:#12744d; --clay:#155880; --line:#aaa599; }
     * { box-sizing:border-box; }
     body { margin:0; background:var(--paper); color:var(--ink); font:400 16px/1.75 'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif; }
     main,header,footer { width:min(calc(100% - 36px),760px); margin:auto; }
@@ -90,15 +90,15 @@
     .menu nav a[href="?page=trips"] { background:#bfe5bd; }
     .travel-notes { list-style:none; padding:0; margin:14px 0 0; }
     .travel-notes li { display:flex; align-items:flex-start; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
-    .note-dot { flex:0 0 14px; height:14px; margin-top:7px; border:2px solid var(--ink); border-radius:50%; }
+    .note-dot { box-sizing:border-box; flex:0 0 var(--item-dot-size); width:var(--item-dot-size); height:var(--item-dot-size); margin-top:7px; border:2px solid var(--ink); border-radius:50%; }
     .hotel-link { display:inline-block; max-width:100%; min-height:44px; margin:12px 0 8px; padding:8px 14px; background:#ffc324; border:2px solid var(--ink); border-radius:4px; box-shadow:2px 3px var(--ink); color:var(--ink); font-weight:600; text-decoration:none; overflow-wrap:anywhere; }
-    /* 住宿文字列使用 p，新增項目會依黃、粉、綠、藍循環顯示圓點。 */
-    #stay .sheet p { overflow-wrap:anywhere; position:relative; padding-left:26px; }
-    #stay .sheet p::before { content:''; position:absolute; left:0; top:7px; width:14px; height:14px; border:2px solid var(--ink); border-radius:50%; background:#ffc324; }
-    #stay .sheet p:nth-of-type(4n+2)::before { background:#ef498c; }
-    #stay .sheet p:nth-of-type(4n+3)::before { background:#137d53; }
-    #stay .sheet p:nth-of-type(4n)::before { background:#12618f; }
-    #stay .sheet p a { color:var(--ink); }
+    /* 各分頁新增分行項目請使用 item-list 容器與 p 文字列。圓點統一採首頁尺寸（含邊框 14px），依黃、粉、綠、藍循環。 */
+    .item-list p { overflow-wrap:anywhere; position:relative; padding-left:26px; }
+    .item-list p::before { content:''; position:absolute; left:0; top:7px; box-sizing:border-box; width:var(--item-dot-size); height:var(--item-dot-size); border:2px solid var(--ink); border-radius:50%; background:#ffc324; }
+    .item-list p:nth-of-type(4n+2)::before { background:#ef498c; }
+    .item-list p:nth-of-type(4n+3)::before { background:#137d53; }
+    .item-list p:nth-of-type(4n)::before { background:#12618f; }
+    .item-list p a { color:var(--ink); }
   </style>
   <script>
     const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
@@ -176,12 +176,12 @@
     <details><summary>退稅方式</summary><p>目的地與旅行年份確認後，這裡會列出適用條件、單據與辦理地點。</p></details>
   </section>
   <section id="stay"><div class="section-head"><h2>住宿資訊</h2><span class="folio">02 / STAY</span></div>
-    <article class="sheet"><h3>大阪住宿　<span style="display:inline-block;font-size:16px;font-weight:600;letter-spacing:0">12/5(六)～12/8(二)</span></h3>
+    <article class="sheet item-list"><h3>大阪住宿　<span style="display:inline-block;font-size:16px;font-weight:600;letter-spacing:0">12/5(六)～12/8(二)</span></h3>
       <span class="hotel-link">YUMERA Hotel</span>
       <p><a href="https://maps.app.goo.gl/tB2sC42ZKna5oGjk9" target="_blank" rel="noopener noreferrer">地址：1-25 Kitakawahoricho, Tennoji Ward, Osaka, 543-0053日本 <span aria-hidden="true">↗</span></a></p>
       <p>入住 16:00、退房 11:00</p>
     </article>
-    <article class="sheet"><h3>京都住宿　<span style="display:inline-block;font-size:16px;font-weight:600;letter-spacing:0">12/8(二)～12/12(六)</span></h3>
+    <article class="sheet item-list"><h3>京都住宿　<span style="display:inline-block;font-size:16px;font-weight:600;letter-spacing:0">12/8(二)～12/12(六)</span></h3>
       <span class="hotel-link">KIORI Collection Shinmachi</span>
       <p><a href="https://maps.app.goo.gl/r4YTCTJjhFBghL5t5" target="_blank" rel="noopener noreferrer">地址：419 Iwatoyamacho, Shimogyo Ward, Kyoto, 600-8445日本 <span aria-hidden="true">↗</span></a></p>
       <p>入住 15:00、退房 11:00</p>
