@@ -215,6 +215,13 @@
       <p><strong style="font-weight:600">入住 15:00</strong>、<strong style="font-weight:600">退房 11:00</strong></p>
       <p>24小時櫃台、投幣式洗衣機、<strong style="font-weight:600">免費麵包&amp;杯麵、17~19點提供免費清酒&amp;果汁</strong></p>
       <p>雙人房1：杏敏、凡茹 / 雙人房2：婕妤、麗菲</p>
+      <div id="kyoto-gallery" class="hotel-gallery" aria-label="京都住宿照片">
+        <button type="button" class="hotel-photo" aria-label="放大KIORI Collection Shinmachi 雙床房"><img src="./codex-clipboard-24d48419-4ee2-4958-bf8c-6cbd956a2975.png" alt="KIORI Collection Shinmachi 雙床房" loading="lazy" width="600" height="600"></button>
+        <button type="button" class="hotel-photo" aria-label="放大KIORI Collection Shinmachi 客房休憩區"><img src="./codex-clipboard-fa2def3b-bf79-4ea1-aa3f-91375851bbed.png" alt="KIORI Collection Shinmachi 客房休憩區" loading="lazy" width="600" height="600"></button>
+        <button type="button" class="hotel-photo" aria-label="放大KIORI Collection Shinmachi 浴室"><img src="./codex-clipboard-965eede9-75d7-4dcc-9076-020a7f4c1a21.png" alt="KIORI Collection Shinmachi 浴室" loading="lazy" width="600" height="600"></button>
+        <button type="button" class="hotel-photo" aria-label="放大KIORI Collection Shinmachi 飲品區"><img src="./codex-clipboard-681c86cf-9636-4afb-a22f-a68139a6ed7a.png" alt="KIORI Collection Shinmachi 飲品區" loading="lazy" width="600" height="600"></button>
+      </div>
+      <div class="gallery-controls"><button type="button" data-gallery-step="-1" aria-controls="kyoto-gallery" aria-label="上一張照片">←</button><span class="gallery-count" aria-live="polite"></span><button type="button" data-gallery-step="1" aria-controls="kyoto-gallery" aria-label="下一張照片">→</button></div>
     </article>
   </section>
   <section id="trips"><div class="section-head"><h2>行程總覽</h2><span class="folio">03 / DAYS</span></div><div id="trip-list"><p>12/5 至 12/12，共八天。每日安排待補。</p></div></section>
@@ -228,11 +235,11 @@
 </script>
 <dialog class="photo-dialog" aria-label="照片放大預覽"><div class="photo-preview"><img alt=""><button type="button" class="photo-close" aria-label="關閉照片預覽">×</button></div></dialog>
 <script>
-  const gallery = document.querySelector('.hotel-gallery');
   const photoDialog = document.querySelector('.photo-dialog');
   const previewImage = photoDialog.querySelector('img');
-  const galleryButtons = document.querySelectorAll('[data-gallery-step]');
-  const galleryCount = document.querySelector('.gallery-count');
+  document.querySelectorAll('.hotel-gallery').forEach(gallery => {
+  const galleryButtons = gallery.parentElement.querySelectorAll('[data-gallery-step]');
+  const galleryCount = gallery.parentElement.querySelector('.gallery-count');
   const galleryStep = () => gallery.querySelector('.hotel-photo').getBoundingClientRect().width + 10;
   function updateGallery() {
     const start = Math.round(gallery.scrollLeft / galleryStep());
@@ -252,8 +259,9 @@
     previewImage.alt = photo.alt;
     photoDialog.showModal();
   }));
+  if (document.documentElement.dataset.page === 'stay') updateGallery();
+  });
   photoDialog.querySelector('.photo-close').addEventListener('click', () => photoDialog.close());
   photoDialog.addEventListener('click', event => { if (event.target === photoDialog) photoDialog.close(); });
-  if (document.documentElement.dataset.page === 'stay') updateGallery();
 </script>
 </body></html>
