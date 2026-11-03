@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#f3efe7">
   <title>十二月旅行手冊｜一起出發</title>
-  <script src="./trips.js?v=short-reminders" defer></script>
+  <script src="./trips.js?v=dec06-groups" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
@@ -118,6 +118,7 @@
     body:has(.photo-dialog[open]) { overflow:hidden; }
     @media(max-width:600px) { .hotel-gallery { grid-auto-columns:100%; } .photo-preview img { max-width:82vw; max-height:68dvh; } }
 
+    .sheet.grouped-day { padding:0; border:0; background:transparent; }
     .trip-timeline { list-style:none; margin:24px 0 0; padding:0; }
     .trip-timeline li { position:relative; display:grid; grid-template-columns:60px minmax(0,1fr); gap:40px; padding-bottom:26px; }
     .trip-timeline li::before { content:''; position:absolute; left:74px; top:14px; bottom:-14px; width:3px; background:#137d53; }
@@ -295,6 +296,7 @@
   photoDialog.addEventListener('click', event => { if (event.target === photoDialog) photoDialog.close(); });
 </script>
 </body></html>
+
 
 
 
