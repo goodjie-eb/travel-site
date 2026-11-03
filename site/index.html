@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#f3efe7">
   <title>十二月旅行手冊｜一起出發</title>
-  <script src="./trips.js?v=december-guide-1" defer></script>
+  <script src="./trips.js?v=dec05-timeline" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
@@ -117,6 +117,19 @@
     .photo-close { position:absolute; right:-12px; top:-20px; border-radius:50%; }
     body:has(.photo-dialog[open]) { overflow:hidden; }
     @media(max-width:600px) { .hotel-gallery { grid-auto-columns:100%; } .photo-preview img { max-width:82vw; max-height:68dvh; } }
+
+    .trip-timeline { list-style:none; margin:24px 0 0; padding:0; }
+    .trip-timeline li { position:relative; display:grid; grid-template-columns:60px minmax(0,1fr); gap:28px; padding-bottom:26px; }
+    .trip-timeline li::before { content:''; position:absolute; left:74px; top:12px; bottom:-12px; width:3px; background:#137d53; }
+    .trip-timeline li::after { content:''; position:absolute; left:69px; top:8px; width:13px; height:13px; border:3px solid #137d53; border-radius:50%; background:white; }
+    .trip-timeline li:last-child { padding-bottom:0; }
+    .trip-timeline li:last-child::before { display:none; }
+    .trip-timeline time { font-weight:600; font-variant-numeric:tabular-nums; }
+    .timeline-content { min-width:0; overflow-wrap:anywhere; }
+    .timeline-content p { margin:0 0 6px; }
+    .timeline-content p:last-child { margin-bottom:0; }
+    .trip-timeline strong { font-weight:600; padding:0 .12em; background:linear-gradient(transparent 45%,#ffc324 45%,#ffc324 92%,transparent 92%); box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+    @media(max-width:420px) { .trip-timeline li { grid-template-columns:50px minmax(0,1fr); gap:24px; } .trip-timeline li::before { left:61px; } .trip-timeline li::after { left:56px; } }
   </style>
   <script>
     const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
