@@ -17,7 +17,14 @@ const trips = [{
       '飯店附近商店較少，宵夜零食在商圈先買',
       '環球組隔天要早起，請早點休息'
     ] },
-    { title: '12/6', items: [] },
+    { title: '12/6', groups: [
+      { title: '環球影城組', items: [
+        { time: '06:00', highlight: '出門', notes: ['🚈 大阪環狀線　天王寺→ 西九條', '🚈 JR夢咲線　西九條→ 環球影城'] },
+        { time: '08:00', highlight: '入園', notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'] },
+        { time: '22:00', highlight: '閉園', notes: ['有體力就玩到最後，累就提早回家'] }
+      ] },
+      { title: '自由活動組', items: [] }
+    ] },
     { title: '12/7', items: [] },
     { title: '12/8', items: [] },
     { title: '12/9', items: [] },
@@ -46,15 +53,12 @@ function showTrip(trip) {
   const reminders = document.createElement('ul');
   reminders.className = 'travel-notes trip-reminders';
   reminders.setAttribute('role', 'list');
-  function selectDay(day, index) {
-    Array.from(menu.children).forEach((button, i) => {
-      button.setAttribute('aria-pressed', String(i === index));
-    });
-    sheet.replaceChildren(element('h3', day.title + '｜第 ' + (index + 1) + ' 天'));
-    if (day.items.length) {
+  // 單日與分組共用同一套時間軸、文字與照片呈現。
+  function renderItems(items, target, galleryPrefix) {
+    if (items.length) {
       const list = document.createElement('ol');
       list.className = 'trip-timeline';
-      day.items.forEach(item => {
+      items.forEach(item => {
         if (typeof item === 'string') { list.append(element('li', item)); return; }
         const row = document.createElement('li');
         const time = element('time', item.time);
@@ -89,7 +93,7 @@ function showTrip(trip) {
           photos.className = 'trip-photos';
           const gallery = document.createElement('div');
           gallery.className = 'hotel-gallery';
-          gallery.id = 'trip-gallery-' + index + '-' + list.children.length;
+          gallery.id = 'trip-gallery-' + galleryPrefix + '-' + list.children.length;
           gallery.setAttribute('aria-label', item.highlight + '照片');
           item.photos.forEach(photo => {
             const button = document.createElement('button');
@@ -125,11 +129,27 @@ function showTrip(trip) {
         row.append(time, content);
         list.append(row);
       });
-      sheet.append(list);
-      initializePhotoGalleries(sheet);
+      target.append(list);
+      initializePhotoGalleries(target);
     } else {
-      sheet.append(element('p', '當天的地點、時間與交通安排待補。'));
+      target.append(element('p', '當天的地點、時間與交通安排待補。'));
     }
+  }
+  function selectDay(day, index) {
+    Array.from(menu.children).forEach((button, i) => {
+      button.setAttribute('aria-pressed', String(i === index));
+    });
+    sheet.replaceChildren(element('h3', day.title + '｜第 ' + (index + 1) + ' 天'));
+    sheet.classList.toggle('grouped-day', Boolean(day.groups?.length));
+    if (day.groups?.length) {
+      day.groups.forEach((group, groupIndex) => {
+        const panel = document.createElement('div');
+        panel.className = 'sheet trip-group';
+        panel.append(element('h3', group.title));
+        renderItems(group.items || [], panel, index + '-' + groupIndex);
+        sheet.append(panel);
+      });
+    } else renderItems(day.items || [], sheet, index);
     reminders.setAttribute('aria-label', day.title + '行程提醒');
     reminders.replaceChildren(...(day.reminders || []).map(note => {
       const row = document.createElement('li');
@@ -175,6 +195,7 @@ for (const box of document.querySelectorAll('.checks input')) {
     } catch { /* 儲存空間不可用時保留本頁勾選狀態 */ }
   });
 }
+
 
 
 
