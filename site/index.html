@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#f3efe7">
   <title>十二月旅行手冊｜一起出發</title>
-  <script src="./trips.js?v=transit-align" defer></script>
+  <script src="./trips.js?v=transit-below" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
@@ -128,10 +128,9 @@
     .trip-timeline time { font-weight:600; font-variant-numeric:tabular-nums; }
     .trip-timeline .time-emphasis { color:#12618f; font-weight:600; }
     .timeline-content { min-width:0; overflow-wrap:anywhere; }
-    .timeline-content .transit-note { display:grid; grid-template-columns:7em minmax(0,1fr); column-gap:.75em; }
-    .transit-line { white-space:nowrap; }
-    .transit-route { word-break:keep-all; overflow-wrap:normal; }
-    @media(max-width:360px) { .timeline-content .transit-note { grid-template-columns:minmax(0,1fr); } .transit-route { padding-left:1.5em; } }
+    .timeline-content .transit-note { display:grid; grid-template-columns:minmax(0,1fr); }
+    .transit-line { display:grid; grid-template-columns:1.5em minmax(0,1fr); white-space:nowrap; }
+    .transit-route { padding-left:1.5em; word-break:keep-all; overflow-wrap:normal; }
     .timeline-content a,.trip-reminders a { font-weight:600; }
     .timeline-content .trip-photos { min-width:0; max-width:100%; }
     .trip-photos .gallery-controls { display:none; }
@@ -300,6 +299,7 @@
   photoDialog.addEventListener('click', event => { if (event.target === photoDialog) photoDialog.close(); });
 </script>
 </body></html>
+
 
 
 
