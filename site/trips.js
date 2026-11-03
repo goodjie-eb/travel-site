@@ -6,8 +6,8 @@ const trips = [{
     { title: '12/5', items: [
       { time: '04:30', highlight: '集合', text: '桃園機場第1航廈 虎航7號櫃台' },
       { time: '07:00', highlight: '飛機起飛' },
-      { time: '10:25', highlight: '抵達關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
-      { time: '12:14', highlight: '搭乘(22)HARUKA', text: '約12:48抵達天王寺', notes: ['後面班次：12:44、13:14'] },
+      { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
+      { time: '12:14', highlight: '前往 天王寺', text: '搭乘(22)HARUKA 約12:48抵達', notes: ['後面班次：12:44、13:14'] },
       { time: '13:20', text: '到飯店放行李' },
       { time: '14:00', highlight: '午餐', notes: ['だるま道場 天王寺店', '預約時間：14:00、5位', '可以QRcord點餐'] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，再約時間回去'] }
