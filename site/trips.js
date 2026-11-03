@@ -51,10 +51,13 @@ function showTrip(trip) {
         time.setAttribute('datetime', item.time);
         const content = document.createElement('div');
         content.className = 'timeline-content';
-        const title = document.createElement('p');
-        if (item.highlight) title.append(element('strong', item.highlight));
-        if (item.text) title.append(document.createTextNode((item.highlight ? ' ' : '') + item.text));
-        content.append(title);
+        // 黃色畫線粗體稱為「大標」；大標獨立一行，一般文字一律從下一段開始。
+        if (item.highlight) {
+          const title = document.createElement('p');
+          title.append(element('strong', item.highlight));
+          content.append(title);
+        }
+        if (item.text) content.append(element('p', item.text));
         for (const note of item.notes || []) content.append(element('p', note));
         row.append(time, content);
         list.append(row);
