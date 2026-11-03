@@ -9,7 +9,7 @@ const trips = [{
       { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
       { time: '12:14', highlight: '前往 天王寺', text: '搭乘(22)HARUKA 約12:48抵達', notes: ['後面班次：12:44、13:14'] },
       { time: '13:20', highlight: '飯店 寄放行李' },
-      { time: '14:00', timeEmphasis: true, highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'] },
+      { time: '14:00', highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'], photos: [{ src: './codex-clipboard-0a0de4e7-8ad2-4cd4-94c8-ff1c79dd452e.png', alt: 'だるま道場 天王寺店 壽司與生魚片料理' }] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，再約時間回去'] }
     ] },
     { title: '12/6', items: [] },
@@ -51,7 +51,6 @@ function showTrip(trip) {
         const row = document.createElement('li');
         const time = element('time', item.time);
         time.setAttribute('datetime', item.time);
-        if (item.timeEmphasis) time.className = 'time-emphasis';
         const content = document.createElement('div');
         content.className = 'timeline-content';
         // 黃色畫線粗體稱為「大標」；大標獨立一行，一般文字一律從下一段開始。
@@ -77,10 +76,49 @@ function showTrip(trip) {
           }
           content.append(paragraph);
         }
+        if (item.photos?.length) {
+          const photos = document.createElement('div');
+          photos.className = 'trip-photos';
+          const gallery = document.createElement('div');
+          gallery.className = 'hotel-gallery';
+          gallery.id = 'trip-gallery-' + index + '-' + list.children.length;
+          gallery.setAttribute('aria-label', item.highlight + '照片');
+          item.photos.forEach(photo => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'hotel-photo';
+            button.setAttribute('aria-label', '放大' + photo.alt);
+            const image = document.createElement('img');
+            image.src = photo.src;
+            image.alt = photo.alt;
+            image.loading = 'lazy';
+            image.width = 600;
+            image.height = 600;
+            button.append(image);
+            gallery.append(button);
+          });
+          const controls = document.createElement('div');
+          controls.className = 'gallery-controls';
+          const previous = element('button', '←');
+          const next = element('button', '→');
+          [previous, next].forEach((button, i) => {
+            button.type = 'button';
+            button.dataset.galleryStep = i ? '1' : '-1';
+            button.setAttribute('aria-controls', gallery.id);
+            button.setAttribute('aria-label', i ? '下一張照片' : '上一張照片');
+          });
+          const count = document.createElement('span');
+          count.className = 'gallery-count';
+          count.setAttribute('aria-live', 'polite');
+          controls.append(previous, count, next);
+          photos.append(gallery, controls);
+          content.append(photos);
+        }
         row.append(time, content);
         list.append(row);
       });
       sheet.append(list);
+      initializePhotoGalleries(sheet);
     } else {
       sheet.append(element('p', '當天的地點、時間與交通安排待補。'));
     }
@@ -110,3 +148,4 @@ for (const box of document.querySelectorAll('.checks input')) {
     } catch { /* 儲存空間不可用時保留本頁勾選狀態 */ }
   });
 }
+
