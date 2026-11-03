@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#f3efe7">
   <title>十二月旅行手冊｜一起出發</title>
-  <script src="./trips.js?v=lunch-map-time" defer></script>
+  <script src="./trips.js?v=lunch-photo" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
@@ -127,6 +127,8 @@
     .trip-timeline time { font-weight:600; font-variant-numeric:tabular-nums; }
     .trip-timeline .time-emphasis { color:#12618f; font-weight:600; }
     .timeline-content { min-width:0; overflow-wrap:anywhere; }
+    .timeline-content a { font-weight:600; }
+    .timeline-content .trip-photos { min-width:0; max-width:100%; }
     .timeline-content p { margin:0 0 6px; }
     .timeline-content p:last-child { margin-bottom:0; }
     .trip-timeline strong { font-weight:600; padding:0 .12em; background:linear-gradient(transparent 45%,#ffc324 45%,#ffc324 92%,transparent 92%); box-decoration-break:clone; -webkit-box-decoration-break:clone; }
@@ -253,13 +255,15 @@
 <script>
   const photoDialog = document.querySelector('.photo-dialog');
   const previewImage = photoDialog.querySelector('img');
-  document.querySelectorAll('.hotel-gallery').forEach(gallery => {
+  function initializePhotoGalleries(root = document) {
+  root.querySelectorAll('.hotel-gallery').forEach(gallery => {
   const galleryButtons = gallery.parentElement.querySelectorAll('[data-gallery-step]');
   const galleryCount = gallery.parentElement.querySelector('.gallery-count');
   const galleryStep = () => gallery.querySelector('.hotel-photo').getBoundingClientRect().width + 10;
   function updateGallery() {
+    if (!gallery.clientWidth) return;
     const start = Math.round(gallery.scrollLeft / galleryStep());
-    const visible = matchMedia('(max-width:600px)').matches ? 1 : 3;
+    const visible = Math.min(gallery.children.length, matchMedia('(max-width:600px)').matches ? 1 : 3);
     galleryCount.textContent = (start + 1) + (visible > 1 ? '–' + Math.min(start + visible, gallery.children.length) : '') + ' / ' + gallery.children.length;
     galleryButtons[0].disabled = gallery.scrollLeft < 2;
     galleryButtons[1].disabled = gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 2;
@@ -268,16 +272,23 @@
     gallery.scrollBy({ left:Number(button.dataset.galleryStep) * galleryStep(), behavior:matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
   }));
   gallery.addEventListener('scroll', updateGallery, { passive:true });
-  window.addEventListener('resize', updateGallery);
+  const observer = new ResizeObserver(() => {
+    if (gallery.isConnected) updateGallery();
+    else observer.disconnect();
+  });
+  observer.observe(gallery);
   gallery.querySelectorAll('.hotel-photo').forEach(button => button.addEventListener('click', () => {
     const photo = button.querySelector('img');
     previewImage.src = photo.src;
     previewImage.alt = photo.alt;
     photoDialog.showModal();
   }));
-  if (document.documentElement.dataset.page === 'stay') updateGallery();
+  updateGallery();
   });
+  }
+  initializePhotoGalleries();
   photoDialog.querySelector('.photo-close').addEventListener('click', () => photoDialog.close());
   photoDialog.addEventListener('click', event => { if (event.target === photoDialog) photoDialog.close(); });
 </script>
 </body></html>
+
