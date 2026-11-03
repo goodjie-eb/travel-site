@@ -131,6 +131,10 @@
     .timeline-content .transit-note { display:grid; grid-template-columns:minmax(0,1fr); }
     .transit-line { display:grid; grid-template-columns:1.5em minmax(0,1fr); white-space:nowrap; }
     .transit-route { padding-left:1.5em; word-break:keep-all; overflow-wrap:normal; }
+    @media(min-width:601px) {
+      .timeline-content .transit-note { grid-template-columns:7em minmax(0,1fr); column-gap:.75em; }
+      .transit-route { padding-left:0; }
+    }
     .timeline-content a,.trip-reminders a { font-weight:600; }
     .timeline-content .trip-photos { min-width:0; max-width:100%; }
     .trip-photos .gallery-controls { display:none; }
