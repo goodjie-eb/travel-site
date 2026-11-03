@@ -10,7 +10,7 @@ const trips = [{
       { time: '12:14', highlight: '前往 天王寺', text: '搭乘(22)HARUKA 約12:48抵達', notes: ['後面班次：12:44、13:14'] },
       { time: '13:20', highlight: '飯店 寄放行李' },
       { time: '14:00', highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'], photos: [{ src: './codex-clipboard-0a0de4e7-8ad2-4cd4-94c8-ff1c79dd452e.png', alt: 'だるま道場 天王寺店 壽司與生魚片料理' }] },
-      { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，再約時間回去'] }
+      { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
     ] },
     { title: '12/6', items: [] },
     { title: '12/7', items: [] },
