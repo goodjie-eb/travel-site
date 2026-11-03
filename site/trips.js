@@ -8,8 +8,8 @@ const trips = [{
       { time: '07:00', highlight: '飛機起飛' },
       { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
       { time: '12:14', highlight: '前往 天王寺', text: '搭乘(22)HARUKA 約12:48抵達', notes: ['後面班次：12:44、13:14'] },
-      { time: '13:20', text: '到飯店放行李' },
-      { time: '14:00', highlight: '午餐', notes: ['だるま道場 天王寺店', '預約時間：14:00、5位', '可以QRcord點餐'] },
+      { time: '13:20', highlight: '飯店 寄放行李' },
+      { time: '14:00', timeEmphasis: true, highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，再約時間回去'] }
     ] },
     { title: '12/6', items: [] },
@@ -51,6 +51,7 @@ function showTrip(trip) {
         const row = document.createElement('li');
         const time = element('time', item.time);
         time.setAttribute('datetime', item.time);
+        if (item.timeEmphasis) time.className = 'time-emphasis';
         const content = document.createElement('div');
         content.className = 'timeline-content';
         // 黃色畫線粗體稱為「大標」；大標獨立一行，一般文字一律從下一段開始。
@@ -60,7 +61,22 @@ function showTrip(trip) {
           content.append(title);
         }
         if (item.text) content.append(element('p', item.text));
-        for (const note of item.notes || []) content.append(element('p', note));
+        for (const note of item.notes || []) {
+          const paragraph = document.createElement('p');
+          if (typeof note === 'string') paragraph.textContent = note;
+          else if (note.href) {
+            const link = element('a', note.text);
+            link.href = note.href;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            paragraph.append(link);
+          } else {
+            const emphasis = element('span', note.emphasis);
+            emphasis.className = 'time-emphasis';
+            paragraph.append(note.prefix, emphasis, note.suffix);
+          }
+          content.append(paragraph);
+        }
         row.append(time, content);
         list.append(row);
       });
