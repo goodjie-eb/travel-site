@@ -12,9 +12,9 @@ const trips = [{
       { time: '14:00', highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'], photos: [{ src: './codex-clipboard-0a0de4e7-8ad2-4cd4-94c8-ff1c79dd452e.png', alt: 'だるま道場 天王寺店 壽司與生魚片料理' }] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
     ], reminders: [
-      '天王寺商圈很大，提前查好想逛的品牌位置比較方便',
-      { text: "阿倍野Q's Mall", href: 'https://maps.app.goo.gl/1whDqMtxA7q1XrLUA', suffix: ' 地下一樓有大型伊藤洋華堂超市' },
-      '飯店附近離商店較遠，宵夜零食商圈買較方便',
+      '天王寺商圈很大，提前查好想逛的品牌位置',
+      { text: "阿倍野Q's Mall", href: 'https://maps.app.goo.gl/1whDqMtxA7q1XrLUA', suffix: '的B1有伊藤洋華堂超市' },
+      '飯店附近商店較少，宵夜零食在商圈先買',
       '環球組隔天要早起，請早點休息'
     ] },
     { title: '12/6', items: [] },
