@@ -19,7 +19,7 @@ const trips = [{
     ] },
     { title: '12/6', groups: [
       { title: '環球影城組', items: [
-        { time: '06:00', highlight: '出門', notes: ['🚈 大阪環狀線　天王寺→ 西九條', '🚈 JR夢咲線　西九條→ 環球影城'] },
+        { time: '06:00', highlight: '出門', notes: [{ line: '🚈 大阪環狀線', route: '天王寺→ 西九條' }, { line: '🚈 JR夢咲線', route: '西九條→ 環球影城' }] },
         { time: '08:00', highlight: '入園', notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'] },
         { time: '22:00', highlight: '閉園', notes: ['有體力就玩到最後，累就提早回家'] }
       ] },
@@ -75,7 +75,14 @@ function showTrip(trip) {
         for (const note of item.notes || []) {
           const paragraph = document.createElement('p');
           if (typeof note === 'string') paragraph.textContent = note;
-          else if (note.href) {
+          else if (note.line) {
+            paragraph.className = 'transit-note';
+            const line = element('span', note.line);
+            line.className = 'transit-line';
+            const route = element('span', note.route);
+            route.className = 'transit-route';
+            paragraph.append(line, route);
+          } else if (note.href) {
             const link = element('a', note.text);
             link.href = note.href;
             link.target = '_blank';
@@ -195,6 +202,7 @@ for (const box of document.querySelectorAll('.checks input')) {
     } catch { /* 儲存空間不可用時保留本頁勾選狀態 */ }
   });
 }
+
 
 
 
