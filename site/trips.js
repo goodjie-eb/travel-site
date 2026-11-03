@@ -22,7 +22,7 @@ const trips = [{
         { time: '06:00', highlight: '出門', notes: [{ icon: '🚈', line: '大阪環狀線', route: '天王寺→ 西九條' }, { icon: '🚈', line: 'JR夢咲線', route: '西九條→ 環球影城' }] },
         { time: '08:00', highlight: '入園', notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'] },
         { time: '22:00', highlight: '閉園', notes: ['有體力就玩到最後，累就提早回家'] }
-      ] },
+      ], reminders: [{ prefix: '請下載 ', text: '環球影城APP', href: 'https://apps.apple.com/cn/app/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB-%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-%E5%85%AC%E5%BC%8F%E3%82%A2%E3%83%97%E3%83%AA/id532097000' }] },
       { title: '自由活動組', items: [] }
     ] },
     { title: '12/7', items: [] },
@@ -145,6 +145,23 @@ function showTrip(trip) {
       target.append(element('p', '當天的地點、時間與交通安排待補。'));
     }
   }
+  function reminderRow(note) {
+    const row = document.createElement('li');
+    const dot = document.createElement('span');
+    dot.className = 'note-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    const content = document.createElement('span');
+    if (typeof note === 'string') content.textContent = note;
+    else {
+      const link = element('a', note.text);
+      link.href = note.href;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      content.append(note.prefix || '', link, note.suffix || '');
+    }
+    row.append(dot, content);
+    return row;
+  }
   function selectDay(day, index) {
     Array.from(menu.children).forEach((button, i) => {
       button.setAttribute('aria-pressed', String(i === index));
@@ -157,27 +174,19 @@ function showTrip(trip) {
         panel.className = 'sheet trip-group';
         panel.append(element('h3', group.title));
         renderItems(group.items || [], panel, index + '-' + groupIndex);
+        if (group.reminders?.length) {
+          const groupReminders = document.createElement('ul');
+          groupReminders.className = 'travel-notes trip-reminders';
+          groupReminders.setAttribute('role', 'list');
+          groupReminders.setAttribute('aria-label', group.title + '提醒');
+          groupReminders.append(...group.reminders.map(reminderRow));
+          panel.append(groupReminders);
+        }
         sheet.append(panel);
       });
     } else renderItems(day.items || [], sheet, index);
     reminders.setAttribute('aria-label', day.title + '行程提醒');
-    reminders.replaceChildren(...(day.reminders || []).map(note => {
-      const row = document.createElement('li');
-      const dot = document.createElement('span');
-      dot.className = 'note-dot';
-      dot.setAttribute('aria-hidden', 'true');
-      const content = document.createElement('span');
-      if (typeof note === 'string') content.textContent = note;
-      else {
-        const link = element('a', note.text);
-        link.href = note.href;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        content.append(link, note.suffix || '');
-      }
-      row.append(dot, content);
-      return row;
-    }));
+    reminders.replaceChildren(...(day.reminders || []).map(reminderRow));
     reminders.hidden = !day.reminders?.length;
   }
   trip.days.forEach((day, i) => {
