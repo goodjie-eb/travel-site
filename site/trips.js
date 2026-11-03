@@ -22,7 +22,18 @@ const trips = [{
         { time: '06:00', highlight: '出門', notes: [{ icon: '🚈', line: '大阪環狀線', route: '天王寺→ 西九條' }, { icon: '🚈', line: 'JR夢咲線', route: '西九條→ 環球影城' }] },
         { time: '08:00', highlight: '入園', notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'] },
         { time: '22:00', highlight: '閉園', notes: ['有體力就玩到最後，累就提早回家'] }
-      ], reminders: [{ prefix: '請下載 ', text: '環球影城APP', href: 'https://apps.apple.com/cn/app/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB-%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-%E5%85%AC%E5%BC%8F%E3%82%A2%E3%83%97%E3%83%AA/id532097000' }] },
+      ], reminders: [{ prefix: '請下載 ', text: '環球影城APP', href: 'https://apps.apple.com/cn/app/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB-%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-%E5%85%AC%E5%BC%8F%E3%82%A2%E3%83%97%E3%83%AA/id532097000' },
+        '門票、快速通關 請點群組記事本',
+        { prefix: '看快速通關時間 ', text: '請點', dialog: { title: '快速通關時間', items: [
+          { time: '13:40-14:40', text: '超級任天堂世界入園' },
+          { time: '13:40-14:10', text: '庫巴的挑戰' },
+          { time: '14:10-14:40', text: '咚奇剛的瘋狂礦車' },
+          { time: '17:40-18:10', text: '小小兵 成為大壞蛋之路', bold: true },
+          { text: '哈利波特禁忌之旅' },
+          { text: '飛天翼龍' }
+        ] } },
+        '會待到晚上請注意保暖'
+      ] },
       { title: '自由活動組', items: [] }
     ] },
     { title: '12/7', items: [] },
@@ -38,6 +49,41 @@ function element(tag, text) {
   const node = document.createElement(tag);
   node.textContent = text;
   return node;
+}
+
+function openSchedule(schedule) {
+  const dialog = document.createElement('dialog');
+  dialog.className = 'schedule-dialog';
+  dialog.setAttribute('aria-labelledby', 'schedule-title');
+  const header = document.createElement('div');
+  header.className = 'schedule-header';
+  const title = element('h3', schedule.title);
+  title.id = 'schedule-title';
+  const close = element('button', '×');
+  close.type = 'button';
+  close.className = 'schedule-close';
+  close.setAttribute('aria-label', '關閉快速通關時間');
+  close.addEventListener('click', () => dialog.close());
+  header.append(title, close);
+  const list = document.createElement('ul');
+  list.className = 'pass-schedule';
+  list.setAttribute('role', 'list');
+  schedule.items.forEach(item => {
+    const row = document.createElement('li');
+    if (item.time) row.append(element('span', item.time));
+    else row.className = 'untimed';
+    row.append(element(item.bold ? 'strong' : 'span', item.text));
+    list.append(row);
+  });
+  dialog.append(header, list);
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+  dialog.addEventListener('close', () => dialog.remove(), { once: true });
+  document.body.append(dialog);
+  dialog.showModal();
 }
 
 function showTrip(trip) {
@@ -152,7 +198,14 @@ function showTrip(trip) {
     dot.setAttribute('aria-hidden', 'true');
     const content = document.createElement('span');
     if (typeof note === 'string') content.textContent = note;
-    else {
+    else if (note.dialog) {
+      const trigger = element('button', note.text);
+      trigger.type = 'button';
+      trigger.className = 'text-link';
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.addEventListener('click', () => openSchedule(note.dialog));
+      content.append(note.prefix || '', trigger, note.suffix || '');
+    } else {
       const link = element('a', note.text);
       link.href = note.href;
       link.target = '_blank';
