@@ -119,9 +119,9 @@
     @media(max-width:600px) { .hotel-gallery { grid-auto-columns:100%; } .photo-preview img { max-width:82vw; max-height:68dvh; } }
 
     .trip-timeline { list-style:none; margin:24px 0 0; padding:0; }
-    .trip-timeline li { position:relative; display:grid; grid-template-columns:60px minmax(0,1fr); gap:28px; padding-bottom:26px; }
-    .trip-timeline li::before { content:''; position:absolute; left:74px; top:12px; bottom:-12px; width:3px; background:#137d53; }
-    .trip-timeline li::after { content:''; position:absolute; left:69px; top:8px; width:13px; height:13px; border:3px solid #137d53; border-radius:50%; background:white; }
+    .trip-timeline li { position:relative; display:grid; grid-template-columns:60px minmax(0,1fr); gap:40px; padding-bottom:26px; }
+    .trip-timeline li::before { content:''; position:absolute; left:74px; top:14px; bottom:-14px; width:3px; background:#137d53; }
+    .trip-timeline li::after { content:''; position:absolute; left:68.5px; top:7px; box-sizing:border-box; width:var(--item-dot-size); height:var(--item-dot-size); border:2px solid var(--ink); border-radius:50%; background:#137d53; }
     .trip-timeline li:last-child { padding-bottom:0; }
     .trip-timeline li:last-child::before { display:none; }
     .trip-timeline time { font-weight:600; font-variant-numeric:tabular-nums; }
@@ -129,7 +129,7 @@
     .timeline-content p { margin:0 0 6px; }
     .timeline-content p:last-child { margin-bottom:0; }
     .trip-timeline strong { font-weight:600; padding:0 .12em; background:linear-gradient(transparent 45%,#ffc324 45%,#ffc324 92%,transparent 92%); box-decoration-break:clone; -webkit-box-decoration-break:clone; }
-    @media(max-width:420px) { .trip-timeline li { grid-template-columns:50px minmax(0,1fr); gap:24px; } .trip-timeline li::before { left:61px; } .trip-timeline li::after { left:56px; } }
+    @media(max-width:420px) { .trip-timeline li { grid-template-columns:50px minmax(0,1fr); gap:40px; } .trip-timeline li::before { left:64px; } .trip-timeline li::after { left:58.5px; } }
   </style>
   <script>
     const pageTitles = { prepare: '行前準備', stay: '住宿資訊', trips: '行程總覽' };
