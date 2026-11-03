@@ -11,6 +11,11 @@ const trips = [{
       { time: '13:20', highlight: '飯店 寄放行李' },
       { time: '14:00', highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'], photos: [{ src: './codex-clipboard-0a0de4e7-8ad2-4cd4-94c8-ff1c79dd452e.png', alt: 'だるま道場 天王寺店 壽司與生魚片料理' }] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
+    ], reminders: [
+      '天王寺商圈很大，提前查好想逛的品牌位置比較方便',
+      "阿倍野Q's Mall 地下一樓有大型伊藤洋華堂超市",
+      '環球組隔天要早起，請早點休息',
+      '飯店附近離商店較遠，宵夜零食商圈買較方便'
     ] },
     { title: '12/6', items: [] },
     { title: '12/7', items: [] },
@@ -38,6 +43,9 @@ function showTrip(trip) {
   const sheet = document.createElement('div');
   sheet.className = 'sheet';
   sheet.setAttribute('aria-live', 'polite');
+  const reminders = document.createElement('ul');
+  reminders.className = 'travel-notes trip-reminders';
+  reminders.setAttribute('role', 'list');
   function selectDay(day, index) {
     Array.from(menu.children).forEach((button, i) => {
       button.setAttribute('aria-pressed', String(i === index));
@@ -122,6 +130,16 @@ function showTrip(trip) {
     } else {
       sheet.append(element('p', '當天的地點、時間與交通安排待補。'));
     }
+    reminders.setAttribute('aria-label', day.title + '行程提醒');
+    reminders.replaceChildren(...(day.reminders || []).map(text => {
+      const row = document.createElement('li');
+      const dot = document.createElement('span');
+      dot.className = 'note-dot';
+      dot.setAttribute('aria-hidden', 'true');
+      row.append(dot, element('span', text));
+      return row;
+    }));
+    reminders.hidden = !day.reminders?.length;
   }
   trip.days.forEach((day, i) => {
     const button = element('button', day.title);
@@ -130,7 +148,7 @@ function showTrip(trip) {
     menu.append(button);
   });
   if (trip.days.length) selectDay(trip.days[0], 0);
-  article.append(menu, sheet);
+  article.append(menu, sheet, reminders);
   return article;
 }
 
@@ -148,4 +166,5 @@ for (const box of document.querySelectorAll('.checks input')) {
     } catch { /* 儲存空間不可用時保留本頁勾選狀態 */ }
   });
 }
+
 
