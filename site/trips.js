@@ -13,9 +13,9 @@ const trips = [{
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
     ], reminders: [
       '天王寺商圈很大，提前查好想逛的品牌位置比較方便',
-      "阿倍野Q's Mall 地下一樓有大型伊藤洋華堂超市",
-      '環球組隔天要早起，請早點休息',
-      '飯店附近離商店較遠，宵夜零食商圈買較方便'
+      { text: "阿倍野Q's Mall", href: 'https://maps.app.goo.gl/1whDqMtxA7q1XrLUA', suffix: ' 地下一樓有大型伊藤洋華堂超市' },
+      '飯店附近離商店較遠，宵夜零食商圈買較方便',
+      '環球組隔天要早起，請早點休息'
     ] },
     { title: '12/6', items: [] },
     { title: '12/7', items: [] },
@@ -131,12 +131,21 @@ function showTrip(trip) {
       sheet.append(element('p', '當天的地點、時間與交通安排待補。'));
     }
     reminders.setAttribute('aria-label', day.title + '行程提醒');
-    reminders.replaceChildren(...(day.reminders || []).map(text => {
+    reminders.replaceChildren(...(day.reminders || []).map(note => {
       const row = document.createElement('li');
       const dot = document.createElement('span');
       dot.className = 'note-dot';
       dot.setAttribute('aria-hidden', 'true');
-      row.append(dot, element('span', text));
+      const content = document.createElement('span');
+      if (typeof note === 'string') content.textContent = note;
+      else {
+        const link = element('a', note.text);
+        link.href = note.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        content.append(link, note.suffix || '');
+      }
+      row.append(dot, content);
       return row;
     }));
     reminders.hidden = !day.reminders?.length;
@@ -166,5 +175,6 @@ for (const box of document.querySelectorAll('.checks input')) {
     } catch { /* 儲存空間不可用時保留本頁勾選狀態 */ }
   });
 }
+
 
 
