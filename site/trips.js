@@ -3,7 +3,13 @@ const trips = [{
   title: '十二月八日行',
   dates: '12/5 至 12/12',
   days: [
-    { title: '12/5', items: [] },
+    { title: '12/5', items: [
+      { time: '04:30', highlight: '集合', text: '桃園機場第1航廈 虎航7號櫃台' },
+      { time: '07:00', highlight: '飛機起飛' },
+      { time: '10:25', highlight: '抵達關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
+      { time: '12:14', highlight: '搭乘(22)HARUKA', text: '約12:48抵達天王寺', notes: ['其他班次：(24) 12:44、(26) 13:14'] },
+      { time: '13:20', text: '到飯店放行李' }
+    ] },
     { title: '12/6', items: [] },
     { title: '12/7', items: [] },
     { title: '12/8', items: [] },
@@ -37,7 +43,22 @@ function showTrip(trip) {
     sheet.replaceChildren(element('h3', day.title + '｜第 ' + (index + 1) + ' 天'));
     if (day.items.length) {
       const list = document.createElement('ol');
-      day.items.forEach(item => list.append(element('li', item)));
+      list.className = 'trip-timeline';
+      day.items.forEach(item => {
+        if (typeof item === 'string') { list.append(element('li', item)); return; }
+        const row = document.createElement('li');
+        const time = element('time', item.time);
+        time.setAttribute('datetime', item.time);
+        const content = document.createElement('div');
+        content.className = 'timeline-content';
+        const title = document.createElement('p');
+        if (item.highlight) title.append(element('strong', item.highlight));
+        if (item.text) title.append(document.createTextNode((item.highlight ? ' ' : '') + item.text));
+        content.append(title);
+        for (const note of item.notes || []) content.append(element('p', note));
+        row.append(time, content);
+        list.append(row);
+      });
       sheet.append(list);
     } else {
       sheet.append(element('p', '當天的地點、時間與交通安排待補。'));
