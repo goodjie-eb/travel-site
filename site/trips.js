@@ -17,7 +17,7 @@ const trips = [{
       '飯店附近商店較少，宵夜零食在商圈先買',
       '環球組隔天要早起，請早點休息'
     ] },
-    { title: '12/6', groups: [
+    { title: '12/6', subtitle: '分頭行動', groups: [
       { title: '環球影城組', items: [
         { time: '06:00', highlight: '出門', notes: [{ icon: '🚈', line: '大阪環狀線', route: '天王寺→ 西九條' }, { icon: '🚈', line: 'JR夢咲線', route: '西九條→ 環球影城' }] },
         { time: '08:00', highlight: '入園', notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'] },
@@ -36,12 +36,12 @@ const trips = [{
       ] },
       { title: '自由活動組', items: [] }
     ] },
-    { title: '12/7', items: [] },
-    { title: '12/8', items: [] },
-    { title: '12/9', items: [] },
-    { title: '12/10', items: [] },
-    { title: '12/11', items: [] },
-    { title: '12/12', items: [] }
+    { title: '12/7', subtitle: '勝尾寺', items: [] },
+    { title: '12/8', subtitle: '移動至京都', items: [] },
+    { title: '12/9', subtitle: '宇治、奈良', items: [] },
+    { title: '12/10', subtitle: '伏見稻荷大社', items: [] },
+    { title: '12/11', subtitle: '嵐山一日遊', items: [] },
+    { title: '12/12', subtitle: '最後衝刺  準備回家', items: [] }
   ]
 }];
 
