@@ -118,7 +118,8 @@
     body:has(.photo-dialog[open]) { overflow:hidden; }
     @media(max-width:600px) { .hotel-gallery { grid-auto-columns:100%; } .photo-preview img { max-width:82vw; max-height:68dvh; } }
 
-    .sheet.grouped-day { padding:0; border:0; background:transparent; }
+    .sheet.grouped-day .trip-group { margin-top:24px; padding:0; border:0; background:transparent; }
+    .sheet.grouped-day .trip-group + .trip-group { padding-top:24px; border-top:1px dashed #d4d4d4; border-radius:0; }
     .trip-timeline { list-style:none; margin:24px 0 0; padding:0; }
     .trip-timeline li { position:relative; display:grid; grid-template-columns:60px minmax(0,1fr); gap:40px; padding-bottom:26px; }
     .trip-timeline li::before { content:''; position:absolute; left:74px; top:14px; bottom:-14px; width:3px; background:#137d53; }
