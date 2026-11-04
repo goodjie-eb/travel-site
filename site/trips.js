@@ -37,7 +37,18 @@ const trips = [{
       { title: '自由活動組', items: [] }
     ] },
     { title: '12/7', subtitle: '勝尾寺', items: [] },
-    { title: '12/8', subtitle: '移動至京都', items: [] },
+    { title: '12/8', subtitle: '移動至京都', items: [
+      { time: '11:00', highlight: '退房', notes: ['寄放行李'] },
+      { time: '12:00', highlight: '午餐', notes: ['新世界區吃炸串 (隨意找)', '關東煮白味增牛筋'] },
+      { time: '13:00', highlight: '陪佳怡最後逛逛' },
+      { time: '14:30', highlight: '到飯店拿行李', notes: [
+        '佳怡往機場 約16:00到',
+        { highlight: 'HARUKA往京都' },
+        '28號：14:20~ 15:04',
+        '30號：14:50~ 15:34',
+        '32號：15:20~ 16:04'
+      ] }
+    ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
     { title: '12/10', subtitle: '伏見稻荷大社', items: [] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [] },
@@ -121,6 +132,7 @@ function showTrip(trip) {
         for (const note of item.notes || []) {
           const paragraph = document.createElement('p');
           if (typeof note === 'string') paragraph.textContent = note;
+          else if (note.highlight) paragraph.append(element('strong', note.highlight));
           else if (note.line) {
             paragraph.className = 'transit-note';
             const line = document.createElement('span');
