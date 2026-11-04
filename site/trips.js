@@ -3,7 +3,7 @@ const trips = [{
   title: '十二月八日行',
   dates: '12/5 至 12/12',
   days: [
-    { title: '12/5', items: [
+    { title: '12/5', subtitle: '前往日本', items: [
       { time: '04:30', highlight: '集合', text: '桃園機場第1航廈 虎航7號櫃台' },
       { time: '07:00', highlight: '飛機起飛' },
       { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
@@ -219,7 +219,13 @@ function showTrip(trip) {
     Array.from(menu.children).forEach((button, i) => {
       button.setAttribute('aria-pressed', String(i === index));
     });
-    sheet.replaceChildren(element('h3', day.title + '｜第 ' + (index + 1) + ' 天'));
+    const dayHeading = element('h3', day.title + '｜第 ' + (index + 1) + ' 天');
+    if (day.subtitle) {
+      const subtitle = element('span', day.subtitle);
+      subtitle.className = 'day-subtitle';
+      dayHeading.append(subtitle);
+    }
+    sheet.replaceChildren(dayHeading);
     sheet.classList.toggle('grouped-day', Boolean(day.groups?.length));
     if (day.groups?.length) {
       day.groups.forEach((group, groupIndex) => {
