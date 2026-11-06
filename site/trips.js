@@ -50,7 +50,17 @@ const trips = [{
       ] }
     ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
-    { title: '12/10', subtitle: '伏見稻荷大社', items: [] },
+    { title: '12/10', subtitle: '伏見稻荷大社', items: [
+      { time: '08:00', highlight: '早餐', notes: [
+        { text: '京都 いとおかし', href: 'https://maps.app.goo.gl/4XatDEfKUdRCrHX68' },
+        { prefix: '預約時間：', emphasis: '08:00', suffix: '、4+1位' },
+        '遲到15分鐘會取消',
+        '🍱極厚烤銀鮭定食'
+      ], photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-43e67d98-c993-49ca-ace8-87169a1b53c6.png', alt: '京都 いとおかし 餐廳外觀' },
+        { src: './codex-clipboard-dcf872f6-f56f-4048-8792-f0abaf495cc2.png', alt: '京都 いとおかし 極厚烤銀鮭定食' }
+      ] }
+    ] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [] },
     { title: '12/12', subtitle: '最後衝刺  準備回家', items: [] }
   ]
@@ -158,7 +168,7 @@ function showTrip(trip) {
         }
         if (item.photos?.length) {
           const photos = document.createElement('div');
-          photos.className = 'trip-photos';
+          photos.className = 'trip-photos' + (item.photoMode === 'overlay' && item.photos.length > 1 ? ' photo-carousel' : '');
           const gallery = document.createElement('div');
           gallery.className = 'hotel-gallery';
           gallery.id = 'trip-gallery-' + galleryPrefix + '-' + list.children.length;
@@ -179,8 +189,8 @@ function showTrip(trip) {
           });
           const controls = document.createElement('div');
           controls.className = 'gallery-controls';
-          const previous = element('button', '←');
-          const next = element('button', '→');
+          const previous = element('button', item.photoMode === 'overlay' ? '‹' : '←');
+          const next = element('button', item.photoMode === 'overlay' ? '›' : '→');
           [previous, next].forEach((button, i) => {
             button.type = 'button';
             button.dataset.galleryStep = i ? '1' : '-1';
