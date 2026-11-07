@@ -36,7 +36,15 @@ const trips = [{
       ] },
       { title: '自由活動組', items: [] }
     ] },
-    { title: '12/7', subtitle: '勝尾寺', items: [] },
+    { title: '12/7', subtitle: '勝尾寺', items: [
+      { time: '07:00', highlight: '出門' },
+      { time: '08:00', highlight: '萁面萱野站' },
+      { time: '08:30', highlight: '勝尾寺' },
+      { time: '11:00', highlight: '前往箕面瀑布' },
+      { time: '14:00', highlight: '到阪急箕面站 午餐' },
+      { time: '15:00', highlight: '回萁面萱野站', notes: ['公車'] },
+      { time: '15:20', highlight: '回難波', notes: ['地鐵', '約16:10抵達'] }
+    ] },
     { title: '12/8', subtitle: '移動至京都', items: [
       { time: '11:00', highlight: '退房', notes: ['寄放行李'] },
       { time: '12:00', highlight: '午餐', notes: ['新世界區吃炸串 (隨意找)', '關東煮白味增牛筋'] },
