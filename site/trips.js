@@ -88,12 +88,18 @@ const trips = [{
         '(走路要40分鐘)',
         { icon: '🚕', line: '到 大日駐車場下車' },
         { icon: '🚶', line: '到 箕面瀑布 (20分鐘)' },
-        '📍 沿路有小攤販可以買東西吃',
+        '📍 離開瀑布前 上廁所！',
         { parts: ['約11:30~11:40 到 ', { bold: '箕面瀑布' }] }
       ], photosBelowHeading: true, photos: [
         { src: './codex-clipboard-63cc3706-c1dc-436c-837a-8f58aa5e79c1.png', alt: '箕面瀑布與兩旁的秋日紅葉' }
       ] },
-      { time: '14:00', highlight: '到阪急箕面站 午餐' },
+      { time: '12:00', highlight: '散步 下山', notes: [
+        '沿途 箕面國定公園、',
+        '瀧安寺、昆蟲館、餐廳',
+        '路程約1小時',
+        '如果中間用餐 再抓1小時'
+      ] },
+      { time: '14:00', highlight: '到 阪急箕面站' },
       { time: '15:00', highlight: '回萁面萱野站', notes: [{ icon: '🚌', line: '搭公車' }] },
       { time: '15:20', highlight: '回難波', notes: [{ icon: '🚇', line: '搭地鐵' }, '約16:10抵達'] }
     ] },
