@@ -90,6 +90,8 @@ const trips = [{
         { icon: '🚶', line: '到 箕面瀑布 (20分鐘)' },
         '📍 沿路有小攤販可以買東西吃',
         { parts: ['約11:30~11:40 到 ', { bold: '箕面瀑布' }] }
+      ], photosBelowHeading: true, photos: [
+        { src: './codex-clipboard-63cc3706-c1dc-436c-837a-8f58aa5e79c1.png', alt: '箕面瀑布與兩旁的秋日紅葉' }
       ] },
       { time: '14:00', highlight: '到阪急箕面站 午餐' },
       { time: '15:00', highlight: '回萁面萱野站', notes: [{ icon: '🚌', line: '搭公車' }] },
