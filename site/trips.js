@@ -104,7 +104,10 @@ const trips = [{
         '📍 如中間用餐 再抓1小時'
       ] },
       { time: '14:00', highlight: '到 阪急箕面站', notes: [
-        { icon: '🚌', line: '搭回 萁面萱野站', details: ['(36號、21號公車)'] }
+        {
+          icon: '🚌', line: '搭回 萁面萱野站 (15分鐘)',
+          details: ['(36號、21號公車)', '約14:20到']
+        }
       ] },
       { time: '15:00', highlight: '回萁面萱野站', notes: [{ icon: '🚌', line: '搭公車' }] },
       { time: '15:20', highlight: '回難波', notes: [{ icon: '🚇', line: '搭地鐵' }, '約16:10抵達'] }
