@@ -22,7 +22,17 @@ const trips = [{
         { src: './codex-clipboard-5d45f208-d8de-4617-9d94-495b5970af25.png', alt: '鮭魚握壽司拼盤' },
         { src: './codex-clipboard-f82841c3-f8c4-4df6-9eef-8bdcd3fc6487.png', alt: '握壽司與軍艦壽司拼盤' }
       ] },
-      { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
+      { time: '15:30', highlight: '自由活動', notes: [
+        '飯店16:00可入住，可逛完再回去',
+        { parts: [
+          '一起先逛 ',
+          { text: 'UNIQLO', href: 'https://maps.app.goo.gl/K8ARQbqisbVgeaLN7' },
+          '、',
+          { text: 'GU', href: 'https://maps.app.goo.gl/GPeGbg8TYnkZ1xdW6' },
+          '、伊藤洋華堂超市'
+        ] },
+        '🀄環球組買隔天早餐'
+      ] }
     ], reminders: [
       '天王寺商圈很大，提前查好想逛的品牌位置',
       { text: "阿倍野Q's Mall", href: 'https://maps.app.goo.gl/1whDqMtxA7q1XrLUA', suffix: '的B1有伊藤洋華堂超市' },
@@ -182,12 +192,18 @@ function showTrip(trip) {
               route.className = 'transit-route';
               paragraph.append(route);
             }
-          } else if (note.href) {
-            const link = element('a', note.text);
-            link.href = note.href;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            paragraph.append(link);
+          } else if (note.href || note.parts) {
+            for (const part of note.parts || [note]) {
+              if (typeof part === 'string') {
+                paragraph.append(part);
+                continue;
+              }
+              const link = element('a', part.text);
+              link.href = part.href;
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+              paragraph.append(link);
+            }
           } else {
             const emphasis = element('span', note.emphasis);
             emphasis.className = 'time-emphasis';
