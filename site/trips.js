@@ -91,9 +91,8 @@ const trips = [{
             '到 大日駐車場 下車'
           ]
         },
-        { icon: '🚶', line: '到 箕面瀑布 (20分鐘)' },
-        '📍 離開瀑布前 上廁所！',
-        { parts: ['約11:30~11:40 到 ', { bold: '箕面瀑布' }] }
+        { icon: '🚶', line: '到 箕面瀑布 (20分鐘)', details: ['約11:30~11:40 到'] },
+        '📍 離開瀑布前 上廁所！'
       ], photosBelowHeading: true, photos: [
         { src: './codex-clipboard-63cc3706-c1dc-436c-837a-8f58aa5e79c1.png', alt: '箕面瀑布與兩旁的秋日紅葉' }
       ] },
