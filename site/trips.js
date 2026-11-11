@@ -59,8 +59,11 @@ const trips = [{
       { title: '自由活動組', items: [] }
     ] },
     { title: '12/7', subtitle: '勝尾寺', items: [
-      { time: '07:00', highlight: '出門' },
-      { time: '08:00', highlight: '萁面萱野站' },
+      { time: '06:30', highlight: '出門', notes: [
+        { icon: '🚶', line: '到 天王寺車站 (15分鐘)' },
+        { icon: '🚇', line: '搭 ', badge: '御堂筋線', route: '至 萁面萱野站 (45分鐘)', routeBelow: true }
+      ] },
+      { time: '07:30', highlight: '萁面萱野站', notes: [{ icon: '🚕', line: '計程車前往' }] },
       { time: '08:30', highlight: '勝尾寺' },
       { time: '11:00', highlight: '前往箕面瀑布' },
       { time: '14:00', highlight: '到阪急箕面站 午餐' },
@@ -175,11 +178,17 @@ function showTrip(trip) {
           else if (note.highlight) paragraph.append(element('strong', note.highlight));
           else if (note.line) {
             paragraph.className = 'transit-note';
+            if (note.routeBelow) paragraph.classList.add('transit-note-stacked');
             const line = document.createElement('span');
             line.className = 'transit-line';
             const icon = element('span', note.icon || '🚈');
             icon.setAttribute('aria-hidden', 'true');
             const label = element('span', note.line);
+            if (note.badge) {
+              const badge = element('span', note.badge);
+              badge.className = 'transit-line-badge';
+              label.append(badge);
+            }
             if (note.href) {
               const link = element('a', note.text);
               link.href = note.href;
