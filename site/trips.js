@@ -16,6 +16,11 @@ const trips = [{
       { time: '14:00', highlight: '午餐', notes: [
         { text: '江戶前迴轉壽司 MIO廣場店', href: 'https://maps.app.goo.gl/6K5PET6hxTrPwi4VA' },
         '無法預先預約、平板點餐'
+      ], photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-bb14ddb7-7bfa-440b-b022-87ce93342773.png', alt: '江戶前迴轉壽司店內座位與吧檯' },
+        { src: './codex-clipboard-6c32536d-e65a-4557-938a-bebdca71e0c5.png', alt: '迴轉輸送帶與平板點餐畫面' },
+        { src: './codex-clipboard-5d45f208-d8de-4617-9d94-495b5970af25.png', alt: '鮭魚握壽司拼盤' },
+        { src: './codex-clipboard-f82841c3-f8c4-4df6-9eef-8bdcd3fc6487.png', alt: '握壽司與軍艦壽司拼盤' }
       ] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
     ], reminders: [
