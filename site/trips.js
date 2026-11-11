@@ -64,10 +64,10 @@ const trips = [{
         { icon: '🚇', line: '搭 ', badge: '御堂筋線', route: '至 萁面萱野站 (45分鐘)', routeBelow: true }
       ] },
       { time: '07:30', highlight: '萁面萱野站', notes: [
-        { icon: '🚕', line: '計程車前往 (15分鐘)' },
-        '南出口 招呼站',
-        '(巴士站牌對面)',
-        '車費約 ¥3,600',
+        {
+          icon: '🚕', line: '計程車前往 (15分鐘)',
+          details: ['南出口 招呼站', '(巴士站牌對面)', { bold: '車費約 ¥3,600' }]
+        },
         '📍 分兩台 可找人分'
       ] },
       { time: '08:00', highlight: '勝尾寺', notes: [
@@ -226,6 +226,10 @@ function showTrip(trip) {
               const link = element('a', note.text);
               link.href = note.href;
               label.append(link);
+            }
+            for (const detail of note.details || []) {
+              const text = typeof detail === 'string' ? detail : element('b', detail.bold);
+              label.append(document.createElement('br'), text);
             }
             line.append(icon, label);
             paragraph.append(line);
