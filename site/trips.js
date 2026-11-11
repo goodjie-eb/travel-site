@@ -76,6 +76,10 @@ const trips = [{
         '📍 買達摩、御守',
         '📍 停留約 2.5小時',
         '📍 離開前先上廁所！'
+      ], photosBelowHeading: true, photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-28a28963-0606-4f68-a3c3-064333b6372f.png', alt: '勝尾寺一整櫃紅色達摩' },
+        { src: './codex-clipboard-6fe3dac9-9468-4af0-a67e-4c968b821acb.png', alt: '勝尾寺的紅橋與秋日楓葉' },
+        { src: './codex-clipboard-5dd4d475-cb0d-45ba-991d-13cb2701b33c.png', alt: '勝尾寺門前手持的小達摩' }
       ] },
       { time: '11:00', highlight: '前往箕面瀑布', notes: [
         { icon: '🚕', line: '計程車前往 (5分鐘)' },
@@ -281,7 +285,11 @@ function showTrip(trip) {
           count.setAttribute('aria-live', 'polite');
           controls.append(previous, count, next);
           photos.append(gallery, controls);
-          content.append(photos);
+          if (item.photosBelowHeading && item.highlight) {
+            content.firstElementChild.after(photos);
+          } else {
+            content.append(photos);
+          }
         }
         row.append(time, content);
         list.append(row);
