@@ -109,8 +109,12 @@ const trips = [{
           details: ['(36號、21號公車)', '約14:20到']
         }
       ] },
-      { time: '15:00', highlight: '回萁面萱野站', notes: [{ icon: '🚌', line: '搭公車' }] },
-      { time: '15:20', highlight: '回難波', notes: [{ icon: '🚇', line: '搭地鐵' }, '約16:10抵達'] }
+      { time: '15:00', highlight: '回 大阪市區', notes: [
+        {
+          icon: '🚇', line: '搭 ', badge: '御堂筋線',
+          details: ['至 難波站 (45分鐘)', '約 16:00 抵達']
+        }
+      ] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
       { time: '11:00', highlight: '退房', notes: ['寄放行李'] },
