@@ -13,7 +13,10 @@ const trips = [{
         { icon: '🚶', line: '到飯店 ', text: 'YUMERA Hotel', href: '?page=stay' }
       ] },
       { time: '13:20', highlight: '飯店 寄放行李' },
-      { time: '14:00', highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'], photos: [{ src: './codex-clipboard-0a0de4e7-8ad2-4cd4-94c8-ff1c79dd452e.png', alt: 'だるま道場 天王寺店 壽司與生魚片料理' }] },
+      { time: '14:00', highlight: '午餐', notes: [
+        { text: '江戶前迴轉壽司 MIO廣場店', href: 'https://maps.app.goo.gl/6K5PET6hxTrPwi4VA' },
+        '無法預先預約、平板點餐'
+      ] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
     ], reminders: [
       '天王寺商圈很大，提前查好想逛的品牌位置',
