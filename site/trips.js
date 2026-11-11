@@ -42,8 +42,8 @@ const trips = [{
       { time: '08:30', highlight: '勝尾寺' },
       { time: '11:00', highlight: '前往箕面瀑布' },
       { time: '14:00', highlight: '到阪急箕面站 午餐' },
-      { time: '15:00', highlight: '回萁面萱野站', notes: ['公車'] },
-      { time: '15:20', highlight: '回難波', notes: ['地鐵', '約16:10抵達'] }
+      { time: '15:00', highlight: '回萁面萱野站', notes: [{ icon: '🚌', line: '搭公車' }] },
+      { time: '15:20', highlight: '回難波', notes: [{ icon: '🚇', line: '搭地鐵' }, '約16:10抵達'] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
       { time: '11:00', highlight: '退房', notes: ['寄放行李'] },
@@ -158,9 +158,12 @@ function showTrip(trip) {
             const icon = element('span', note.icon || '🚈');
             icon.setAttribute('aria-hidden', 'true');
             line.append(icon, element('span', note.line));
-            const route = element('span', note.route);
-            route.className = 'transit-route';
-            paragraph.append(line, route);
+            paragraph.append(line);
+            if (note.route) {
+              const route = element('span', note.route);
+              route.className = 'transit-route';
+              paragraph.append(route);
+            }
           } else if (note.href) {
             const link = element('a', note.text);
             link.href = note.href;
