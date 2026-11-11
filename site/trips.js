@@ -63,9 +63,30 @@ const trips = [{
         { icon: '🚶', line: '到 天王寺車站 (15分鐘)' },
         { icon: '🚇', line: '搭 ', badge: '御堂筋線', route: '至 萁面萱野站 (45分鐘)', routeBelow: true }
       ] },
-      { time: '07:30', highlight: '萁面萱野站', notes: [{ icon: '🚕', line: '計程車前往' }] },
-      { time: '08:30', highlight: '勝尾寺' },
-      { time: '11:00', highlight: '前往箕面瀑布' },
+      { time: '07:30', highlight: '萁面萱野站', notes: [
+        { icon: '🚕', line: '計程車前往 (15分鐘)' },
+        '南出口 招呼站',
+        '(巴士站牌對面)',
+        '車費約 ¥3,600',
+        '📍 分兩台 可找人分'
+      ] },
+      { time: '08:00', highlight: '勝尾寺', notes: [
+        '入山費 ¥500 / 人',
+        '📍 明信片蓋張',
+        '📍 買達摩、御守',
+        '📍 停留約 2.5小時',
+        '📍 離開前先上廁所！'
+      ] },
+      { time: '11:00', highlight: '前往箕面瀑布', notes: [
+        { icon: '🚕', line: '計程車前往 (5分鐘)' },
+        '勝尾寺門口 可以攔',
+        '車費約 ¥1,500',
+        '(走路要40分鐘)',
+        { icon: '🚕', line: '到 大日駐車場下車' },
+        { icon: '🚶', line: '到 箕面瀑布 (20分鐘)' },
+        '📍 沿路有小攤販可以買東西吃',
+        { parts: ['約11:30~11:40 到 ', { bold: '箕面瀑布' }] }
+      ] },
       { time: '14:00', highlight: '到阪急箕面站 午餐' },
       { time: '15:00', highlight: '回萁面萱野站', notes: [{ icon: '🚌', line: '搭公車' }] },
       { time: '15:20', highlight: '回難波', notes: [{ icon: '🚇', line: '搭地鐵' }, '約16:10抵達'] }
@@ -205,6 +226,10 @@ function showTrip(trip) {
             for (const part of note.parts || [note]) {
               if (typeof part === 'string') {
                 paragraph.append(part);
+                continue;
+              }
+              if (part.bold) {
+                paragraph.append(element('b', part.bold));
                 continue;
               }
               const link = element('a', part.text);
