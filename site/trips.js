@@ -23,7 +23,7 @@ const trips = [{
         { src: './codex-clipboard-f82841c3-f8c4-4df6-9eef-8bdcd3fc6487.png', alt: '握壽司與軍艦壽司拼盤' }
       ] },
       { time: '15:30', highlight: '自由活動', notes: [
-        '飯店16:00可入住，可逛完再回去',
+        '飯店16:00可入住',
         { parts: [
           '一起先逛 ',
           { text: 'UNIQLO', href: 'https://maps.app.goo.gl/K8ARQbqisbVgeaLN7' },
@@ -31,7 +31,7 @@ const trips = [{
           { text: 'GU', href: 'https://maps.app.goo.gl/GPeGbg8TYnkZ1xdW6' },
           '、伊藤洋華堂超市'
         ] },
-        '🀄環球組買隔天早餐'
+        '📍環球組買隔天早餐'
       ] }
     ], reminders: [
       '天王寺商圈很大，提前查好想逛的品牌位置',
