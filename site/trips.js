@@ -7,7 +7,11 @@ const trips = [{
       { time: '04:30', highlight: '集合', text: '桃園機場第1航廈 虎航7號櫃台' },
       { time: '07:00', highlight: '飛機起飛' },
       { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
-      { time: '12:14', highlight: '前往 天王寺', text: '搭乘(22)HARUKA 約12:48抵達', notes: ['後面班次：12:44、13:14'] },
+      { time: '12:14', highlight: '前往 天王寺', notes: [
+        { icon: '🚈', line: 'HARUKA(22)', route: '約12:48抵達' },
+        '後面班次：12:44、13:14',
+        { icon: '🚶', line: '到飯店 ', text: 'YUMERA Hotel', href: '?page=stay' }
+      ] },
       { time: '13:20', highlight: '飯店 寄放行李' },
       { time: '14:00', highlight: '午餐', notes: [{ text: 'だるま道場 天王寺店', href: 'https://maps.app.goo.gl/1RvBALE66AuQnn936' }, { prefix: '預約時間：', emphasis: '14:00', suffix: '、5位' }, '可以QRcord點餐'], photos: [{ src: './codex-clipboard-0a0de4e7-8ad2-4cd4-94c8-ff1c79dd452e.png', alt: 'だるま道場 天王寺店 壽司與生魚片料理' }] },
       { time: '15:30', highlight: '自由活動', notes: ['飯店16:00可入住，約時間回去'] }
@@ -157,7 +161,13 @@ function showTrip(trip) {
             line.className = 'transit-line';
             const icon = element('span', note.icon || '🚈');
             icon.setAttribute('aria-hidden', 'true');
-            line.append(icon, element('span', note.line));
+            const label = element('span', note.line);
+            if (note.href) {
+              const link = element('a', note.text);
+              link.href = note.href;
+              label.append(link);
+            }
+            line.append(icon, label);
             paragraph.append(line);
             if (note.route) {
               const route = element('span', note.route);
