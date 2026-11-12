@@ -350,10 +350,9 @@ const trips = [{
       ] },
       { time: '12:00', highlight: '下船  逛嵐山' },
       { time: '16:00', highlight: '搭小火車', notes: [
-        { icon: '🚂', line: '嵯峨野15號', details: [
-          '16:02 嵯峨→ 16:25 龜岡',
-          '富貴5號車廂  靠窗位',
-          '6A、6C、6D、8A、8D'
+        { icon: '🚂', badge: '嵯峨野15號', badgeColor: 'black', details: [
+          { emphasis: '16:02', suffix: ' 嵯峨→ 16:25 龜岡' },
+          '富貴5號車廂  靠窗位'
         ] }
       ] },
       { time: '16:25', highlight: '小火車龜岡站、JR馬堀站', notes: [
@@ -516,9 +515,14 @@ function showTrip(trip) {
               label.append(link);
             }
             for (const detail of note.details || []) {
-              const text = typeof detail === 'string' ? detail : element('b', detail.bold);
-              label.append(document.createElement('br'), text);
-              if (typeof detail !== 'string' && detail.suffix) label.append(detail.suffix);
+              label.append(document.createElement('br'));
+              if (typeof detail === 'string') {
+                label.append(detail);
+                continue;
+              }
+              const text = detail.emphasis ? element('span', detail.emphasis) : element('b', detail.bold);
+              if (detail.emphasis) text.className = 'time-emphasis';
+              label.append(text, detail.suffix || '');
             }
             line.append(icon, label);
             paragraph.append(line);
