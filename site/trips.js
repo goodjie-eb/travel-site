@@ -315,7 +315,23 @@ const trips = [{
     ], reminders: [
       { bold: true, parts: ['早餐後可以脫隊，但', { highlight: '晚餐要自己去餐廳' }] }
     ] },
-    { title: '12/11', subtitle: '嵐山一日遊', items: [] },
+    { title: '12/11', subtitle: '嵐山一日遊', items: [
+      { time: '08:30', highlight: '出門', notes: [
+        {
+          icon: '🚌', line: '四条西洞院→二條站前',
+          details: ['(46號、55號)', { bold: '車費約 ¥230', suffix: ' (15分鐘)' }]
+        },
+        {
+          icon: '🚈', line: '搭 ', badge: '山陰本線', badgeColor: 'purple', badgeSuffix: ' 普通車',
+          details: [
+            'JR二條→ JR龜岡',
+            { bold: '車費約 ¥320', suffix: ' (25分鐘)' },
+            '08:57→ 09:21',
+            '09:14→ 09:37'
+          ]
+        }
+      ] }
+    ] },
     { title: '12/12', subtitle: '最後衝刺  準備回家', items: [] }
   ]
 }];
