@@ -174,17 +174,20 @@ const trips = [{
           { src: './codex-clipboard-f73995c7-8c7d-4695-8028-24b333dd506c.png', alt: '荷包蛋與菇類佐漢堡排' },
           { src: './codex-clipboard-ff9fbcdb-ba9f-452e-afb3-34effb06b8ee.png', alt: '東洋亭的洋食展示櫥窗' }
         ] },
-        { text: '麵屋 豬一 本店', href: 'https://maps.app.goo.gl/vMfTKMDLJnRJPCRF9' },
-        { text: '麵屋 豬一 二店', href: 'https://maps.app.goo.gl/HgE293SwGxuEStZo6' },
+        { parts: [{ text: '麵屋 豬一 本店', href: 'https://maps.app.goo.gl/vMfTKMDLJnRJPCRF9' }, ' (走路15分鐘)'] },
+        { parts: [{ text: '麵屋 豬一 二店', href: 'https://maps.app.goo.gl/HgE293SwGxuEStZo6' }, ' (走路10分鐘)'] },
         '只能現場排隊',
         '晚餐17:30開始',
         '約1小時前去抽號碼',
+        '⚠️ 低消一人一碗',
+        '⚠️ 只能拍食物 不能拍店內',
         { photoLabel: '麵屋 豬一 二店', photoMode: 'overlay', photos: [
           { src: './codex-clipboard-2663953f-0867-48c4-b1d3-ab2507bdd944.png', alt: '麵屋豬一的牛肉拉麵' },
           { src: './codex-clipboard-17187123-06d8-4f21-a806-9651ac190bfa.png', alt: '麵屋豬一的叉燒拉麵' },
           { src: './codex-clipboard-2ebf07d3-e35c-4e58-9fae-173ecc95cc27.png', alt: '麵屋豬一二店的店面' }
         ] }
-      ] }
+      ] },
+      { time: '18:30', highlight: '自由活動', notes: ['⚠️ 提前先準備隔天早餐'] }
     ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
     { title: '12/10', subtitle: '伏見稻荷大社', items: [
