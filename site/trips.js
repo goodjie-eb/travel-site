@@ -116,10 +116,14 @@ const trips = [{
         }
       ] },
       { time: '15:40', highlight: '自由活動', notes: ['18:10集合 慢慢走到餐廳'] },
-      { time: '18:30', highlight: '晚餐', notes: ['忍鬨燒肉 日本橋店'], photoMode: 'overlay', photos: [
+      { time: '18:30', highlight: '晚餐', notes: [{ text: '忍鬨燒肉 日本橋店', href: 'https://maps.app.goo.gl/tSCjVkUKKfzLY6Ek7' }], photoMode: 'overlay', photos: [
         { src: './codex-clipboard-682196ef-8ab0-4661-a72b-2055c25de85a.png', alt: '塞滿蔥花的厚切牛舌' },
         { src: './codex-clipboard-faa5c9c2-938c-452f-8b03-707d8e4a0670.png', alt: '燒肉拼盤與蛋黃牛肉卷' },
         { src: './codex-clipboard-03a4a0f2-b1d0-411d-8ec9-f576bc4491df.png', alt: '忍鬨燒肉日本橋店的店面招牌' }
+      ] },
+      { time: '20:00', highlight: '回飯店', notes: [
+        { icon: '🚇', line: '搭 ', badge: '堺筋線', badgeColor: 'brown', route: '日本橋→ 動物園前', routeBelow: true },
+        { icon: '🚇', line: '轉 ', badge: '御堂筋線', route: '動物園前→ 天王寺', routeBelow: true }
       ] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
@@ -239,6 +243,7 @@ function showTrip(trip) {
             if (note.badge) {
               const badge = element('span', note.badge);
               badge.className = 'transit-line-badge';
+              if (note.badgeColor) badge.dataset.color = note.badgeColor;
               label.append(badge);
             }
             if (note.href) {
