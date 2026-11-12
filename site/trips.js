@@ -295,6 +295,7 @@ const trips = [{
       ] },
       { time: '18:30', highlight: '晚餐', notes: [
         { text: '富之上壽喜燒', href: 'https://maps.app.goo.gl/KfCkxBgErBiWPbHe9' },
+        { prefix: '預約時間：', emphasis: '18:30', suffix: '、5位' },
         '3種價位套餐',
         '(神戶牛、黑毛和牛、國產牛)'
       ], photoMode: 'overlay', photos: [
