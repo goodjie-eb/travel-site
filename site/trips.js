@@ -160,8 +160,9 @@ const trips = [{
         '32號：15:20~ 16:04',
         {
           icon: '🚇', line: '搭 ', badge: '烏丸線', badgeColor: 'green',
-          details: ['到 四條站 (電梯4號出口)', '走路6分鐘']
-        }
+          details: ['到 四條站 (電梯4號出口)']
+        },
+        { icon: '🚶', line: '走路6分鐘', details: ['約16:00抵達'] }
       ] }
     ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
