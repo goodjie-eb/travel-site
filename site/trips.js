@@ -355,7 +355,7 @@ const trips = [{
           '富貴5號車廂  靠窗位'
         ] }
       ] },
-      { time: '16:25', highlight: '小火車龜岡站、JR馬堀站', notes: [
+      { time: '16:30', highlight: '到站、準備回程', notes: [
         { icon: '🚶', line: '約10分鐘' },
         '可在馬堀站附近晚餐',
         '或搭回去二條站',
