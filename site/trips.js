@@ -259,7 +259,7 @@ const trips = [{
       ] },
       { time: '12:30', highlight: '周邊店家', notes: [
         { text: '吉伊卡哇 京都伏見', href: 'https://maps.app.goo.gl/EYYkY32R2Z3Q7v6Y6' },
-        '📍 婕妤要逛，其他人逛其它店~',
+        '📍 婕要逛，其他人逛其它店~',
         '📍 買狐狸煎餅、稻荷壽司'
       ], photoMode: 'overlay', photos: [
         { src: './codex-clipboard-7179601c-1369-491b-811c-0d91e975ee72.png', alt: '吉伊卡哇京都伏見店的櫥窗圖案' },
@@ -267,9 +267,22 @@ const trips = [{
         { src: './codex-clipboard-d36e6a70-f41f-434f-b94d-efebae6c750c.png', alt: '狐狸造型煎餅' },
         { src: './codex-clipboard-02b51ed1-4eba-4dd8-a81b-c9ec02518b5c.png', alt: '盤中的稻荷壽司' }
       ] },
-      { time: '13:30', highlight: '伏見稻荷大社、千本鳥居', photoMode: 'overlay', photos: [
+      { time: '13:30', highlight: '伏見稻荷大社、千本鳥居', notes: [
+        '📍 停留約1個半小時',
+        { icon: '🚇', line: '搭 ', badge: '京阪本線', details: ['到 神宮丸太町 (26分鐘)'] },
+        { icon: '🚶', line: '走10分鐘' }
+      ], photosBelowHeading: true, photoMode: 'overlay', photos: [
         { src: './codex-clipboard-42c21236-85a4-42e4-8330-a2a09cb0b3da.png', alt: '伏見稻荷大社的社殿與石階' },
         { src: './codex-clipboard-c9a93329-0466-4226-9321-a97c91700935.png', alt: '千本鳥居的朱紅色鳥居步道' }
+      ] },
+      { time: '15:40', highlight: '荒神口 鴨川跳石', notes: [
+        '📍 停留30分鐘',
+        { icon: '🚶', line: '散步走回 神宮丸太町' },
+        '📍 附近有婕想逛的店',
+        { text: 'Gotō Sports', href: 'https://maps.app.goo.gl/n4gfjrNNr13wnTVs7' }
+      ], photosBelowHeading: true, photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-d24dd278-543e-4972-b00b-f10172a7648c.png', alt: '荒神口鴨川上的跳石與河岸' },
+        { src: './codex-clipboard-b1024e38-c6e4-4ba6-8ec3-af783c8431e0.png', alt: '鴨川跳石中的烏龜造型石塊' }
       ] }
     ] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [] },
