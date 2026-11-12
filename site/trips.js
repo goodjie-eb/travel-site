@@ -277,12 +277,27 @@ const trips = [{
       ] },
       { time: '15:40', highlight: '荒神口 鴨川跳石', notes: [
         '📍 停留30分鐘',
-        { icon: '🚶', line: '散步走回 神宮丸太町' },
+        { icon: '🚶', line: '回 神宮丸太町 (6分鐘)' },
         '📍 附近有婕想逛的店',
-        { text: 'Gotō Sports', href: 'https://maps.app.goo.gl/n4gfjrNNr13wnTVs7' }
+        { icon: '🚶', line: '神宮丸太町→店 (6分鐘)' },
+        { text: 'Gotō Sports', href: 'https://maps.app.goo.gl/n4gfjrNNr13wnTVs7' },
+        '📍 停留至17:20',
+        { icon: '🚇', line: '搭 ', badge: '京阪本線', details: ['神宮丸太町→祗園四條 (20分鐘)'] }
       ], photosBelowHeading: true, photoMode: 'overlay', photos: [
         { src: './codex-clipboard-d24dd278-543e-4972-b00b-f10172a7648c.png', alt: '荒神口鴨川上的跳石與河岸' },
         { src: './codex-clipboard-b1024e38-c6e4-4ba6-8ec3-af783c8431e0.png', alt: '鴨川跳石中的烏龜造型石塊' }
+      ] },
+      { time: '18:30', highlight: '晚餐', notes: [
+        { text: '富之上壽喜燒', href: 'https://maps.app.goo.gl/KfCkxBgErBiWPbHe9' },
+        '3種價位套餐',
+        '(神戶牛、黑毛和牛、國產牛)'
+      ], photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-96381793-993d-4912-8e5a-28c0f7df94f9.png', alt: '富之上壽喜燒的鍋物與牛肉片' },
+        { src: './codex-clipboard-dde6852b-4a8b-43f7-b3d7-e73f58186847.png', alt: '壽喜燒套餐的牛肉片' },
+        { src: './codex-clipboard-7dc33c36-e0b5-49c5-87e4-50a34951973b.png', alt: '富之上壽喜燒的店面' }
+      ] },
+      { time: '19:40', highlight: '回飯店', notes: [
+        { icon: '🚌', line: '四条京阪前→四条西洞院' }
       ] }
     ] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [] },
