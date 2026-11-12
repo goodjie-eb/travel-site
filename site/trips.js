@@ -326,10 +326,27 @@ const trips = [{
           details: [
             'JR二條→ JR龜岡',
             { bold: '車費約 ¥320', suffix: ' (25分鐘)' },
-            '08:57→ 09:21',
-            '09:14→ 09:37'
+            '08:32→ 09:01',
+            '08:45→ 09:08',
+            '08:57→ 09:21'
           ]
-        }
+        },
+        { icon: '🚶', line: '到 保津川乘船處 2F報到' },
+        { photoLabel: '保津川乘船處', photos: [
+          { src: './codex-clipboard-3d1724ca-b0be-4024-8494-5e11b011055b.png', alt: '保津川乘船處外觀與二樓報到標示' }
+        ] },
+        '📍 可以帶零食、飲料上船',
+        '📍 出發前一定要上廁所！'
+      ] },
+      { time: '10:00', highlight: '保津川遊船', notes: [
+        '約1個半~2小時',
+        '尾段有uber船，只收現金',
+        '📍 以防萬一 帶個鞋套',
+        '📍 戴帽子、注意保暖'
+      ], photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-e1c57c47-33ad-4f46-9e3b-f81fdc7e4172.png', alt: '從保津川遊船望向山谷與橋梁' },
+        { src: './codex-clipboard-2e72e306-48c3-4434-87de-7ac8bae133b8.png', alt: '船夫划船經過保津川的紅葉河岸' },
+        { src: './codex-clipboard-adc9ff68-41cd-4372-9924-630302c252d8.png', alt: '保津川上販售點心和飲料的小船' }
       ] }
     ] },
     { title: '12/12', subtitle: '最後衝刺  準備回家', items: [] }
