@@ -161,7 +161,7 @@ const trips = [{
         { icon: '🚶', line: '散步到 新世界(20分鐘)', details: ['(搭車差不多時間)'] }
       ] },
       { time: '12:00', highlight: '午餐', notes: [
-        '新世界區吃炸串 (隨意找)',
+        { parts: ['新世界區', { bold: '吃炸串' }, ' (隨意找)'] },
         { text: '土手燒 Nonkiya（のんきや）', href: 'https://maps.app.goo.gl/NVbNKwAF22nD8M6x8' },
         '關東煮、味增牛筋',
         '立食、10個位子、只收現金'
@@ -179,7 +179,7 @@ const trips = [{
         '32號：15:20~ 16:04',
         {
           icon: '🚇', line: '搭 ', badge: '烏丸線', badgeColor: 'green',
-          details: ['到 四條站 (電梯4號出口)']
+          details: ['到 四條站 (電梯4號出口)', { bold: '車費約 ¥220' }]
         },
         { icon: '🚶', line: '走路6分鐘', details: ['約16:00抵達'] }
       ] },
@@ -207,7 +207,20 @@ const trips = [{
           { src: './codex-clipboard-2ebf07d3-e35c-4e58-9fae-173ecc95cc27.png', alt: '麵屋豬一二店的店面' }
         ] }
       ] },
-      { time: '18:30', highlight: '自由活動', notes: ['⚠️ 提前先準備隔天早餐'] }
+      { time: '18:30', highlight: '自由活動', notes: [
+        '逛街→ 四条河原町',
+        '夜訪→ 八坂神社',
+        '⚠️ 提前先準備隔天早餐'
+      ] }
+    ], reminders: [
+      { prefix: '買茅乃舍 到 ', text: '大丸百貨', href: 'https://maps.app.goo.gl/uW5ouEe3p6XD7M1P6', suffix: ' 開到 20:00' },
+      { parts: [
+        '住宿附近超市 ',
+        { text: 'Life超市', href: 'https://maps.app.goo.gl/YMumCDqTTwaukVE7' },
+        '、',
+        { text: '森田屋超市', href: 'https://maps.app.goo.gl/zc2CAnamkseKXnZc6' }
+      ] },
+      '隔天早出門晚回家，請早點休息'
     ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
     { title: '12/10', subtitle: '伏見稻荷大社', items: [
@@ -444,11 +457,17 @@ function showTrip(trip) {
       trigger.addEventListener('click', () => openSchedule(note.dialog));
       content.append(note.prefix || '', trigger, note.suffix || '');
     } else {
-      const link = element('a', note.text);
-      link.href = note.href;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      content.append(note.prefix || '', link, note.suffix || '');
+      for (const part of note.parts || [note]) {
+        if (typeof part === 'string') {
+          content.append(part);
+          continue;
+        }
+        const link = element('a', part.text);
+        link.href = part.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        content.append(part.prefix || '', link, part.suffix || '');
+      }
     }
     row.append(dot, content);
     return row;
