@@ -114,6 +114,12 @@ const trips = [{
           icon: '🚇', line: '搭 ', badge: '御堂筋線',
           details: ['至 難波站 (45分鐘)', '約 16:00 抵達']
         }
+      ] },
+      { time: '16:00', highlight: '自由活動', notes: ['18:10集合 慢慢走到餐廳'] },
+      { time: '18:30', highlight: '晚餐', notes: ['忍鬨燒肉 日本橋店'], photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-682196ef-8ab0-4661-a72b-2055c25de85a.png', alt: '塞滿蔥花的厚切牛舌' },
+        { src: './codex-clipboard-faa5c9c2-938c-452f-8b03-707d8e4a0670.png', alt: '燒肉拼盤與蛋黃牛肉卷' },
+        { src: './codex-clipboard-03a4a0f2-b1d0-411d-8ec9-f576bc4491df.png', alt: '忍鬨燒肉日本橋店的店面招牌' }
       ] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
