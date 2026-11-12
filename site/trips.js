@@ -41,7 +41,10 @@ const trips = [{
     ] },
     { title: '12/6', subtitle: '分頭行動', groups: [
       { title: '環球影城組', items: [
-        { time: '06:00', highlight: '出門', notes: [{ icon: '🚈', line: '大阪環狀線', route: '天王寺→ 西九條' }, { icon: '🚈', line: 'JR夢咲線', route: '西九條→ 環球影城' }] },
+        { time: '06:00', highlight: '出門', notes: [
+          { icon: '🚈', badge: '大阪環狀線', route: '天王寺→ 西九條' },
+          { icon: '🚈', badge: 'JR夢咲線', badgeColor: 'blue', route: '西九條→ 環球影城' }
+        ] },
         { time: '08:00', highlight: '入園', notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'] },
         { time: '22:00', highlight: '閉園', notes: ['有體力就玩到最後，累就提早回家'] }
       ], reminders: [{ prefix: '請下載 ', text: '環球影城APP', href: 'https://apps.apple.com/cn/app/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB-%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-%E5%85%AC%E5%BC%8F%E3%82%A2%E3%83%97%E3%83%AA/id532097000' },
@@ -232,14 +235,14 @@ function showTrip(trip) {
           const paragraph = document.createElement('p');
           if (typeof note === 'string') paragraph.textContent = note;
           else if (note.highlight) paragraph.append(element('strong', note.highlight));
-          else if (note.line) {
+          else if (note.line || note.badge) {
             paragraph.className = 'transit-note';
             if (note.routeBelow) paragraph.classList.add('transit-note-stacked');
             const line = document.createElement('span');
             line.className = 'transit-line';
             const icon = element('span', note.icon || '🚈');
             icon.setAttribute('aria-hidden', 'true');
-            const label = element('span', note.line);
+            const label = element('span', note.line || '');
             if (note.badge) {
               const badge = element('span', note.badge);
               badge.className = 'transit-line-badge';
