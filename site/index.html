@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#f3efe7">
   <title>十二月旅行手冊｜一起出發</title>
-  <script src="./trips.js?v=dec08-walk-bus" defer></script>
+  <script src="./trips.js?v=dec07-fare-align" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
@@ -139,7 +139,8 @@
     .transit-line-badge[data-color="black"] { background:var(--ink); }
     .transit-badge-group { white-space:nowrap; }
     .transit-follow-up { grid-column:1 / -1; padding-left:1.75em; }
-    .transit-route { padding-left:1.5em; word-break:keep-all; overflow-wrap:normal; }
+    .transit-route, .transit-note-stacked .transit-follow-up { padding-left:1.5em; }
+    .transit-route { word-break:keep-all; overflow-wrap:normal; }
     @media(min-width:601px) {
       .timeline-content .transit-note:has(.transit-route):not(.transit-note-stacked) { grid-template-columns:minmax(7em,max-content) minmax(0,1fr); column-gap:.75em; }
       .transit-note:not(.transit-note-stacked) .transit-route { padding-left:0; }
