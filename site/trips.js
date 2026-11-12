@@ -154,7 +154,10 @@ const trips = [{
       ] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
-      { time: '11:00', highlight: '退房', notes: ['可提早退，寄放行李'] },
+      { time: '11:00', highlight: '退房', notes: [
+        '可提早退，寄放行李',
+        { icon: '🚶', line: '散步到 新世界(20分鐘)', details: ['(搭車差不多時間)'] }
+      ] },
       { time: '12:00', highlight: '午餐', notes: [
         '新世界區吃炸串 (隨意找)',
         { text: '土手燒 Nonkiya（のんきや）', href: 'https://maps.app.goo.gl/NVbNKwAF22nD8M6x8' },
@@ -181,6 +184,7 @@ const trips = [{
       { time: '16:00', highlight: '飯店 入住', notes: [
         { icon: '🍱', badge: '晚餐選擇', badgeColor: 'black' },
         { text: '東洋亭 百年漢堡排', href: 'https://maps.app.goo.gl/xdbjAtcy693DuTeu9' },
+        { icon: '🚌', line: '搭到 四条河原町 (15分鐘)', details: [{ bold: '車費約 ¥230' }] },
         '午餐優惠~ 17:00止 (要吃要趕一下)',
         '或是不趕 直接吃正常時段',
         { photoLabel: '東洋亭 百年漢堡排', photoMode: 'overlay', photos: [
