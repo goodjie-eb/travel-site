@@ -43,11 +43,19 @@ const trips = [{
     ] },
     { title: '12/6', subtitle: '分頭行動', groups: [
       { title: '環球影城組', items: [
-        { time: '06:00', highlight: '出門', notes: [
+        { time: '05:40', highlight: '出門', notes: [
           { icon: '🚈', badge: '大阪環狀線', route: '天王寺→ 西九條' },
           { icon: '🚈', badge: 'JR夢咲線', badgeColor: 'blue', route: '西九條→ 環球影城' }
         ] },
-        { time: '08:00', highlight: '入園', notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'] },
+        {
+          time: '08:00', highlight: '入園',
+          notes: ['表定時間是09:00，但有機會提早30分鐘~1小時進場'],
+          photosBelowHeading: true, photoMode: 'overlay', photos: [
+            { src: './codex-clipboard-04083c4e-6fb4-4148-ad4d-c379e96368ca.png', alt: '日本環球影城入口地球儀' },
+            { src: './codex-clipboard-e5be036e-54cc-4600-8984-728412a845f2.png', alt: '超級任天堂世界園區' },
+            { src: './codex-clipboard-2935b1a9-44ac-44b2-b6a0-3d7d75ec77dd.png', alt: '哈利波特園區的霍格華茲城堡' }
+          ]
+        },
         { time: '22:00', highlight: '閉園', notes: ['有體力就玩到最後，累就提早回家'] }
       ], reminders: [{ prefix: '請下載 ', text: '環球影城APP', href: 'https://apps.apple.com/cn/app/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB-%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-%E5%85%AC%E5%BC%8F%E3%82%A2%E3%83%97%E3%83%AA/id532097000' },
         '門票、快速通關 請點群組記事本',
