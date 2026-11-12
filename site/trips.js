@@ -149,8 +149,10 @@ const trips = [{
       ] },
       { time: '20:00', highlight: '回飯店', notes: [
         { icon: '🚇', line: '搭 ', badge: '堺筋線', badgeColor: 'brown', route: '日本橋→ 動物園前', routeBelow: true },
-        { icon: '🚇', line: '轉 ', badge: '御堂筋線', route: '動物園前→ 天王寺', routeBelow: true },
-        { parts: [{ bold: '車費約 ¥190' }] }
+        {
+          icon: '🚇', line: '轉 ', badge: '御堂筋線',
+          route: '動物園前→ 天王寺', routeBelow: true, followUp: { bold: '車費約 ¥190' }
+        }
       ] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
