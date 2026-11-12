@@ -316,7 +316,7 @@ const trips = [{
       { bold: true, parts: ['早餐後可以脫隊，但', { highlight: '晚餐要自己去餐廳' }] }
     ] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [
-      { time: '08:30', highlight: '出門', notes: [
+      { time: '08:15', highlight: '出門', notes: [
         {
           icon: '🚌', line: '四条西洞院→二條站前',
           details: ['(46號、55號)', { bold: '車費約 ¥230', suffix: ' (15分鐘)' }]
@@ -347,6 +347,23 @@ const trips = [{
         { src: './codex-clipboard-e1c57c47-33ad-4f46-9e3b-f81fdc7e4172.png', alt: '從保津川遊船望向山谷與橋梁' },
         { src: './codex-clipboard-2e72e306-48c3-4434-87de-7ac8bae133b8.png', alt: '船夫划船經過保津川的紅葉河岸' },
         { src: './codex-clipboard-adc9ff68-41cd-4372-9924-630302c252d8.png', alt: '保津川上販售點心和飲料的小船' }
+      ] },
+      { time: '12:00', highlight: '下船  逛嵐山' },
+      { time: '16:00', highlight: '搭小火車', notes: [
+        { icon: '🚂', line: '嵯峨野15號', details: [
+          '16:02 嵯峨→ 16:25 龜岡',
+          '富貴5號車廂  靠窗位',
+          '6A、6C、6D、8A、8D'
+        ] }
+      ] },
+      { time: '16:25', highlight: '小火車龜岡站、JR馬堀站', notes: [
+        { icon: '🚶', line: '約10分鐘' },
+        '可在馬堀站附近晚餐',
+        '或搭回去二條站',
+        {
+          icon: '🚈', line: '搭 ', badge: '山陰本線', badgeColor: 'purple', badgeSuffix: ' 普通車',
+          details: ['JR馬堀→ JR二條', { bold: '車費約 ¥240', suffix: ' (20分鐘)' }]
+        }
       ] }
     ] },
     { title: '12/12', subtitle: '最後衝刺  準備回家', items: [] }
