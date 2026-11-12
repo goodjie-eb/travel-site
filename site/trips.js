@@ -174,7 +174,7 @@ const trips = [{
         ] },
         { parts: ['新世界區', { bold: '吃炸串' }, ' (隨意找)'] }
       ] },
-      { highlight: '自由活動、最後陪佳怡' },
+      { time: '12:00', highlight: '自由活動、最後陪佳怡' },
       { time: '14:15', highlight: '到飯店拿行李', notes: [
         '佳怡往機場 約16:00到',
         { icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', highlight: '往京都' },
