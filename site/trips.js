@@ -140,7 +140,7 @@ const trips = [{
       ] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
-      { time: '11:00', highlight: '退房', notes: ['寄放行李'] },
+      { time: '11:00', highlight: '退房', notes: ['可提早退，寄放行李'] },
       { time: '12:00', highlight: '午餐', notes: [
         '新世界區吃炸串 (隨意找)',
         { text: '土手燒 Nonkiya（のんきや）', href: 'https://maps.app.goo.gl/NVbNKwAF22nD8M6x8' },
@@ -155,7 +155,7 @@ const trips = [{
       { time: '14:15', highlight: '到飯店拿行李', notes: [
         '佳怡往機場 約16:00到',
         { icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', highlight: '往京都' },
-        '28號：14:20~ 15:04',
+        { prefix: '', emphasis: '28號：14:20~ 15:04', suffix: '' },
         { prefix: '', emphasis: '30號：14:50~ 15:34', suffix: '' },
         '32號：15:20~ 16:04',
         {
@@ -163,6 +163,16 @@ const trips = [{
           details: ['到 四條站 (電梯4號出口)']
         },
         { icon: '🚶', line: '走路6分鐘', details: ['約16:00抵達'] }
+      ] },
+      { time: '16:00', highlight: '飯店 入住', notes: [
+        { icon: '🍱', badge: '晚餐選擇', badgeColor: 'black' },
+        { text: '東洋亭 百年漢堡排', href: 'https://maps.app.goo.gl/xdbjAtcy693DuTeu9' },
+        '午餐優惠~ 17:00止 (要吃要趕一下)',
+        '或是不趕 直接吃正常時段'
+      ], photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-4b1b206c-5596-413c-989a-5aef9b782e1d.png', alt: '東洋亭鋁箔包漢堡排' },
+        { src: './codex-clipboard-f73995c7-8c7d-4695-8028-24b333dd506c.png', alt: '荷包蛋與菇類佐漢堡排' },
+        { src: './codex-clipboard-ff9fbcdb-ba9f-452e-afb3-34effb06b8ee.png', alt: '東洋亭的洋食展示櫥窗' }
       ] }
     ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
