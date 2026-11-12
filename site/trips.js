@@ -312,6 +312,8 @@ const trips = [{
           details: [{ bold: '車費約 ¥230', suffix: ' (20分鐘)' }]
         }
       ] }
+    ], reminders: [
+      { bold: true, parts: ['早餐後可以脫隊，但', { highlight: '晚餐要自己去餐廳' }] }
     ] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [] },
     { title: '12/12', subtitle: '最後衝刺  準備回家', items: [] }
@@ -527,7 +529,7 @@ function showTrip(trip) {
     const dot = document.createElement('span');
     dot.className = 'note-dot';
     dot.setAttribute('aria-hidden', 'true');
-    const content = document.createElement('span');
+    const content = document.createElement(note.bold ? 'strong' : 'span');
     if (typeof note === 'string') content.textContent = note;
     else if (note.dialog) {
       const trigger = element('button', note.text);
@@ -540,6 +542,12 @@ function showTrip(trip) {
       for (const part of note.parts || [note]) {
         if (typeof part === 'string') {
           content.append(part);
+          continue;
+        }
+        if (part.highlight) {
+          const highlight = element('span', part.highlight);
+          highlight.className = 'reminder-highlight';
+          content.append(highlight);
           continue;
         }
         const link = element('a', part.text);
