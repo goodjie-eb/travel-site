@@ -269,7 +269,10 @@ const trips = [{
       ] },
       { time: '13:30', highlight: '伏見稻荷大社、千本鳥居', notes: [
         '📍 停留約1個半小時',
-        { icon: '🚇', line: '搭 ', badge: '京阪本線', details: ['到 神宮丸太町 (26分鐘)'] },
+        {
+          icon: '🚇', line: '搭 ', badge: '京阪本線',
+          details: ['到 神宮丸太町', { bold: '車費約 ¥300', suffix: ' (26分鐘)' }]
+        },
         { icon: '🚶', line: '走10分鐘' }
       ], photosBelowHeading: true, photoMode: 'overlay', photos: [
         { src: './codex-clipboard-42c21236-85a4-42e4-8330-a2a09cb0b3da.png', alt: '伏見稻荷大社的社殿與石階' },
@@ -282,7 +285,10 @@ const trips = [{
         { icon: '🚶', line: '神宮丸太町→店 (6分鐘)' },
         { text: 'Gotō Sports', href: 'https://maps.app.goo.gl/n4gfjrNNr13wnTVs7' },
         '📍 停留至17:20',
-        { icon: '🚇', line: '搭 ', badge: '京阪本線', details: ['神宮丸太町→祗園四條 (20分鐘)'] }
+        {
+          icon: '🚇', line: '搭 ', badge: '京阪本線',
+          details: ['神宮丸太町→祗園四條', { bold: '車費約 ¥240', suffix: ' (10分鐘)' }]
+        }
       ], photosBelowHeading: true, photoMode: 'overlay', photos: [
         { src: './codex-clipboard-d24dd278-543e-4972-b00b-f10172a7648c.png', alt: '荒神口鴨川上的跳石與河岸' },
         { src: './codex-clipboard-b1024e38-c6e4-4ba6-8ec3-af783c8431e0.png', alt: '鴨川跳石中的烏龜造型石塊' }
@@ -297,7 +303,10 @@ const trips = [{
         { src: './codex-clipboard-7dc33c36-e0b5-49c5-87e4-50a34951973b.png', alt: '富之上壽喜燒的店面' }
       ] },
       { time: '19:40', highlight: '回飯店', notes: [
-        { icon: '🚌', line: '四条京阪前→四条西洞院' }
+        {
+          icon: '🚌', line: '四条京阪前→四条西洞院',
+          details: [{ bold: '車費約 ¥230', suffix: ' (20分鐘)' }]
+        }
       ] }
     ] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [] },
