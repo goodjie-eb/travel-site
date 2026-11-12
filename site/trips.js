@@ -142,7 +142,10 @@ const trips = [{
         }
       ] },
       { time: '15:40', highlight: '自由活動', notes: ['18:10集合 慢慢走到餐廳'] },
-      { time: '18:30', highlight: '晚餐', notes: [{ text: '忍鬨燒肉 日本橋店', href: 'https://maps.app.goo.gl/tSCjVkUKKfzLY6Ek7' }], photoMode: 'overlay', photos: [
+      { time: '18:30', highlight: '晚餐', notes: [
+        { text: '忍鬨燒肉 日本橋店', href: 'https://maps.app.goo.gl/tSCjVkUKKfzLY6Ek7' },
+        { prefix: '預約時間：', emphasis: '18:30', suffix: '、6位' }
+      ], photoMode: 'overlay', photos: [
         { src: './codex-clipboard-682196ef-8ab0-4661-a72b-2055c25de85a.png', alt: '塞滿蔥花的厚切牛舌' },
         { src: './codex-clipboard-faa5c9c2-938c-452f-8b03-707d8e4a0670.png', alt: '燒肉拼盤與蛋黃牛肉卷' },
         { src: './codex-clipboard-03a4a0f2-b1d0-411d-8ec9-f576bc4491df.png', alt: '忍鬨燒肉日本橋店的店面招牌' }
