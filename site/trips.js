@@ -6,7 +6,7 @@ const trips = [{
     { title: '12/5', subtitle: '前往日本', items: [
       { time: '04:15', highlightTime: true, highlight: '集合', text: '桃園機場第1航廈 虎航7號櫃台' },
       { time: '07:00', highlight: '飛機起飛' },
-      { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
+      { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA)'] },
       { time: '12:14', highlight: '前往 天王寺', notes: [
         {
           icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', badgeSuffix: '(22)',
