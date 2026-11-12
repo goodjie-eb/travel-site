@@ -84,7 +84,10 @@ const trips = [{
     { title: '12/7', subtitle: '勝尾寺', items: [
       { time: '06:30', highlight: '出門', notes: [
         { icon: '🚶', line: '到 天王寺車站 (15分鐘)' },
-        { icon: '🚇', line: '搭 ', badge: '御堂筋線', route: '至 箕面萱野站 (45分鐘)', routeBelow: true }
+        {
+          icon: '🚇', line: '搭 ', badge: '御堂筋線',
+          details: ['至 箕面萱野站 (45分鐘)', { bold: '車費約 ¥580' }]
+        }
       ] },
       { time: '07:30', highlight: '箕面萱野站', notes: [
         {
@@ -129,13 +132,13 @@ const trips = [{
       { time: '14:00', highlight: '到 阪急箕面站', notes: [
         {
           icon: '🚌', line: '搭回 箕面萱野站 (15分鐘)',
-          details: ['(36號、21號公車)', '約14:20到']
+          details: ['(36號、21號公車)', '約14:20到', { bold: '車費約 ¥250' }]
         }
       ] },
       { time: '15:00', highlight: '回 大阪市區', notes: [
         {
           icon: '🚇', line: '搭 ', badge: '御堂筋線',
-          details: ['至 心齋橋站 (35分鐘)', '約 15:35抵達']
+          details: ['至 心齋橋站 (35分鐘)', '約 15:35抵達', { bold: '車費約 ¥530' }]
         }
       ] },
       { time: '15:40', highlight: '自由活動', notes: ['18:10集合 慢慢走到餐廳'] },
