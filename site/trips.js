@@ -168,11 +168,21 @@ const trips = [{
         { icon: '🍱', badge: '晚餐選擇', badgeColor: 'black' },
         { text: '東洋亭 百年漢堡排', href: 'https://maps.app.goo.gl/xdbjAtcy693DuTeu9' },
         '午餐優惠~ 17:00止 (要吃要趕一下)',
-        '或是不趕 直接吃正常時段'
-      ], photoMode: 'overlay', photos: [
-        { src: './codex-clipboard-4b1b206c-5596-413c-989a-5aef9b782e1d.png', alt: '東洋亭鋁箔包漢堡排' },
-        { src: './codex-clipboard-f73995c7-8c7d-4695-8028-24b333dd506c.png', alt: '荷包蛋與菇類佐漢堡排' },
-        { src: './codex-clipboard-ff9fbcdb-ba9f-452e-afb3-34effb06b8ee.png', alt: '東洋亭的洋食展示櫥窗' }
+        '或是不趕 直接吃正常時段',
+        { photoLabel: '東洋亭 百年漢堡排', photoMode: 'overlay', photos: [
+          { src: './codex-clipboard-4b1b206c-5596-413c-989a-5aef9b782e1d.png', alt: '東洋亭鋁箔包漢堡排' },
+          { src: './codex-clipboard-f73995c7-8c7d-4695-8028-24b333dd506c.png', alt: '荷包蛋與菇類佐漢堡排' },
+          { src: './codex-clipboard-ff9fbcdb-ba9f-452e-afb3-34effb06b8ee.png', alt: '東洋亭的洋食展示櫥窗' }
+        ] },
+        { text: '麵屋 豬一 離れ', href: 'https://maps.app.goo.gl/HgE293SwGxuEStZo6' },
+        '只能現場排隊',
+        '晚餐17:30開始',
+        '約半小時前去抽登記',
+        { photoLabel: '麵屋 豬一 離れ', photoMode: 'overlay', photos: [
+          { src: './codex-clipboard-2663953f-0867-48c4-b1d3-ab2507bdd944.png', alt: '麵屋豬一的牛肉拉麵' },
+          { src: './codex-clipboard-17187123-06d8-4f21-a806-9651ac190bfa.png', alt: '麵屋豬一的叉燒拉麵' },
+          { src: './codex-clipboard-2ebf07d3-e35c-4e58-9fae-173ecc95cc27.png', alt: '麵屋豬一離れ的店面' }
+        ] }
       ] }
     ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
@@ -246,6 +256,45 @@ function showTrip(trip) {
   const reminders = document.createElement('ul');
   reminders.className = 'travel-notes trip-reminders';
   reminders.setAttribute('role', 'list');
+  function createTripGallery(photoGroup, id, label) {
+    const photos = document.createElement('div');
+    photos.className = 'trip-photos' + (photoGroup.photoMode === 'overlay' && photoGroup.photos.length > 1 ? ' photo-carousel' : '');
+    const gallery = document.createElement('div');
+    gallery.className = 'hotel-gallery';
+    gallery.id = id;
+    gallery.setAttribute('aria-label', label + '照片');
+    photoGroup.photos.forEach(photo => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'hotel-photo';
+      button.setAttribute('aria-label', '放大' + photo.alt);
+      const image = document.createElement('img');
+      image.src = photo.src;
+      image.alt = photo.alt;
+      image.loading = 'lazy';
+      image.width = 600;
+      image.height = 600;
+      button.append(image);
+      gallery.append(button);
+    });
+    const controls = document.createElement('div');
+    controls.className = 'gallery-controls';
+    const previous = element('button', photoGroup.photoMode === 'overlay' ? '‹' : '←');
+    const next = element('button', photoGroup.photoMode === 'overlay' ? '›' : '→');
+    [previous, next].forEach((button, i) => {
+      button.type = 'button';
+      button.dataset.galleryStep = i ? '1' : '-1';
+      button.setAttribute('aria-controls', gallery.id);
+      button.setAttribute('aria-label', i ? '下一張照片' : '上一張照片');
+    });
+    const count = document.createElement('span');
+    count.className = 'gallery-count';
+    count.setAttribute('aria-live', 'polite');
+    controls.append(previous, count, next);
+    photos.append(gallery, controls);
+    return photos;
+  }
+
   // 單日與分組共用同一套時間軸、文字與照片呈現。
   function renderItems(items, target, galleryPrefix) {
     if (items.length) {
@@ -266,7 +315,12 @@ function showTrip(trip) {
           content.append(title);
         }
         if (item.text) content.append(element('p', item.text));
-        for (const note of item.notes || []) {
+        const galleryId = 'trip-gallery-' + galleryPrefix + '-' + list.children.length;
+        for (const [index, note] of (item.notes || []).entries()) {
+          if (note.photos?.length) {
+            content.append(createTripGallery(note, galleryId + '-note-' + index, note.photoLabel));
+            continue;
+          }
           const paragraph = document.createElement('p');
           if (typeof note === 'string') paragraph.textContent = note;
           else if (note.highlight && !note.badge) paragraph.append(element('strong', note.highlight));
@@ -333,41 +387,7 @@ function showTrip(trip) {
           content.append(paragraph);
         }
         if (item.photos?.length) {
-          const photos = document.createElement('div');
-          photos.className = 'trip-photos' + (item.photoMode === 'overlay' && item.photos.length > 1 ? ' photo-carousel' : '');
-          const gallery = document.createElement('div');
-          gallery.className = 'hotel-gallery';
-          gallery.id = 'trip-gallery-' + galleryPrefix + '-' + list.children.length;
-          gallery.setAttribute('aria-label', item.highlight + '照片');
-          item.photos.forEach(photo => {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'hotel-photo';
-            button.setAttribute('aria-label', '放大' + photo.alt);
-            const image = document.createElement('img');
-            image.src = photo.src;
-            image.alt = photo.alt;
-            image.loading = 'lazy';
-            image.width = 600;
-            image.height = 600;
-            button.append(image);
-            gallery.append(button);
-          });
-          const controls = document.createElement('div');
-          controls.className = 'gallery-controls';
-          const previous = element('button', item.photoMode === 'overlay' ? '‹' : '←');
-          const next = element('button', item.photoMode === 'overlay' ? '›' : '→');
-          [previous, next].forEach((button, i) => {
-            button.type = 'button';
-            button.dataset.galleryStep = i ? '1' : '-1';
-            button.setAttribute('aria-controls', gallery.id);
-            button.setAttribute('aria-label', i ? '下一張照片' : '上一張照片');
-          });
-          const count = document.createElement('span');
-          count.className = 'gallery-count';
-          count.setAttribute('aria-live', 'polite');
-          controls.append(previous, count, next);
-          photos.append(gallery, controls);
+          const photos = createTripGallery(item, galleryId, item.highlight);
           if (item.photosBelowHeading && item.highlight) {
             content.firstElementChild.after(photos);
           } else {
