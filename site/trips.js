@@ -228,10 +228,34 @@ const trips = [{
         { text: '京都 いとおかし', href: 'https://maps.app.goo.gl/4XatDEfKUdRCrHX68' },
         { prefix: '預約時間：', emphasis: '08:00', suffix: '、4+1位' },
         '遲到15分鐘會取消',
-        '🍱極厚烤銀鮭定食'
-      ], photoMode: 'overlay', photos: [
-        { src: './codex-clipboard-43e67d98-c993-49ca-ace8-87169a1b53c6.png', alt: '京都 いとおかし 餐廳外觀' },
-        { src: './codex-clipboard-dcf872f6-f56f-4048-8792-f0abaf495cc2.png', alt: '京都 いとおかし 極厚烤銀鮭定食' }
+        '🍱極厚烤銀鮭定食',
+        { photoLabel: '京都 いとおかし', photoMode: 'overlay', photos: [
+          { src: './codex-clipboard-43e67d98-c993-49ca-ace8-87169a1b53c6.png', alt: '京都 いとおかし 餐廳外觀' },
+          { src: './codex-clipboard-dcf872f6-f56f-4048-8792-f0abaf495cc2.png', alt: '京都 いとおかし 極厚烤銀鮭定食' }
+        ] },
+        { icon: '🚶', line: '散步 15分鐘' }
+      ] },
+      { time: '09:20', highlight: '買抹茶粉、吃生乳捲', notes: [
+        { text: '丸久小山園 西洞院店', href: 'https://maps.app.goo.gl/dSBG81pVE4u5DNPA6' },
+        '09:30 販賣部開',
+        '10:30 茶房開',
+        { photoLabel: '丸久小山園 西洞院店', photoMode: 'overlay', photos: [
+          { src: './codex-clipboard-cbc9a29d-45df-4cb9-bc99-7bb8562c3aff.png', alt: '丸久小山園的抹茶商品展示櫃' },
+          { src: './codex-clipboard-700928da-b773-418f-9833-87fddd3d5ea2.png', alt: '抹茶生乳捲' },
+          { src: './codex-clipboard-3c006b33-9ae7-4f4e-b05f-d2f5abb78aa9.png', alt: '抹茶甜點與鮮奶油' }
+        ] },
+        '等茶房開的時間可以去拜拜',
+        { text: '御金神社', href: 'https://maps.app.goo.gl/a5taHPYEKbnFk75FA' },
+        { photoLabel: '御金神社', photoMode: 'overlay', photos: [
+          { src: './codex-clipboard-5e31a840-ce93-46a2-b93e-770c66b7d407.png', alt: '御金神社的金色鳥居' },
+          { src: './codex-clipboard-299f7a24-5703-42f8-9af2-e4df9394e4a6.png', alt: '御金神社的御守與授與品' }
+        ] },
+        { icon: '🚶', line: '到 烏丸御池站' },
+        { icon: '🚇', line: '搭 ', badge: '烏丸線', badgeColor: 'green', details: ['至 京都站'] },
+        {
+          icon: '🚈', line: '轉 ', badge: 'JR奈良線', badgeColor: 'brown',
+          details: ['至 JR稻荷站', { bold: '車費約 ¥370', suffix: ' (40分鐘)' }]
+        }
       ] }
     ] },
     { title: '12/11', subtitle: '嵐山一日遊', items: [] },
@@ -387,6 +411,7 @@ function showTrip(trip) {
             for (const detail of note.details || []) {
               const text = typeof detail === 'string' ? detail : element('b', detail.bold);
               label.append(document.createElement('br'), text);
+              if (typeof detail !== 'string' && detail.suffix) label.append(detail.suffix);
             }
             line.append(icon, label);
             paragraph.append(line);
