@@ -4,12 +4,14 @@ const trips = [{
   dates: '12/5 至 12/12',
   days: [
     { title: '12/5', subtitle: '前往日本', items: [
-      { time: '04:30', highlight: '集合', text: '桃園機場第1航廈 虎航7號櫃台' },
+      { time: '04:15', highlightTime: true, highlight: '集合', text: '桃園機場第1航廈 虎航7號櫃台' },
       { time: '07:00', highlight: '飛機起飛' },
       { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
       { time: '12:14', highlight: '前往 天王寺', notes: [
-        { icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', badgeSuffix: '(22)', route: '約12:48抵達' },
-        '後面班次：12:44、13:14',
+        {
+          icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', badgeSuffix: '(22)',
+          route: '約12:48抵達', followUp: '後面班次：12:44、13:14'
+        },
         { icon: '🚶', line: '到飯店 ', text: 'YUMERA Hotel', href: '?page=stay' }
       ] },
       { time: '13:20', highlight: '飯店 寄放行李' },
@@ -231,6 +233,7 @@ function showTrip(trip) {
         const row = document.createElement('li');
         const time = element('time', item.time);
         time.setAttribute('datetime', item.time);
+        if (item.highlightTime) time.classList.add('timeline-time-highlight');
         const content = document.createElement('div');
         content.className = 'timeline-content';
         // 黃色畫線粗體稱為「大標」；大標獨立一行，一般文字一律從下一段開始。
@@ -276,6 +279,11 @@ function showTrip(trip) {
               const route = element('span', note.route);
               route.className = 'transit-route';
               paragraph.append(route);
+            }
+            if (note.followUp) {
+              const followUp = element('span', note.followUp);
+              followUp.className = 'transit-follow-up';
+              paragraph.append(followUp);
             }
           } else if (note.href || note.parts) {
             for (const part of note.parts || [note]) {
