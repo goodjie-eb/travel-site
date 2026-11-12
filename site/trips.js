@@ -131,7 +131,16 @@ const trips = [{
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
       { time: '11:00', highlight: '退房', notes: ['寄放行李'] },
-      { time: '12:00', highlight: '午餐', notes: ['新世界區吃炸串 (隨意找)', '關東煮白味增牛筋'] },
+      { time: '12:00', highlight: '午餐', notes: [
+        '新世界區吃炸串 (隨意找)',
+        { text: '土手燒 Nonkiya（のんきや）', href: 'https://maps.app.goo.gl/NVbNKwAF22nD8M6x8' },
+        '關東煮、味增牛筋',
+        '立食、10個位子、只收現金'
+      ], photoMode: 'overlay', photos: [
+        { src: './codex-clipboard-fd9b4ec5-de48-42a8-b719-78c0f1d40d66.png', alt: '味噌燉牛筋串' },
+        { src: './codex-clipboard-0357af22-4890-43aa-af3a-5115db1d8e38.png', alt: '關東煮的白蘿蔔與魚板' },
+        { src: './codex-clipboard-30cbf632-571b-4146-80fc-a385d9c11f8a.png', alt: 'Nonkiya 店門的紅色布簾與立食吧檯' }
+      ] },
       { time: '13:00', highlight: '陪佳怡最後逛逛' },
       { time: '14:30', highlight: '到飯店拿行李', notes: [
         '佳怡往機場 約16:00到',
