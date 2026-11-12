@@ -8,7 +8,7 @@ const trips = [{
       { time: '07:00', highlight: '飛機起飛' },
       { time: '10:25', highlight: '抵達 關西機場', notes: ['入境抓1小時、出來後一樓換票券(HARUKA、JR迷你PASS)', 'HARUKA劃位'] },
       { time: '12:14', highlight: '前往 天王寺', notes: [
-        { icon: '🚈', line: 'HARUKA(22)', route: '約12:48抵達' },
+        { icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', badgeSuffix: '(22)', route: '約12:48抵達' },
         '後面班次：12:44、13:14',
         { icon: '🚶', line: '到飯店 ', text: 'YUMERA Hotel', href: '?page=stay' }
       ] },
@@ -247,7 +247,10 @@ function showTrip(trip) {
               const badge = element('span', note.badge);
               badge.className = 'transit-line-badge';
               if (note.badgeColor) badge.dataset.color = note.badgeColor;
-              label.append(badge);
+              const trainName = document.createElement('span');
+              trainName.className = 'transit-badge-group';
+              trainName.append(badge, note.badgeSuffix || '');
+              label.append(trainName);
             }
             if (note.href) {
               const link = element('a', note.text);
