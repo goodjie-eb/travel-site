@@ -159,21 +159,22 @@ const trips = [{
       ] }
     ] },
     { title: '12/8', subtitle: '移動至京都', items: [
-      { time: '11:00', highlight: '退房', notes: [
-        '可提早退，寄放行李',
+      { time: '10:00', highlight: '退房', notes: [
+        '提早退，寄放行李',
         { icon: '🚶', line: '散步到 新世界(20分鐘)', details: ['(搭車差不多時間)'] }
       ] },
-      { time: '12:00', highlight: '午餐', notes: [
-        { parts: ['新世界區', { bold: '吃炸串' }, ' (隨意找)'] },
+      { time: '10:30', highlight: '午餐', notes: [
         { text: '土手燒 Nonkiya（のんきや）', href: 'https://maps.app.goo.gl/NVbNKwAF22nD8M6x8' },
         '關東煮、味增牛筋',
-        '立食、10個位子、只收現金'
-      ], photoMode: 'overlay', photos: [
-        { src: './codex-clipboard-fd9b4ec5-de48-42a8-b719-78c0f1d40d66.png', alt: '味噌燉牛筋串' },
-        { src: './codex-clipboard-0357af22-4890-43aa-af3a-5115db1d8e38.png', alt: '關東煮的白蘿蔔與魚板' },
-        { src: './codex-clipboard-30cbf632-571b-4146-80fc-a385d9c11f8a.png', alt: 'Nonkiya 店門的紅色布簾與立食吧檯' }
+        '立食、10個位子、只收現金',
+        { photoLabel: '土手燒 Nonkiya（のんきや）', photoMode: 'overlay', photos: [
+          { src: './codex-clipboard-fd9b4ec5-de48-42a8-b719-78c0f1d40d66.png', alt: '味噌燉牛筋串' },
+          { src: './codex-clipboard-0357af22-4890-43aa-af3a-5115db1d8e38.png', alt: '關東煮的白蘿蔔與魚板' },
+          { src: './codex-clipboard-30cbf632-571b-4146-80fc-a385d9c11f8a.png', alt: 'Nonkiya 店門的紅色布簾與立食吧檯' }
+        ] },
+        { parts: ['新世界區', { bold: '吃炸串' }, ' (隨意找)'] }
       ] },
-      { time: '13:00', highlight: '陪佳怡最後逛逛' },
+      { highlight: '自由活動、最後陪佳怡' },
       { time: '14:15', highlight: '到飯店拿行李', notes: [
         '佳怡往機場 約16:00到',
         { icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', highlight: '往京都' },
@@ -470,9 +471,12 @@ function showTrip(trip) {
       items.forEach(item => {
         if (typeof item === 'string') { list.append(element('li', item)); return; }
         const row = document.createElement('li');
-        const time = element('time', item.time);
-        time.setAttribute('datetime', item.time);
-        if (item.highlightTime) time.classList.add('timeline-time-highlight');
+        if (item.time) {
+          const time = element('time', item.time);
+          time.dateTime = item.time;
+          if (item.highlightTime) time.classList.add('timeline-time-highlight');
+          row.append(time);
+        }
         const content = document.createElement('div');
         content.className = 'timeline-content';
         // 黃色畫線粗體稱為「大標」；大標獨立一行，一般文字一律從下一段開始。
@@ -569,7 +573,7 @@ function showTrip(trip) {
             content.append(photos);
           }
         }
-        row.append(time, content);
+        row.append(content);
         list.append(row);
       });
       target.append(list);
