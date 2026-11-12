@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#f3efe7">
   <title>十二月旅行手冊｜一起出發</title>
-  <script src="./trips.js?v=dec08-nonkiya" defer></script>
+  <script src="./trips.js?v=dec05-early-meeting" defer></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;900&amp;display=swap">
   <style>
@@ -127,6 +127,7 @@
     .trip-timeline li:last-child { padding-bottom:0; }
     .trip-timeline li:last-child::before { display:none; }
     .trip-timeline time { font-weight:600; font-variant-numeric:tabular-nums; }
+    .trip-timeline .timeline-time-highlight { align-self:start; justify-self:start; padding:0 .25em; background:#d92312; color:#fff; }
     .trip-timeline .time-emphasis { color:#12618f; font-weight:600; }
     .timeline-content { min-width:0; overflow-wrap:anywhere; }
     .timeline-content .transit-note { display:grid; grid-template-columns:minmax(0,1fr); }
@@ -135,6 +136,7 @@
     .transit-line-badge[data-color="brown"] { background:#80512a; }
     .transit-line-badge[data-color="blue"] { background:#263a85; }
     .transit-badge-group { white-space:nowrap; }
+    .transit-follow-up { grid-column:1 / -1; padding-left:1.75em; }
     .transit-route { padding-left:1.5em; word-break:keep-all; overflow-wrap:normal; }
     @media(min-width:601px) {
       .timeline-content .transit-note:has(.transit-route):not(.transit-note-stacked) { grid-template-columns:minmax(7em,max-content) minmax(0,1fr); column-gap:.75em; }
