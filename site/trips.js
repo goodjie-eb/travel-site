@@ -174,14 +174,15 @@ const trips = [{
           { src: './codex-clipboard-f73995c7-8c7d-4695-8028-24b333dd506c.png', alt: '荷包蛋與菇類佐漢堡排' },
           { src: './codex-clipboard-ff9fbcdb-ba9f-452e-afb3-34effb06b8ee.png', alt: '東洋亭的洋食展示櫥窗' }
         ] },
-        { text: '麵屋 豬一 離れ', href: 'https://maps.app.goo.gl/HgE293SwGxuEStZo6' },
+        { text: '麵屋 豬一 本店', href: 'https://maps.app.goo.gl/vMfTKMDLJnRJPCRF9' },
+        { text: '麵屋 豬一 二店', href: 'https://maps.app.goo.gl/HgE293SwGxuEStZo6' },
         '只能現場排隊',
         '晚餐17:30開始',
-        '約半小時前去抽登記',
-        { photoLabel: '麵屋 豬一 離れ', photoMode: 'overlay', photos: [
+        '約1小時前去抽號碼',
+        { photoLabel: '麵屋 豬一 二店', photoMode: 'overlay', photos: [
           { src: './codex-clipboard-2663953f-0867-48c4-b1d3-ab2507bdd944.png', alt: '麵屋豬一的牛肉拉麵' },
           { src: './codex-clipboard-17187123-06d8-4f21-a806-9651ac190bfa.png', alt: '麵屋豬一的叉燒拉麵' },
-          { src: './codex-clipboard-2ebf07d3-e35c-4e58-9fae-173ecc95cc27.png', alt: '麵屋豬一離れ的店面' }
+          { src: './codex-clipboard-2ebf07d3-e35c-4e58-9fae-173ecc95cc27.png', alt: '麵屋豬一二店的店面' }
         ] }
       ] }
     ] },
