@@ -45,7 +45,10 @@ const trips = [{
       { title: '環球影城組', items: [
         { time: '05:40', highlight: '出門', notes: [
           { icon: '🚈', badge: '大阪環狀線', route: '天王寺→ 西九條' },
-          { icon: '🚈', badge: 'JR夢咲線', badgeColor: 'blue', route: '西九條→ 環球影城' }
+          {
+            icon: '🚈', badge: 'JR夢咲線', badgeColor: 'blue',
+            route: '西九條→ 環球影城', followUp: { bold: '車費約 ¥240' }
+          }
         ] },
         {
           time: '08:00', highlight: '入園',
@@ -56,7 +59,14 @@ const trips = [{
             { src: './codex-clipboard-2935b1a9-44ac-44b2-b6a0-3d7d75ec77dd.png', alt: '哈利波特園區的霍格華茲城堡' }
           ]
         },
-        { time: '22:00', highlight: '閉園', notes: ['有體力就玩到最後，累就提早回家'] }
+        { time: '22:00', highlight: '閉園', notes: [
+          '有體力就玩到最後，累就提早回家',
+          { icon: '🚈', badge: 'JR夢咲線', badgeColor: 'blue', route: '環球影城→ 西九條' },
+          {
+            icon: '🚈', badge: '大阪環狀線',
+            route: '西九條→ 天王寺', followUp: { bold: '車費約 ¥240' }
+          }
+        ] }
       ], reminders: [{ prefix: '請下載 ', text: '環球影城APP', href: 'https://apps.apple.com/cn/app/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB-%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA-%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3-%E5%85%AC%E5%BC%8F%E3%82%A2%E3%83%97%E3%83%AA/id532097000' },
         '門票、快速通關 請點群組記事本',
         { prefix: '看快速通關時間 ', text: '請點', dialog: { title: '快速通關時間', items: [
@@ -363,7 +373,9 @@ function showTrip(trip) {
               paragraph.append(route);
             }
             if (note.followUp) {
-              const followUp = element('span', note.followUp);
+              const followUp = typeof note.followUp === 'string'
+                ? element('span', note.followUp)
+                : element('b', note.followUp.bold);
               followUp.className = 'transit-follow-up';
               paragraph.append(followUp);
             }
