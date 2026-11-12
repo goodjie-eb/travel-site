@@ -152,12 +152,16 @@ const trips = [{
         { src: './codex-clipboard-30cbf632-571b-4146-80fc-a385d9c11f8a.png', alt: 'Nonkiya 店門的紅色布簾與立食吧檯' }
       ] },
       { time: '13:00', highlight: '陪佳怡最後逛逛' },
-      { time: '14:30', highlight: '到飯店拿行李', notes: [
+      { time: '14:15', highlight: '到飯店拿行李', notes: [
         '佳怡往機場 約16:00到',
-        { highlight: 'HARUKA往京都' },
+        { icon: '🚈', badge: 'HARUKA', badgeColor: 'blue', highlight: '往京都' },
         '28號：14:20~ 15:04',
         { prefix: '', emphasis: '30號：14:50~ 15:34', suffix: '' },
-        '32號：15:20~ 16:04'
+        '32號：15:20~ 16:04',
+        {
+          icon: '🚇', line: '搭 ', badge: '烏丸線', badgeColor: 'green',
+          details: ['到 四條站 (電梯4號出口)', '走路6分鐘']
+        }
       ] }
     ] },
     { title: '12/9', subtitle: '宇治、奈良', items: [] },
@@ -254,7 +258,7 @@ function showTrip(trip) {
         for (const note of item.notes || []) {
           const paragraph = document.createElement('p');
           if (typeof note === 'string') paragraph.textContent = note;
-          else if (note.highlight) paragraph.append(element('strong', note.highlight));
+          else if (note.highlight && !note.badge) paragraph.append(element('strong', note.highlight));
           else if (note.line || note.badge) {
             paragraph.className = 'transit-note';
             if (note.routeBelow) paragraph.classList.add('transit-note-stacked');
@@ -271,6 +275,7 @@ function showTrip(trip) {
               trainName.className = 'transit-badge-group';
               trainName.append(badge, note.badgeSuffix || '');
               label.append(trainName);
+              if (note.highlight) label.append(' ', element('strong', note.highlight));
             }
             if (note.href) {
               const link = element('a', note.text);
