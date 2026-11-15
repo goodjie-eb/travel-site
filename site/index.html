@@ -202,8 +202,8 @@
     .timeline-content p:last-child { margin-bottom:0; }
     .timeline-content .trip-photos + p { margin-top:12px; }
     .trip-timeline strong { font-weight:600; }
-    .trip-timeline strong,.trip-reminders .reminder-highlight { padding:0 .12em; background:linear-gradient(transparent 45%,var(--marker-color,#ffc324) 45%,var(--marker-color,#ffc324) 92%,transparent 92%); box-decoration-break:clone; -webkit-box-decoration-break:clone; }
-    .trip-reminders .reminder-highlight { --marker-color:#ef498c; }
+    .trip-timeline strong,.trip-reminders .reminder-highlight,.packing-highlight { padding:0 .12em; background:linear-gradient(transparent 45%,var(--marker-color,#ffc324) 45%,var(--marker-color,#ffc324) 92%,transparent 92%); box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+    .trip-reminders .reminder-highlight,.packing-highlight { --marker-color:#ef498c; }
     @media(max-width:420px) { .trip-timeline li { grid-template-columns:50px minmax(0,1fr); gap:40px; } .trip-timeline li::before { left:64px; } .trip-timeline li::after { left:58.5px; } }
   </style>
   <script>
@@ -304,19 +304,19 @@
       <section class="packing-card" aria-labelledby="packing-carry-on">
         <h3 id="packing-carry-on">隨身行李</h3>
         <div class="checks">
-          <label><input type="checkbox" value="pack-power-bank"><span>行動電源</span></label>
-          <label><input type="checkbox" value="pack-camera"><span>相機</span></label>
-          <label><input type="checkbox" value="pack-medication"><span>個人藥物</span></label>
-          <label><input type="checkbox" value="pack-phone"><span>手機</span></label>
-          <label><input type="checkbox" value="pack-mask"><span>口罩</span></label>
-          <label><input type="checkbox" value="pack-water-bottle"><span>隨身水壺</span></label>
-          <label><input type="checkbox" value="pack-tissues"><span>面紙</span></label>
-          <label><input type="checkbox" value="pack-shopping-bag"><span>購物袋</span></label>
-          <label><input type="checkbox" value="pack-sunglasses"><span>墨鏡</span></label>
-          <label><input type="checkbox" value="pack-passport"><span>護照</span></label>
+          <label><input type="checkbox" value="pack-passport"><span><strong class="packing-highlight">護照</strong></span></label>
           <label><input type="checkbox" value="pack-passport-copy"><span>護照影本</span></label>
+          <label><input type="checkbox" value="pack-power-bank"><span><strong class="packing-highlight">行動電源</strong></span></label>
+          <label><input type="checkbox" value="pack-phone"><span>手機</span></label>
           <label><input type="checkbox" value="pack-yen-wallet"><span>日幣錢包</span></label>
           <label><input type="checkbox" value="pack-twd-wallet"><span>台幣錢包(含證件)</span></label>
+          <label><input type="checkbox" value="pack-mask"><span>口罩</span></label>
+          <label><input type="checkbox" value="pack-water-bottle"><span>隨身水壺</span></label>
+          <label><input type="checkbox" value="pack-camera"><span>相機</span></label>
+          <label><input type="checkbox" value="pack-medication"><span>個人藥品</span></label>
+          <label><input type="checkbox" value="pack-tissues"><span>面紙</span></label>
+          <label><input type="checkbox" value="pack-sunglasses"><span>墨鏡</span></label>
+          <label><input type="checkbox" value="pack-shopping-bag"><span>購物袋</span></label>
         </div>
       </section>
       <section class="packing-card packing-card-checked" aria-labelledby="packing-checked">
