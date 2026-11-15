@@ -70,6 +70,9 @@
     nav { counter-reset:chapter; } nav a { text-align:left; padding:8px; font-weight:900; box-shadow:2px 3px var(--ink); } nav a::before { display:block; counter-increment:chapter; content:'0' counter(chapter); font:italic 900 20px Arial,sans-serif; }
     nav a:nth-child(1) { background:#ffc324; } nav a:nth-child(2) { background:#ffacc8; } nav a:nth-child(3) { background:#b4dbe8; }
     .sheet { margin-top:16px; border-top:6px solid var(--moss); } summary { font-weight:600; } .day-grid button[aria-pressed=true] { background:#fff3ca; color:var(--ink); }
+    .prepare-grid button { padding-inline:8px; }
+    .prepare-grid small { display:block; font-size:.8em; line-height:1.4; font-weight:400; }
+    @media(max-width:600px) { .day-grid.prepare-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     main > section, footer { display:none; }
     html[data-page] #front-page { display:none; }
     html[data-page] footer { display:flex; }
@@ -254,13 +257,38 @@
 
 </div>
   <section id="prepare"><div class="section-head"><h2>行前準備</h2><span class="folio">01 / PREPARE</span></div>
-    <h3>出發清單</h3><p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p><div class="checks">
-    <label><input type="checkbox" value="travel-data"><span>買好旅途網路，確認使用時間</span></label>
-    <label><input type="checkbox" value="overseas-card"><span>確認信用卡海外消費開通</span></label>
-    <label><input type="checkbox" value="document-copies"><span>護照、身分證影印備份，兩吋照片 2 張</span></label>
+    <div class="day-grid prepare-grid" role="group" aria-label="行前準備分類">
+      <button type="button" aria-controls="prepare-checklist" aria-pressed="true">行前準備<small>逐項打勾確認清單</small></button>
+      <button type="button" aria-controls="prepare-entry" aria-pressed="false">入境須知</button>
+      <button type="button" aria-controls="prepare-tax" aria-pressed="false">退稅方式</button>
+      <button type="button" aria-controls="prepare-packing" aria-pressed="false">行李打包<small>逐項打勾確認清單</small></button>
     </div>
-    <details><summary>入境須知</summary><p>目的地與旅行年份確認後，這裡會列出入境文件、申報流程及官方連結。</p></details>
-    <details><summary>退稅方式</summary><p>目的地與旅行年份確認後，這裡會列出適用條件、單據與辦理地點。</p></details>
+    <section id="prepare-checklist" class="sheet" aria-labelledby="prepare-checklist-title">
+      <h3 id="prepare-checklist-title">出發清單</h3>
+      <p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p>
+      <div class="checks">
+        <label><input type="checkbox" value="travel-data"><span>買好旅途網路，確認使用時間</span></label>
+        <label><input type="checkbox" value="overseas-card"><span>確認信用卡海外消費開通</span></label>
+        <label><input type="checkbox" value="document-copies"><span>護照、身分證影印備份，兩吋照片 2 張</span></label>
+      </div>
+    </section>
+    <section id="prepare-entry" class="sheet" aria-labelledby="prepare-entry-title" hidden>
+      <h3 id="prepare-entry-title">入境須知</h3>
+      <p>目的地與旅行年份確認後，這裡會列出入境文件、申報流程及官方連結。</p>
+    </section>
+    <section id="prepare-tax" class="sheet" aria-labelledby="prepare-tax-title" hidden>
+      <h3 id="prepare-tax-title">退稅方式</h3>
+      <p>目的地與旅行年份確認後，這裡會列出適用條件、單據與辦理地點。</p>
+    </section>
+    <section id="prepare-packing" class="sheet" aria-labelledby="prepare-packing-title" hidden>
+      <h3 id="prepare-packing-title">行李打包清單</h3>
+      <p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p>
+      <div class="checks">
+        <label><input type="checkbox" value="pack-power-bank"><span>行動電源放入隨身行李</span></label>
+        <label><input type="checkbox" value="pack-camera"><span>相機放入隨身行李</span></label>
+        <label><input type="checkbox" value="pack-medication"><span>個人藥物放入隨身行李</span></label>
+      </div>
+    </section>
   </section>
   <section id="stay"><div class="section-head"><h2>住宿資訊</h2><span class="folio">02 / STAY</span></div>
     <article class="sheet item-list"><h3>大阪住宿　<span style="display:inline-block;font-size:16px;font-weight:600;letter-spacing:0">12/5(六)～12/8(二)</span></h3>
@@ -306,6 +334,17 @@
 </script>
 <dialog class="photo-dialog" aria-label="照片放大預覽"><div class="photo-preview"><img alt=""><button type="button" class="photo-close" aria-label="關閉照片預覽">×</button></div></dialog>
 <script>
+  const prepareButtons = document.querySelectorAll('.prepare-grid button');
+  for (const button of prepareButtons) {
+    button.addEventListener('click', () => {
+      for (const option of prepareButtons) {
+        const selected = option === button;
+        option.setAttribute('aria-pressed', String(selected));
+        document.getElementById(option.getAttribute('aria-controls')).hidden = !selected;
+      }
+    });
+  }
+
   const photoDialog = document.querySelector('.photo-dialog');
   const previewImage = photoDialog.querySelector('img');
   function initializePhotoGalleries(root = document) {
