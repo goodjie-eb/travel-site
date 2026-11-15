@@ -76,8 +76,15 @@
     .packing-card + .packing-card { margin-top:16px; }
     .packing-card-checked { --packing-accent:#12618f; }
     .packing-card h3 { margin:0; padding:9px 12px; text-align:center; color:white; background:var(--packing-accent); border-bottom:2px solid var(--ink); }
-    .packing-card .checks label { padding-inline:14px; }
-    .packing-card .checks label:last-child { border-bottom:0; }
+    .packing-card .checks { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .packing-card .checks label { min-width:0; padding-inline:12px; border-bottom:0; overflow-wrap:anywhere; }
+    @media(min-width:601px) {
+      .packing-card .checks label:nth-child(n+4) { border-top:1px solid var(--line); }
+    }
+    @media(max-width:600px) {
+      .packing-card .checks { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .packing-card .checks label:nth-child(n+3) { border-top:1px solid var(--line); }
+    }
     .packing-card input[type="checkbox"] { flex-shrink:0; accent-color:var(--packing-accent); }
     .prepare-check-break { display:none; }
     @media(max-width:600px) { .prepare-check-break { display:initial; } }
@@ -300,6 +307,16 @@
           <label><input type="checkbox" value="pack-power-bank"><span>行動電源</span></label>
           <label><input type="checkbox" value="pack-camera"><span>相機</span></label>
           <label><input type="checkbox" value="pack-medication"><span>個人藥物</span></label>
+          <label><input type="checkbox" value="pack-phone"><span>手機</span></label>
+          <label><input type="checkbox" value="pack-mask"><span>口罩</span></label>
+          <label><input type="checkbox" value="pack-water-bottle"><span>隨身水壺</span></label>
+          <label><input type="checkbox" value="pack-tissues"><span>面紙</span></label>
+          <label><input type="checkbox" value="pack-shopping-bag"><span>購物袋</span></label>
+          <label><input type="checkbox" value="pack-sunglasses"><span>墨鏡</span></label>
+          <label><input type="checkbox" value="pack-passport"><span>護照</span></label>
+          <label><input type="checkbox" value="pack-passport-copy"><span>護照影本</span></label>
+          <label><input type="checkbox" value="pack-yen-wallet"><span>日幣錢包</span></label>
+          <label><input type="checkbox" value="pack-twd-wallet"><span>台幣錢包(含證件)</span></label>
         </div>
       </section>
       <section class="packing-card packing-card-checked" aria-labelledby="packing-checked">
