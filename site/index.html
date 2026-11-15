@@ -71,7 +71,6 @@
     nav a:nth-child(1) { background:#ffc324; } nav a:nth-child(2) { background:#ffacc8; } nav a:nth-child(3) { background:#b4dbe8; }
     .sheet { margin-top:16px; border-top:6px solid var(--moss); } summary { font-weight:600; } .day-grid button[aria-pressed=true] { background:#fff3ca; color:var(--ink); }
     .prepare-grid button { padding-inline:8px; }
-    .prepare-grid small { display:block; font-size:.8em; line-height:1.4; font-weight:400; }
     @media(max-width:600px) { .day-grid.prepare-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     main > section, footer { display:none; }
     html[data-page] #front-page { display:none; }
@@ -258,10 +257,10 @@
 </div>
   <section id="prepare"><div class="section-head"><h2>行前準備</h2><span class="folio">01 / PREPARE</span></div>
     <div class="day-grid prepare-grid" role="group" aria-label="行前準備分類">
-      <button type="button" aria-controls="prepare-checklist" aria-pressed="true">行前準備<small>逐項打勾確認清單</small></button>
+      <button type="button" aria-controls="prepare-checklist" aria-pressed="true">行前準備</button>
       <button type="button" aria-controls="prepare-entry" aria-pressed="false">入境須知</button>
       <button type="button" aria-controls="prepare-tax" aria-pressed="false">退稅方式</button>
-      <button type="button" aria-controls="prepare-packing" aria-pressed="false">行李打包<small>逐項打勾確認清單</small></button>
+      <button type="button" aria-controls="prepare-packing" aria-pressed="false">行李打包</button>
     </div>
     <section id="prepare-checklist" class="sheet" aria-labelledby="prepare-checklist-title">
       <h3 id="prepare-checklist-title">出發清單</h3>
