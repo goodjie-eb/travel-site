@@ -71,6 +71,14 @@
     nav a:nth-child(1) { background:#ffc324; } nav a:nth-child(2) { background:#ffacc8; } nav a:nth-child(3) { background:#b4dbe8; }
     .sheet { margin-top:16px; border-top:6px solid var(--moss); } summary { font-weight:600; } .day-grid button[aria-pressed=true] { background:#fff3ca; color:var(--ink); }
     .prepare-grid button { padding-inline:8px; }
+    .packing-panel .hint { margin:0 0 12px; }
+    .packing-card { --packing-accent:#137d53; border:2px solid var(--ink); border-radius:4px; background:white; }
+    .packing-card + .packing-card { margin-top:16px; }
+    .packing-card-checked { --packing-accent:#12618f; }
+    .packing-card h3 { margin:0; padding:9px 12px; text-align:center; color:white; background:var(--packing-accent); border-bottom:2px solid var(--ink); }
+    .packing-card .checks label { padding-inline:14px; }
+    .packing-card .checks label:last-child { border-bottom:0; }
+    .packing-card input[type="checkbox"] { flex-shrink:0; accent-color:var(--packing-accent); }
     .prepare-check-break { display:none; }
     @media(max-width:600px) { .prepare-check-break { display:initial; } }
     @media(max-width:600px) { .day-grid.prepare-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
@@ -284,14 +292,23 @@
       <h3 id="prepare-tax-title">退稅方式</h3>
       <p>目的地與旅行年份確認後，這裡會列出適用條件、單據與辦理地點。</p>
     </section>
-    <section id="prepare-packing" class="sheet" aria-labelledby="prepare-packing-title" hidden>
-      <h3 id="prepare-packing-title">行李打包清單</h3>
+    <section id="prepare-packing" class="packing-panel" aria-label="行李打包清單" hidden>
       <p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p>
-      <div class="checks">
-        <label><input type="checkbox" value="pack-power-bank"><span>行動電源放入隨身行李</span></label>
-        <label><input type="checkbox" value="pack-camera"><span>相機放入隨身行李</span></label>
-        <label><input type="checkbox" value="pack-medication"><span>個人藥物放入隨身行李</span></label>
-      </div>
+      <section class="packing-card" aria-labelledby="packing-carry-on">
+        <h3 id="packing-carry-on">隨身行李</h3>
+        <div class="checks">
+          <label><input type="checkbox" value="pack-power-bank"><span>行動電源</span></label>
+          <label><input type="checkbox" value="pack-camera"><span>相機</span></label>
+          <label><input type="checkbox" value="pack-medication"><span>個人藥物</span></label>
+        </div>
+      </section>
+      <section class="packing-card packing-card-checked" aria-labelledby="packing-checked">
+        <h3 id="packing-checked">托運行李</h3>
+        <div class="checks">
+          <label><input type="checkbox" value="pack-clothes"><span>換洗衣物</span></label>
+          <label><input type="checkbox" value="pack-toiletries"><span>盥洗保養</span></label>
+        </div>
+      </section>
     </section>
   </section>
   <section id="stay"><div class="section-head"><h2>住宿資訊</h2><span class="folio">02 / STAY</span></div>
