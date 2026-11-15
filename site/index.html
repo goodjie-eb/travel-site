@@ -71,6 +71,8 @@
     nav a:nth-child(1) { background:#ffc324; } nav a:nth-child(2) { background:#ffacc8; } nav a:nth-child(3) { background:#b4dbe8; }
     .sheet { margin-top:16px; border-top:6px solid var(--moss); } summary { font-weight:600; } .day-grid button[aria-pressed=true] { background:#fff3ca; color:var(--ink); }
     .prepare-grid button { padding-inline:8px; }
+    .prepare-check-break { display:none; }
+    @media(max-width:600px) { .prepare-check-break { display:initial; } }
     @media(max-width:600px) { .day-grid.prepare-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     main > section, footer { display:none; }
     html[data-page] #front-page { display:none; }
@@ -266,11 +268,11 @@
       <h3 id="prepare-checklist-title">出發前 就先處理好！</h3>
       <p class="hint">可逐項打勾，進度存在目前的瀏覽器。</p>
       <div class="checks">
-        <label><input type="checkbox" value="travel-data"><span>買好網路 (漫遊或esim)，確認使用時間</span></label>
+        <label><input type="checkbox" value="travel-data"><span>買好網路 (漫遊或esim)，<br class="prepare-check-break">確認使用時間</span></label>
         <label><input type="checkbox" value="overseas-card"><span>確認信用卡海外消費開通</span></label>
-        <label><input type="checkbox" value="document-copies"><span>護照、身分證影印備份，兩吋照片 2 張</span></label>
+        <label><input type="checkbox" value="document-copies"><span>護照、身分證影印備份，<br class="prepare-check-break">兩吋照片 2 張</span></label>
         <label><input type="checkbox" value="travel-apps"><span>載好要用的APP</span></label>
-        <label><input type="checkbox" value="digital-transit-card"><span>確認數位交通卡設定(婕、敏、佳、菲)</span></label>
+        <label><input type="checkbox" value="digital-transit-card"><span>確認數位交通卡設定<br class="prepare-check-break">(婕、敏、佳、菲)</span></label>
         <label><input type="checkbox" value="visit-japan-web"><span>填寫入境資料 Visit Japan Web</span></label>
       </div>
     </section>
