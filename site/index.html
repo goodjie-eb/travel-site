@@ -91,6 +91,7 @@
     .entry-steps > li::marker { color:var(--moss); font-weight:700; }
     .entry-steps ul { margin:8px 0 0; padding-inline-start:1.25em; }
     .entry-followup { margin:6px 0 0; }
+    .entry-screenshot { display:block; max-width:100%; height:auto; margin:8px 0 0; }
     .entry-steps a { display:inline-flex; align-items:center; min-height:44px; font-weight:600; }
     .prepare-check-break { display:none; }
     @media(max-width:600px) { .prepare-check-break { display:initial; } }
@@ -302,10 +303,13 @@
       <h3 id="prepare-entry-title">入境須知</h3>
       <ol class="entry-steps">
         <li>開啟 <a href="https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" target="_blank" rel="noopener noreferrer">Visit Japan Web 官方入口</a>。</li>
-        <li>第一次使用：<strong>用自己的 Email 申請帳號</strong>，收信並輸入驗證碼。<br>
-          已經有帳號：直接到第4步</li>
-        <li>點「本人資料」，填寫個人資料，並依畫面指示讀取或輸入護照資料。</li>
+        <li><strong>第一次使用</strong>：<strong>用自己的 Email 申請帳號</strong>，收信並輸入驗證碼。<br>
+          <strong>已經有帳號</strong>：直接到第4步</li>
+        <li>點「本人資料」，填寫個人資料，並依畫面指示讀取或輸入護照資料。
+          <img class="entry-screenshot" src="./vjw-personal-details.jpg" alt="Visit Japan Web 的「本人資料」按鈕，已用紅框標示" width="329" height="289" loading="lazy">
+        </li>
         <li>點「登錄新的入境、回國預定」，選「不沿用並繼續登錄」。
+          <img class="entry-screenshot" src="./vjw-new-entry.jpg" alt="Visit Japan Web 的藍色「登錄新的入境、回國預定」按鈕" width="472" height="307" loading="lazy">
           <ul>
             <li>旅遊名稱：自行填寫</li>
             <li>抵達日本預定日：<time datetime="2026-12-05">2026 年 12 月 5 日</time></li>
@@ -323,7 +327,9 @@
           </ul>
         </li>
         <li>點「確認輸入內容」，檢查無誤後再點「登錄預定」。</li>
-        <li>開啟已登錄的行程，依序填寫「檢疫（健康狀況確認）」和「入境審查及海關申報」。</li>
+        <li>開啟已登錄的行程，依序填寫「檢疫（健康狀況確認）」和「入境審查及海關申報」。
+          <img class="entry-screenshot" src="./vjw-entry-procedures.jpg" alt="Visit Japan Web 的「檢疫」和「入境審查及海關申報」選項，已用紅框標示" width="288" height="284" loading="lazy">
+        </li>
         <li>點「顯示 QR 碼」，依畫面指示開啟後截圖存在自己的手機備用。抵達日本時可從 Visit Japan Web 出示 QR 碼。</li>
       </ol>
     </section>
