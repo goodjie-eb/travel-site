@@ -86,6 +86,12 @@
       .packing-card .checks label:nth-child(n+3) { border-top:1px solid var(--line); }
     }
     .packing-card input[type="checkbox"] { flex-shrink:0; accent-color:var(--packing-accent); }
+    .entry-steps { margin:0; padding-inline-start:1.65em; }
+    .entry-steps > li + li { margin-top:12px; }
+    .entry-steps > li::marker { color:var(--moss); font-weight:700; }
+    .entry-steps ul { margin:8px 0 0; padding-inline-start:1.25em; }
+    .entry-followup { margin:6px 0 0; }
+    .entry-steps a { display:inline-flex; align-items:center; min-height:44px; font-weight:600; }
     .prepare-check-break { display:none; }
     @media(max-width:600px) { .prepare-check-break { display:initial; } }
     @media(max-width:600px) { .day-grid.prepare-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
@@ -294,7 +300,31 @@
     </section>
     <section id="prepare-entry" class="sheet" aria-labelledby="prepare-entry-title" hidden>
       <h3 id="prepare-entry-title">入境須知</h3>
-      <p>目的地與旅行年份確認後，這裡會列出入境文件、申報流程及官方連結。</p>
+      <ol class="entry-steps">
+        <li>開啟 <a href="https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" target="_blank" rel="noopener noreferrer">Visit Japan Web 官方入口</a>。</li>
+        <li>用自己的 Email 申請帳號，收信並輸入驗證碼。</li>
+        <li>點「本人資料」，填寫個人資料，並依畫面指示讀取或輸入護照資料。</li>
+        <li>點「登錄新的入境、回國預定」，選「不沿用並繼續登錄」。
+          <ul>
+            <li>旅遊名稱：自行填寫</li>
+            <li>抵達日本預定日：<time datetime="2026-12-05">2026 年 12 月 5 日</time></li>
+            <li>航空公司名稱：IT、TIGER AIR TAIWAN</li>
+            <li>航班號：210</li>
+            <li>出發地：TAIPEI</li>
+          </ul>
+          <p class="entry-followup">填完後點「下一步」。</p>
+        </li>
+        <li>填寫在日本的住宿和聯絡資料。
+          <ul>
+            <li>郵遞區號：5430053，點「自動輸入」後確認並補齊地址。</li>
+            <li>飯店名稱：<strong>YUMERA Hotel</strong></li>
+            <li>電話：填寫在日本可聯絡的號碼，可從訂房確認信查詢飯店電話。</li>
+          </ul>
+        </li>
+        <li>點「確認輸入內容」，檢查無誤後再點「登錄預定」。</li>
+        <li>開啟已登錄的行程，依序填寫「檢疫（健康狀況確認）」和「入境審查及海關申報」。</li>
+        <li>點「顯示 QR 碼」，依畫面指示開啟後截圖存在自己的手機備用。抵達日本時可從 Visit Japan Web 出示 QR 碼。</li>
+      </ol>
     </section>
     <section id="prepare-tax" class="sheet" aria-labelledby="prepare-tax-title" hidden>
       <h3 id="prepare-tax-title">退稅方式</h3>
