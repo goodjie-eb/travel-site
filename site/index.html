@@ -86,13 +86,39 @@
       .packing-card .checks label:nth-child(n+3) { border-top:1px solid var(--line); }
     }
     .packing-card input[type="checkbox"] { flex-shrink:0; accent-color:var(--packing-accent); }
-    .entry-steps { margin:0; padding-inline-start:1.65em; }
-    .entry-steps > li + li { margin-top:12px; }
-    .entry-steps > li::marker { color:var(--moss); font-weight:700; }
-    .entry-steps ul { margin:8px 0 0; padding-inline-start:1.25em; }
-    .entry-followup { margin:6px 0 0; }
-    .entry-screenshot { display:block; max-width:100%; height:auto; margin:8px 0 0; }
-    .entry-steps a { display:inline-flex; align-items:center; min-height:44px; font-weight:600; }
+    #prepare-entry { margin-top:16px; }
+    #prepare-entry[hidden] { display:none; }
+    .entry-columns { display:grid; gap:14px; align-items:start; margin-top:10px; }
+    .entry-card { min-width:0; padding:14px 12px; margin:0; font-size:15px; }
+    .entry-card-heading { display:flex; align-items:baseline; flex-wrap:wrap; justify-content:space-between; column-gap:8px; }
+    .entry-card-heading h4 { margin:0; font-size:18px; font-weight:800; }
+    .entry-card-heading span { color:#595348; font-size:12px; white-space:nowrap; }
+    .entry-steps { margin:6px 0 0; padding:0; list-style:none; }
+    .entry-step { display:grid; grid-template-columns:22px minmax(0,1fr); gap:7px; padding:10px 0; }
+    .entry-step + .entry-step { border-top:1px solid #dfdbd2; }
+    .entry-step:last-child { padding-bottom:0; }
+    .entry-number { display:grid; place-items:center; width:22px; height:22px; margin-top:2px; border-radius:50%; background:var(--moss); color:white; font-size:13px; font-weight:700; }
+    .entry-step h5 { margin:0; font:inherit; font-weight:700; }
+    .entry-step p { margin:4px 0 0; }
+    .entry-step a { display:inline-flex; align-items:center; min-height:44px; font-weight:600; }
+    #entry-step-four { scroll-margin-top:76px; }
+    #entry-step-four:focus { background:#fff3ca; }
+    .entry-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; margin:8px 0 0; }
+    .entry-fields > div { min-width:0; padding:5px 8px; border-radius:3px; background:var(--paper); overflow-wrap:anywhere; }
+    .entry-fields .entry-field-wide { grid-column:1/-1; }
+    .entry-fields dt { color:#595348; font-size:12px; }
+    .entry-fields dd { margin:0; }
+    .entry-procedures { margin:4px 0 0; padding-inline-start:1.2em; }
+    .entry-preview { border:1px solid #dfdbd2; border-radius:4px; }
+    .entry-preview summary { min-height:44px; padding:6px 8px; border:0; font-size:13px; overflow-wrap:anywhere; }
+    .entry-preview-hide,.entry-preview[open] .entry-preview-show,.entry-preview[open] .entry-thumbnail { display:none; }
+    .entry-preview[open] .entry-preview-hide { display:inline; }
+    .entry-thumbnail { display:block; width:auto; height:auto; max-width:min(75%,144px); max-height:76px; margin:4px auto 2px; object-fit:contain; }
+    .entry-screenshot { display:block; width:auto; height:auto; max-width:min(calc(100% - 16px),340px); margin:0 auto 8px; object-fit:contain; }
+    .entry-qr { padding-inline:.12em; color:inherit; font-weight:700; background:linear-gradient(transparent 45%,#ffc324 45% 92%,transparent 92%); }
+    @media(min-width:780px) {
+      .entry-columns { grid-template-columns:minmax(0,1fr) minmax(0,1.28fr) minmax(0,1fr); }
+    }
     .prepare-check-break { display:none; }
     @media(max-width:600px) { .prepare-check-break { display:initial; } }
     @media(max-width:600px) { .day-grid.prepare-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
@@ -299,39 +325,107 @@
         <label><input type="checkbox" value="visit-japan-web"><span>填寫入境資料 Visit Japan Web</span></label>
       </div>
     </section>
-    <section id="prepare-entry" class="sheet" aria-labelledby="prepare-entry-title" hidden>
+    <section id="prepare-entry" aria-labelledby="prepare-entry-title" hidden>
       <h3 id="prepare-entry-title">入境須知</h3>
-      <ol class="entry-steps">
-        <li>開啟 <a href="https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" target="_blank" rel="noopener noreferrer">Visit Japan Web 官方入口</a>。</li>
-        <li><strong>第一次使用</strong>：<strong>用自己的 Email 申請帳號</strong>，收信並輸入驗證碼。<br>
-          <strong>已經有帳號</strong>：直接到第4步</li>
-        <li>點「本人資料」，填寫個人資料，並依畫面指示讀取或輸入護照資料。
-          <img class="entry-screenshot" src="./vjw-personal-details.jpg" alt="Visit Japan Web 的「本人資料」按鈕，已用紅框標示" width="329" height="289" loading="lazy">
-        </li>
-        <li>點「登錄新的入境、回國預定」，選「不沿用並繼續登錄」。
-          <img class="entry-screenshot" src="./vjw-new-entry.jpg" alt="Visit Japan Web 的藍色「登錄新的入境、回國預定」按鈕" width="472" height="307" loading="lazy">
-          <ul>
-            <li>旅遊名稱：自行填寫</li>
-            <li>抵達日本預定日：<time datetime="2026-12-05">2026 年 12 月 5 日</time></li>
-            <li>航空公司名稱：IT、TIGER AIR TAIWAN</li>
-            <li>航班號：210</li>
-            <li>出發地：TAIPEI</li>
-          </ul>
-          <p class="entry-followup">填完後點「下一步」。</p>
-        </li>
-        <li>填寫在日本的住宿和聯絡資料。
-          <ul>
-            <li>郵遞區號：5430053，點「自動輸入」後確認並補齊地址。</li>
-            <li>飯店名稱：YUMERA Hotel</li>
-            <li>電話：填寫在日本可聯絡的號碼，可從訂房確認信查詢飯店電話。</li>
-          </ul>
-        </li>
-        <li>點「確認輸入內容」，檢查無誤後再點「登錄預定」。</li>
-        <li>開啟已登錄的行程，依序填寫「檢疫（健康狀況確認）」和「入境審查及海關申報」。
-          <img class="entry-screenshot" src="./vjw-entry-procedures.jpg" alt="Visit Japan Web 的「檢疫」和「入境審查及海關申報」選項，已用紅框標示" width="288" height="284" loading="lazy">
-        </li>
-        <li>點「顯示 QR 碼」，依畫面指示開啟後截圖存在自己的手機備用。抵達日本時可從 Visit Japan Web 出示 QR 碼。</li>
-      </ol>
+      <div class="entry-columns">
+        <article class="sheet entry-card" aria-labelledby="entry-account-title">
+          <div class="entry-card-heading">
+            <h4 id="entry-account-title">帳號與護照</h4>
+            <span>第 1～3 步</span>
+          </div>
+          <ol class="entry-steps" role="list">
+            <li class="entry-step"><span class="entry-number" aria-hidden="true">1</span><div>
+              <h5><a href="https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" target="_blank" rel="noopener noreferrer">開啟 Visit Japan Web 官方入口</a></h5>
+            </div></li>
+            <li class="entry-step"><span class="entry-number" aria-hidden="true">2</span><div>
+              <h5>註冊或登入</h5>
+              <p><strong>第一次使用</strong>：<strong>用自己的 Email 申請帳號</strong>，收信並輸入驗證碼。</p>
+              <p><strong>已經有帳號</strong>：<a href="#entry-step-four">直接到第 4 步</a></p>
+            </div></li>
+            <li class="entry-step"><span class="entry-number" aria-hidden="true">3</span><div>
+              <h5>填寫本人資料</h5>
+              <p>依畫面指示讀取或輸入護照資料。</p>
+              <details class="entry-preview">
+                <summary>
+                  <span class="entry-preview-show">查看本人資料截圖</span>
+                  <span class="entry-preview-hide">收起本人資料截圖</span>
+                  <img class="entry-thumbnail" src="./vjw-personal-details.jpg" alt="" width="329" height="289" loading="lazy">
+                </summary>
+                <img class="entry-screenshot" src="./vjw-personal-details.jpg" alt="Visit Japan Web 的「本人資料」按鈕，已用紅框標示" width="329" height="289" loading="lazy">
+              </details>
+            </div></li>
+          </ol>
+        </article>
+
+        <article class="sheet entry-card" aria-labelledby="entry-travel-title">
+          <div class="entry-card-heading">
+            <h4 id="entry-travel-title">航班與住宿</h4>
+            <span>第 4～6 步</span>
+          </div>
+          <ol class="entry-steps" start="4" role="list">
+            <li class="entry-step" id="entry-step-four" tabindex="-1"><span class="entry-number" aria-hidden="true">4</span><div>
+              <h5>登錄新的入境、回國預定</h5>
+              <p>選「不沿用並繼續登錄」。</p>
+              <details class="entry-preview">
+                <summary>
+                  <span class="entry-preview-show">查看新增預定截圖</span>
+                  <span class="entry-preview-hide">收起新增預定截圖</span>
+                  <img class="entry-thumbnail" src="./vjw-new-entry.jpg" alt="" width="472" height="307" loading="lazy">
+                </summary>
+                <img class="entry-screenshot" src="./vjw-new-entry.jpg" alt="Visit Japan Web 的藍色「登錄新的入境、回國預定」按鈕" width="472" height="307" loading="lazy">
+              </details>
+              <dl class="entry-fields">
+                <div><dt>旅遊名稱</dt><dd>自行填寫</dd></div>
+                <div><dt>抵達日本預定日</dt><dd><strong><time datetime="2026-12-05">2026/12/05</time></strong></dd></div>
+                <div class="entry-field-wide"><dt>航空公司名稱</dt><dd>IT、TIGER AIR TAIWAN</dd></div>
+                <div><dt>航班號</dt><dd><strong>210</strong></dd></div>
+                <div><dt>出發地</dt><dd>TAIPEI</dd></div>
+              </dl>
+              <p>填完後點「下一步」。</p>
+            </div></li>
+            <li class="entry-step"><span class="entry-number" aria-hidden="true">5</span><div>
+              <h5>填寫住宿與聯絡資料</h5>
+              <dl class="entry-fields">
+                <div><dt>郵遞區號</dt><dd><strong>5430053</strong></dd></div>
+                <div><dt>飯店名稱</dt><dd>YUMERA Hotel</dd></div>
+              </dl>
+              <p>點「自動輸入」後確認並補齊地址。電話填在日本可聯絡的號碼，飯店電話可查訂房確認信。</p>
+            </div></li>
+            <li class="entry-step"><span class="entry-number" aria-hidden="true">6</span><div>
+              <h5>確認資料並登錄</h5>
+              <p>點「確認輸入內容」，檢查後再點「登錄預定」。</p>
+            </div></li>
+          </ol>
+        </article>
+
+        <article class="sheet entry-card" aria-labelledby="entry-qr-title">
+          <div class="entry-card-heading">
+            <h4 id="entry-qr-title">申報與 QR 碼</h4>
+            <span>第 7～8 步</span>
+          </div>
+          <ol class="entry-steps" start="7" role="list">
+            <li class="entry-step"><span class="entry-number" aria-hidden="true">7</span><div>
+              <h5>開啟已登錄的行程，依序填寫</h5>
+              <ul class="entry-procedures">
+                <li>檢疫（健康狀況確認）</li>
+                <li>入境審查及海關申報</li>
+              </ul>
+              <details class="entry-preview">
+                <summary>
+                  <span class="entry-preview-show">查看檢疫與申報截圖</span>
+                  <span class="entry-preview-hide">收起檢疫與申報截圖</span>
+                  <img class="entry-thumbnail" src="./vjw-entry-procedures.jpg" alt="" width="288" height="284" loading="lazy">
+                </summary>
+                <img class="entry-screenshot" src="./vjw-entry-procedures.jpg" alt="Visit Japan Web 的「檢疫」和「入境審查及海關申報」選項，已用紅框標示" width="288" height="284" loading="lazy">
+              </details>
+            </div></li>
+            <li class="entry-step"><span class="entry-number" aria-hidden="true">8</span><div>
+              <h5><mark class="entry-qr">顯示 QR 碼</mark></h5>
+              <p>依畫面指示開啟後，截圖存在自己的手機備用。抵達日本時可從 Visit Japan Web 出示。</p>
+            </div></li>
+          </ol>
+        </article>
+      </div>
     </section>
     <section id="prepare-tax" class="sheet" aria-labelledby="prepare-tax-title" hidden>
       <h3 id="prepare-tax-title">退稅方式</h3>
@@ -431,6 +525,14 @@
       }
     });
   }
+
+  const entryStepLink = document.querySelector('#prepare-entry a[href="#entry-step-four"]');
+  entryStepLink.addEventListener('click', event => {
+    event.preventDefault();
+    const step = document.getElementById('entry-step-four');
+    step.focus({ preventScroll:true });
+    step.scrollIntoView({ block:'start' });
+  });
 
   const photoDialog = document.querySelector('.photo-dialog');
   const previewImage = photoDialog.querySelector('img');
