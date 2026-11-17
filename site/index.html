@@ -91,7 +91,7 @@
     .entry-columns { display:grid; gap:14px; align-items:start; margin-top:10px; }
     .entry-card { min-width:0; padding:14px 12px; margin:0; font-size:15px; }
     .entry-card-heading { display:flex; align-items:baseline; flex-wrap:wrap; justify-content:space-between; column-gap:8px; }
-    .entry-card-heading h4 { margin:0; font-size:18px; font-weight:800; color:#513623; }
+    .entry-card-heading h4 { margin:0; font-size:18px; font-weight:800; }
     .entry-card-heading span { color:#595348; font-size:12px; white-space:nowrap; }
     .entry-steps { margin:6px 0 0; padding:0; list-style:none; }
     .entry-step { display:grid; grid-template-columns:22px minmax(0,1fr); gap:7px; padding:10px 0; }
@@ -317,8 +317,7 @@
         <label><input type="checkbox" value="visit-japan-web"><span>填寫入境資料 Visit Japan Web</span></label>
       </div>
     </section>
-    <section id="prepare-entry" aria-labelledby="prepare-entry-title" hidden>
-      <h3 id="prepare-entry-title">入境須知</h3>
+    <section id="prepare-entry" aria-label="入境須知" hidden>
       <div class="entry-columns">
         <article class="sheet entry-card" aria-labelledby="entry-account-title">
           <div class="entry-card-heading">
