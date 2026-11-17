@@ -115,6 +115,11 @@
     .entry-preview[open] .entry-preview-hide { display:inline; }
     .entry-thumbnail { display:block; width:auto; height:auto; max-width:min(75%,144px); max-height:76px; margin:4px auto 2px; object-fit:contain; }
     .entry-screenshot { display:block; width:auto; height:auto; max-width:min(calc(100% - 16px),340px); margin:0 auto 8px; object-fit:contain; }
+    .entry-screenshot-desktop { display:none; }
+    @media(min-width:601px) {
+      .entry-preview { display:none; }
+      .entry-screenshot-desktop { display:block; margin:8px 0; }
+    }
     .entry-qr { padding-inline:.12em; color:inherit; font-weight:700; background:linear-gradient(transparent 45%,#ffc324 45% 92%,transparent 92%); }
     .prepare-check-break { display:none; }
     @media(max-width:600px) { .prepare-check-break { display:initial; } }
@@ -350,6 +355,7 @@
                 </summary>
                 <img class="entry-screenshot" src="./vjw-personal-details.jpg" alt="Visit Japan Web 的「本人資料」按鈕，已用紅框標示" width="329" height="289" loading="lazy">
               </details>
+              <img class="entry-screenshot entry-screenshot-desktop" src="./vjw-personal-details.jpg" alt="Visit Japan Web 的「本人資料」按鈕，已用紅框標示" width="329" height="289" loading="lazy">
             </div></li>
           </ol>
         </article>
@@ -371,6 +377,7 @@
                 </summary>
                 <img class="entry-screenshot" src="./vjw-new-entry.jpg" alt="Visit Japan Web 的藍色「登錄新的入境、回國預定」按鈕" width="472" height="307" loading="lazy">
               </details>
+              <img class="entry-screenshot entry-screenshot-desktop" src="./vjw-new-entry.jpg" alt="Visit Japan Web 的藍色「登錄新的入境、回國預定」按鈕" width="472" height="307" loading="lazy">
               <dl class="entry-fields">
                 <div><dt>旅遊名稱</dt><dd>自行填寫</dd></div>
                 <div><dt>抵達日本預定日</dt><dd><strong><time datetime="2026-12-05">2026/12/05</time></strong></dd></div>
@@ -415,6 +422,7 @@
                 </summary>
                 <img class="entry-screenshot" src="./vjw-entry-procedures.jpg" alt="Visit Japan Web 的「檢疫」和「入境審查及海關申報」選項，已用紅框標示" width="288" height="284" loading="lazy">
               </details>
+              <img class="entry-screenshot entry-screenshot-desktop" src="./vjw-entry-procedures.jpg" alt="Visit Japan Web 的「檢疫」和「入境審查及海關申報」選項，已用紅框標示" width="288" height="284" loading="lazy">
             </div></li>
             <li class="entry-step"><span class="entry-number" aria-hidden="true">8</span><div>
               <h5><mark class="entry-qr">顯示 QR 碼</mark></h5>
